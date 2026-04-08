@@ -1,0 +1,116 @@
+---
+import { clientLogos, trustStats } from '../data/clients';
+---
+
+<section class="trust-bar">
+  <div class="trust-inner">
+    <p class="trust-label">Trusted by industry leaders</p>
+    <div class="logo-grid">
+      {clientLogos.map((logo) => (
+        <div class="logo-item" title={logo.name}>
+          <span class="logo-text">{logo.name}</span>
+        </div>
+      ))}
+    </div>
+    <div class="stats-grid">
+      {trustStats.map((stat) => (
+        <div class="stat">
+          <span
+            class="stat-value"
+            data-target={stat.value}
+            data-decimals={stat.decimals || 0}
+            data-suffix={stat.suffix}
+          >
+            0{stat.suffix}
+          </span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-bar {
+    padding: 4rem 1.5rem;
+    background: white;
+    border-top: 1px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .trust-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .trust-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-muted);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .logo-item {
+    opacity: 0.35;
+    transition: opacity 0.3s ease;
+  }
+
+  .logo-item:hover {
+    opacity: 0.7;
+  }
+
+  .logo-text {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-muted);
+    margin-top: 0.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

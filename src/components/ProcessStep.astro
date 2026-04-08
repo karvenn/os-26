@@ -1,0 +1,82 @@
+---
+interface Props {
+  number: number;
+  title: string;
+  description: string;
+  isLast?: boolean;
+}
+
+const { number, title, description, isLast = false } = Astro.props;
+---
+
+<div class:list={['step', { 'step--last': isLast }]}>
+  <div class="step-marker">
+    <span class="step-number">{String(number).padStart(2, '0')}</span>
+    {!isLast && <div class="step-line" />}
+  </div>
+  <div class="step-content">
+    <h3 class="step-title">{title}</h3>
+    <p class="step-desc">{description}</p>
+  </div>
+</div>
+
+<style>
+  .step {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .step-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 3rem;
+  }
+
+  .step-number {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-brand);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .step-line {
+    width: 1px;
+    flex: 1;
+    background: var(--color-divider);
+    margin: 0.5rem 0;
+    min-height: 2rem;
+  }
+
+  .step-content {
+    padding-bottom: 3rem;
+  }
+
+  .step--last .step-content {
+    padding-bottom: 0;
+  }
+
+  .step-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  .step-desc {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    max-width: 480px;
+  }
+</style>

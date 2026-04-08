@@ -1,0 +1,41 @@
+<div class="entrance-overlay" id="entrance-overlay" aria-hidden="true"></div>
+
+<style>
+  .entrance-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-brand);
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  .entrance-overlay.receding {
+    animation: overlayRecede 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+
+  @keyframes overlayRecede {
+    from { clip-path: inset(0 0 0 0); }
+    to { clip-path: inset(0 0 100% 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .entrance-overlay.receding {
+      animation: overlayFade 0.3s ease forwards;
+    }
+    @keyframes overlayFade {
+      to { opacity: 0; }
+    }
+  }
+</style>
+
+<script>
+  const overlay = document.getElementById('entrance-overlay');
+  if (overlay) {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        overlay.classList.add('receding');
+        overlay.addEventListener('animationend', () => overlay.remove());
+      });
+    });
+  }
+</script>

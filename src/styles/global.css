@@ -7,6 +7,9 @@
   --color-foreground: #1C1917;
   --color-muted: #78716C;
   --color-divider: #E7E5E4;
+  --color-brand-dark: #C45E0A;
+  --color-surface-alt: #FFFFFF;
+  --color-surface-dark: #1C1917;
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 

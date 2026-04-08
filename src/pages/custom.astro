@@ -1,0 +1,778 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EntranceOverlay from '../components/EntranceOverlay.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import PortfolioCard from '../components/PortfolioCard.astro';
+import ProcessStep from '../components/ProcessStep.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
+import FaqItem from '../components/FaqItem.astro';
+import CtaBand from '../components/CtaBand.astro';
+import ContactForm from '../components/ContactForm.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+
+import { services } from '../data/services-custom';
+import { portfolioProjects } from '../data/portfolio';
+import { processSteps } from '../data/process';
+import { caseStudies } from '../data/case-studies';
+import { faqItems } from '../data/faq-custom';
+
+const featuredProjects = portfolioProjects.filter((p) => p.featured);
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my' },
+    { '@type': 'ListItem', position: 2, name: 'Custom Websites & Applications', item: 'https://orangesoft.com.my/custom' },
+  ],
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Custom Website & Web Application Development',
+  description: 'Bespoke digital solutions built with NuxtJS, Laravel, and Strapi for businesses in Malaysia and Southeast Asia.',
+  provider: {
+    '@type': 'Organization',
+    name: 'Orangesoft',
+    url: 'https://orangesoft.com.my',
+  },
+  areaServed: { '@type': 'Country', name: 'Malaysia' },
+  serviceType: 'Web Development',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+---
+
+<Layout
+  title="Custom Websites & Web Apps | Orangesoft"
+  description="Orangesoft builds custom websites and web applications with NuxtJS, Laravel, and Strapi. Secure, high-performance digital solutions for growing businesses in Malaysia."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <EntranceOverlay />
+
+  <!-- ════ HERO ════ -->
+  <section id="hero" class="hero">
+    <div class="hero-inner">
+      <header class="page-header">
+        <a href="/" class="logo">Orangesoft<span class="logo-dot">.</span></a>
+        <nav class="page-nav">
+          <a href="/custom" class="nav-link nav-link--active">Custom</a>
+          <a href="/wordpress" class="nav-link">WordPress</a>
+          <a href="/kentico" class="nav-link">Kentico</a>
+          <a href="/support" class="nav-link">Support</a>
+          <a href="/seo" class="nav-link">SEO</a>
+        </nav>
+      </header>
+
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Custom Websites &amp;<br />Web Applications<br />Built for Growth
+        </h1>
+        <p class="hero-lead">
+          We design and build high-performance digital solutions that drive measurable business outcomes. From corporate websites to complex web applications, every project is engineered for speed, security, and seamless user experiences.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Get a Free Website Audit</a>
+          <a href="#portfolio" class="btn-ghost">
+            See Our Work
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ TRUST BAR ════ -->
+  <TrustBar />
+
+  <!-- ════ SERVICES ════ -->
+  <section id="services" class="section">
+    <div class="section-inner">
+      <SectionHeading
+        title="What Custom Solutions Do We Build?"
+        subtitle="Every solution is built from scratch — no templates, no shortcuts. We choose the right technology stack for your specific business needs."
+      />
+      <div class="services-grid" data-animate="stagger">
+        {services.map((service) => (
+          <div class="card-wrap">
+            <ServiceCard {...service} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ PORTFOLIO ════ -->
+  <section id="portfolio" class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="Our Featured Work"
+        subtitle="Selected projects that showcase our approach to custom web development."
+      />
+      <div class="portfolio-grid">
+        {featuredProjects.map((project, i) => (
+          <div class:list={['portfolio-item', i === 0 ? 'portfolio-item--full' : '']} data-animate="fade-up">
+            <PortfolioCard project={project} variant={i === 0 ? 'full' : 'half'} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ CTA BAND ════ -->
+  <CtaBand
+    heading="Ready to discuss your project?"
+    buttonText="Let's Talk About Your Project"
+    buttonHref="#contact"
+  />
+
+  <!-- ════ PROCESS ════ -->
+  <section id="process" class="section">
+    <div class="section-inner">
+      <SectionHeading
+        title="How We Build Your Custom Solution"
+        subtitle="A proven 5-step process refined over 600+ projects."
+      />
+      <div class="process-timeline" data-animate="fade-up">
+        {processSteps.map((step, i) => (
+          <ProcessStep
+            number={step.number}
+            title={step.title}
+            description={step.description}
+            isLast={i === processSteps.length - 1}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ TECHNOLOGY ════ -->
+  <section id="technology" class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="Which Technology Fits Your Project?"
+        subtitle="We select the optimal technology stack based on your project requirements, team capabilities, and long-term goals."
+      />
+      <div data-animate="fade-up">
+        <ComparisonTable />
+      </div>
+      <p class="tech-note">
+        Not sure which technology is right for you? Our team will recommend the best approach during our free consultation — <a href="#contact">get in touch</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════ CASE STUDIES ════ -->
+  <section id="case-studies" class="section">
+    <div class="section-inner">
+      <SectionHeading
+        title="Client Success Stories"
+        subtitle="Real results from real projects — here's how we've helped businesses like yours."
+      />
+      {caseStudies.map((cs) => (
+        <div data-animate="fade-up">
+          <CaseStudyCard caseStudy={cs} />
+        </div>
+      ))}
+      <div class="section-cta" data-animate="fade-up">
+        <a href="#contact" class="btn-primary">Start Your Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ FAQ ════ -->
+  <section id="faq" class="section section-alt">
+    <div class="section-inner section-inner--narrow">
+      <SectionHeading title="Frequently Asked Questions About Custom Web Development" />
+      <div data-animate="fade-up">
+        {faqItems.map((faq) => (
+          <FaqItem question={faq.question} answer={faq.answer} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ CONTACT ════ -->
+  <section id="contact" class="section section-dark">
+    <div class="section-inner" data-animate="fade-up">
+      <ContactForm />
+    </div>
+  </section>
+
+  <!-- ════ STICKY CTA BAR ════ -->
+  <div class="sticky-bar" id="sticky-cta" aria-hidden="true">
+    <div class="sticky-bar__inner">
+      <span class="sticky-bar__text">Ready to start your project?</span>
+      <a href="#contact" class="sticky-bar__btn">Get in Touch</a>
+    </div>
+  </div>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="page-footer">
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">Orangesoft<span class="logo-dot">.</span></a>
+      <nav class="footer-nav">
+        <a href="/custom">Custom</a>
+        <a href="/wordpress">WordPress</a>
+        <a href="/kentico">Kentico</a>
+        <a href="/support">Support</a>
+        <a href="/seo">SEO</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 Orangesoft. All rights reserved.</p>
+    </div>
+  </footer>
+</Layout>
+
+<style>
+  /* ── Sections ── */
+
+  .section {
+    padding: 5rem 1.5rem;
+  }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-inner--narrow {
+    max-width: 800px;
+  }
+
+  .section-alt {
+    background: white;
+  }
+
+  .section-dark {
+    background: var(--color-surface-dark, #1C1917);
+  }
+
+  .section-cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  /* ── Hero ── */
+
+  .hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.5rem;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease 0.8s forwards;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .logo-dot {
+    color: var(--color-brand);
+  }
+
+  .page-nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link--active {
+    color: var(--color-foreground);
+  }
+
+  .nav-link--active {
+    font-weight: 600;
+  }
+
+  .hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 0 4rem;
+    max-width: 720px;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--color-foreground);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: slideUp 0.8s ease 1s forwards;
+  }
+
+  .hero-lead {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    margin-bottom: 2.5rem;
+    max-width: 560px;
+    opacity: 0;
+    animation: slideUp 0.8s ease 1.15s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: slideUp 0.8s ease 1.3s forwards;
+  }
+
+  /* ── Buttons ── */
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 2rem;
+    background: var(--color-brand);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-brand-dark, #C45E0A);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.875rem 1.5rem;
+    color: var(--color-foreground);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .btn-ghost:hover {
+    color: var(--color-brand);
+  }
+
+  .btn-ghost svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-ghost:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* ── Services Grid ── */
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  /* ── Portfolio Grid ── */
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .portfolio-item--full {
+    grid-column: 1 / -1;
+  }
+
+  /* ── Process ── */
+
+  .process-timeline {
+    max-width: 640px;
+  }
+
+  /* ── Tech note ── */
+
+  .tech-note {
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  .tech-note a {
+    color: var(--color-brand);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ── Scroll Animations ── */
+
+  :global([data-animate]) {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  :global([data-animate].animate-in) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  :global([data-animate="stagger"]) {
+    opacity: 1;
+    transform: none;
+  }
+
+  :global([data-animate="stagger"]) > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  :global([data-animate="stagger"].animate-in) > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  :global([data-animate="stagger"].animate-in) > *:nth-child(1) { transition-delay: 0s; }
+  :global([data-animate="stagger"].animate-in) > *:nth-child(2) { transition-delay: 0.1s; }
+  :global([data-animate="stagger"].animate-in) > *:nth-child(3) { transition-delay: 0.15s; }
+  :global([data-animate="stagger"].animate-in) > *:nth-child(4) { transition-delay: 0.2s; }
+
+  /* ── Sticky CTA Bar ── */
+
+  .sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: white;
+    border-top: 1px solid var(--color-divider);
+    padding: 0.75rem 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  :global(.sticky-bar.visible) {
+    transform: translateY(0);
+  }
+
+  :global(.sticky-bar.hidden) {
+    transform: translateY(100%);
+  }
+
+  .sticky-bar__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .sticky-bar__text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  .sticky-bar__btn {
+    display: inline-flex;
+    padding: 0.625rem 1.5rem;
+    background: var(--color-brand);
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .sticky-bar__btn:hover {
+    background: var(--color-brand-dark, #C45E0A);
+  }
+
+  /* ── Footer ── */
+
+  .page-footer {
+    padding: 3rem 1.5rem;
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    text-decoration: none;
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-nav a {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-nav a:hover {
+    color: var(--color-foreground);
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+
+  /* ── Keyframes ── */
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ── Reduced Motion ── */
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title, .hero-lead, .hero-actions, .page-header {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+
+    :global([data-animate]),
+    :global([data-animate="stagger"]) > * {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* ── Mobile ── */
+
+  @media (max-width: 768px) {
+    .section {
+      padding: 3rem 1.5rem;
+    }
+
+    .page-nav {
+      display: none;
+    }
+
+    .hero {
+      min-height: auto;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .hero-content {
+      padding: 3rem 0;
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+    }
+
+    .hero-lead {
+      font-size: 0.9375rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .btn-primary {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .services-grid,
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .portfolio-item--full {
+      grid-column: auto;
+    }
+
+    .sticky-bar__text {
+      display: none;
+    }
+
+    .sticky-bar__btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-nav {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  // ── Scroll animation observer ──
+  const animObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+          animObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' },
+  );
+
+  document.querySelectorAll('[data-animate]').forEach((el) => animObserver.observe(el));
+
+  // ── Counter animation ──
+  function animateCounter(el: HTMLElement) {
+    const target = parseFloat(el.dataset.target || '0');
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1500;
+    const start = performance.now();
+
+    function tick(now: number) {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = (target * eased).toFixed(decimals) + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target as HTMLElement);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
+
+  document.querySelectorAll<HTMLElement>('[data-target]').forEach((el) => counterObserver.observe(el));
+
+  // ── Sticky CTA bar ──
+  const stickyBar = document.getElementById('sticky-cta');
+  const heroEl = document.getElementById('hero');
+  const contactEl = document.getElementById('contact');
+
+  if (stickyBar && heroEl && contactEl) {
+    const stickyObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === heroEl) {
+            stickyBar.classList.toggle('visible', !entry.isIntersecting);
+          }
+          if (entry.target === contactEl) {
+            stickyBar.classList.toggle('hidden', entry.isIntersecting);
+          }
+        });
+      },
+      { threshold: 0 },
+    );
+
+    stickyObs.observe(heroEl);
+    stickyObs.observe(contactEl);
+  }
+
+  // ── Smooth scroll for anchor links ──
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = anchor.getAttribute('href');
+      if (id) {
+        const target = document.querySelector(id);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>

@@ -1,0 +1,75 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+}
+
+const { question, answer } = Astro.props;
+---
+
+<details class="faq">
+  <summary class="faq-q">
+    <h3>{question}</h3>
+    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="5" x2="12" y2="19" />
+      <line x1="5" y1="12" x2="19" y2="12" />
+    </svg>
+  </summary>
+  <div class="faq-a">
+    <p>{answer}</p>
+  </div>
+</details>
+
+<style>
+  .faq {
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .faq:last-child {
+    border-bottom: none;
+  }
+
+  .faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-q::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-q h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    line-height: 1.4;
+  }
+
+  .faq-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    color: var(--color-muted);
+    transition: transform 0.3s ease;
+  }
+
+  .faq[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    padding-bottom: 1.5rem;
+  }
+
+  .faq-a p {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    max-width: 640px;
+  }
+</style>

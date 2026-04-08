@@ -1,0 +1,141 @@
+<div class="cf-wrapper">
+  <h2 class="cf-heading">Let's Build Something Exceptional</h2>
+  <p class="cf-sub">Share your project details and we'll respond within 24 hours. No commitment required.</p>
+
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="cf-form">
+    <input type="hidden" name="bot-field" />
+    <input type="hidden" name="form-name" value="contact" />
+
+    <div class="cf-grid">
+      <div class="cf-field">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your name" />
+      </div>
+      <div class="cf-field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="you@company.com" />
+      </div>
+      <div class="cf-field">
+        <label for="company">Company</label>
+        <input type="text" id="company" name="company" placeholder="Your company name" />
+      </div>
+      <div class="cf-field">
+        <label for="service">Service Interest</label>
+        <select id="service" name="service" required>
+          <option value="" disabled selected>Select a service</option>
+          <option value="custom-website">Custom Website</option>
+          <option value="web-application">Web Application</option>
+          <option value="headless-cms">Headless CMS</option>
+          <option value="api-integration">API & Integration</option>
+          <option value="not-sure">Not Sure Yet</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="cf-submit">Send Message</button>
+  </form>
+</div>
+
+<style>
+  .cf-wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .cf-heading {
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .cf-sub {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+
+  .cf-grid {
+    display: grid;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  .cf-field label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.5rem;
+  }
+
+  .cf-field input,
+  .cf-field select {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0.375rem;
+    color: white;
+    font-size: 0.875rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+
+  .cf-field input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .cf-field input:focus,
+  .cf-field select:focus {
+    outline: none;
+    border-color: var(--color-brand);
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .cf-field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+
+  .cf-field select option {
+    background: #1C1917;
+    color: white;
+  }
+
+  .cf-submit {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--color-brand);
+    color: white;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .cf-submit:hover {
+    background: var(--color-brand-dark, #C45E0A);
+  }
+
+  @media (min-width: 768px) {
+    .cf-heading {
+      font-size: 2.5rem;
+    }
+    .cf-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

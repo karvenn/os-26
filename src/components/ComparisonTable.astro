@@ -1,0 +1,104 @@
+---
+const technologies = [
+  {
+    name: 'NuxtJS',
+    bestFor: 'Corporate websites, landing pages, marketing sites',
+    performance: 'Exceptional \u2014 static generation with dynamic capabilities',
+    scalability: 'Highly scalable with edge deployment',
+    cms: 'Pairs with any headless CMS',
+  },
+  {
+    name: 'Laravel',
+    bestFor: 'Web applications, portals, complex business logic',
+    performance: 'Excellent \u2014 optimised with caching and queue systems',
+    scalability: 'Enterprise-grade horizontal scaling',
+    cms: 'Built-in admin panels or headless CMS integration',
+  },
+  {
+    name: 'Strapi',
+    bestFor: 'Content-heavy sites, multi-channel publishing',
+    performance: 'Fast API responses with built-in caching',
+    scalability: 'Scales with your content team and channels',
+    cms: 'Full editorial control with custom content types',
+  },
+];
+---
+
+<div class="ct-wrap">
+  <table class="ct">
+    <thead>
+      <tr>
+        <th>Technology</th>
+        <th>Best For</th>
+        <th>Performance</th>
+        <th>Scalability</th>
+        <th>CMS Flexibility</th>
+      </tr>
+    </thead>
+    <tbody>
+      {technologies.map((tech) => (
+        <tr>
+          <td class="ct-name">{tech.name}</td>
+          <td>{tech.bestFor}</td>
+          <td>{tech.performance}</td>
+          <td>{tech.scalability}</td>
+          <td>{tech.cms}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .ct-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+  }
+
+  .ct {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .ct thead {
+    background: var(--color-surface);
+  }
+
+  .ct th {
+    text-align: left;
+    padding: 1rem 1.25rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+    border-bottom: 1px solid var(--color-divider);
+    white-space: nowrap;
+  }
+
+  .ct td {
+    padding: 1.25rem;
+    color: var(--color-muted);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--color-divider);
+    vertical-align: top;
+  }
+
+  .ct tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .ct tbody tr:hover {
+    background: var(--color-brand-light);
+  }
+
+  .ct-name {
+    font-weight: 600;
+    color: var(--color-foreground) !important;
+    white-space: nowrap;
+  }
+</style>
