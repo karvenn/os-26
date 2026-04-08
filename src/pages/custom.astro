@@ -11,12 +11,15 @@ import FaqItem from '../components/FaqItem.astro';
 import CtaBand from '../components/CtaBand.astro';
 import ContactForm from '../components/ContactForm.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
+import SolutionCard from '../components/SolutionCard.astro';
+import Animations from '../components/Animations.astro';
 
 import { services } from '../data/services-custom';
 import { portfolioProjects } from '../data/portfolio';
 import { processSteps } from '../data/process';
 import { caseStudies } from '../data/case-studies';
 import { faqItems } from '../data/faq-custom';
+import { solutions } from '../data/solutions';
 
 const featuredProjects = portfolioProjects.filter((p) => p.featured);
 
@@ -118,8 +121,25 @@ const faqSchema = {
     </div>
   </section>
 
+  <!-- ════ SOLUTIONS ════ -->
+  <section id="solutions" class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="Proven Solutions, Tailored to You"
+        subtitle="Pre-built platforms refined over dozens of implementations. We customise each to your brand, workflows, and integrations."
+      />
+      <div class="solutions-grid" data-animate="stagger">
+        {solutions.map((s) => (
+          <div class="solution-wrap">
+            <SolutionCard slug={s.slug} name={s.name} tagline={s.tagline} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- ════ PORTFOLIO ════ -->
-  <section id="portfolio" class="section section-alt">
+  <section id="portfolio" class="section">
     <div class="section-inner">
       <SectionHeading
         title="Our Featured Work"
@@ -237,6 +257,8 @@ const faqSchema = {
       <p class="footer-copy">&copy; 2026 Orangesoft. All rights reserved.</p>
     </div>
   </footer>
+
+  <Animations />
 </Layout>
 
 <style>
@@ -420,6 +442,14 @@ const faqSchema = {
     gap: 1.5rem;
   }
 
+  /* ── Solutions Grid ── */
+
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
   /* ── Portfolio Grid ── */
 
   .portfolio-grid {
@@ -452,40 +482,6 @@ const faqSchema = {
     text-decoration: underline;
     text-underline-offset: 2px;
   }
-
-  /* ── Scroll Animations ── */
-
-  :global([data-animate]) {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  :global([data-animate].animate-in) {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  :global([data-animate="stagger"]) {
-    opacity: 1;
-    transform: none;
-  }
-
-  :global([data-animate="stagger"]) > * {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-
-  :global([data-animate="stagger"].animate-in) > * {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  :global([data-animate="stagger"].animate-in) > *:nth-child(1) { transition-delay: 0s; }
-  :global([data-animate="stagger"].animate-in) > *:nth-child(2) { transition-delay: 0.1s; }
-  :global([data-animate="stagger"].animate-in) > *:nth-child(3) { transition-delay: 0.15s; }
-  :global([data-animate="stagger"].animate-in) > *:nth-child(4) { transition-delay: 0.2s; }
 
   /* ── Sticky CTA Bar ── */
 
@@ -612,13 +608,6 @@ const faqSchema = {
       animation: none !important;
       opacity: 1 !important;
     }
-
-    :global([data-animate]),
-    :global([data-animate="stagger"]) > * {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
-    }
   }
 
   /* ── Mobile ── */
@@ -661,7 +650,8 @@ const faqSchema = {
     }
 
     .services-grid,
-    .portfolio-grid {
+    .portfolio-grid,
+    .solutions-grid {
       grid-template-columns: 1fr;
     }
 
@@ -691,54 +681,7 @@ const faqSchema = {
 </style>
 
 <script>
-  // ── Scroll animation observer ──
-  const animObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-          animObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' },
-  );
-
-  document.querySelectorAll('[data-animate]').forEach((el) => animObserver.observe(el));
-
-  // ── Counter animation ──
-  function animateCounter(el: HTMLElement) {
-    const target = parseFloat(el.dataset.target || '0');
-    const decimals = parseInt(el.dataset.decimals || '0', 10);
-    const suffix = el.dataset.suffix || '';
-    const duration = 1500;
-    const start = performance.now();
-
-    function tick(now: number) {
-      const t = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = (target * eased).toFixed(decimals) + suffix;
-      if (t < 1) requestAnimationFrame(tick);
-    }
-
-    requestAnimationFrame(tick);
-  }
-
-  const counterObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target as HTMLElement);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.5 },
-  );
-
-  document.querySelectorAll<HTMLElement>('[data-target]').forEach((el) => counterObserver.observe(el));
-
-  // ── Sticky CTA bar ──
+  // Sticky CTA bar (page-specific — animations/counters/scroll handled by Animations component)
   const stickyBar = document.getElementById('sticky-cta');
   const heroEl = document.getElementById('hero');
   const contactEl = document.getElementById('contact');
@@ -761,18 +704,4 @@ const faqSchema = {
     stickyObs.observe(heroEl);
     stickyObs.observe(contactEl);
   }
-
-  // ── Smooth scroll for anchor links ──
-  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      e.preventDefault();
-      const id = anchor.getAttribute('href');
-      if (id) {
-        const target = document.querySelector(id);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-    });
-  });
 </script>
