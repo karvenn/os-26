@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #E8720C;
+  --color-brand-light: #FFF7ED;
+  --color-surface: #FAF9F7;
+  --color-foreground: #1C1917;
+  --color-muted: #78716C;
+  --color-divider: #E7E5E4;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-brand);
+  color: white;
+}

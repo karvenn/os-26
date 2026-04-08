@@ -1,0 +1,462 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    number: '01',
+    title: 'Custom Websites & Applications',
+    tagline: 'Crafted from scratch',
+    description:
+      'Bespoke digital solutions engineered to your exact vision\u2014where performance meets elegance.',
+    href: '/custom',
+  },
+  {
+    number: '02',
+    title: 'WordPress Websites',
+    tagline: 'Flexible by design',
+    description:
+      'Professional WordPress experiences that balance creative ambition with scalable architecture.',
+    href: '/wordpress',
+  },
+  {
+    number: '03',
+    title: 'Kentico Websites',
+    tagline: 'Enterprise-grade',
+    description:
+      'Sophisticated CMS solutions built for organizations that demand scale, security, and seamless workflows.',
+    href: '/kentico',
+  },
+  {
+    number: '04',
+    title: 'Support & Maintenance',
+    tagline: 'Always performing',
+    description:
+      'Proactive care and continuous optimization\u2014so your digital presence never misses a beat.',
+    href: '/support',
+  },
+  {
+    number: '05',
+    title: 'SEO',
+    tagline: 'Visibility, amplified',
+    description:
+      'Strategic search optimization that positions your brand where it matters most.',
+    href: '/seo',
+  },
+];
+---
+
+<Layout>
+  <div class="page">
+    <header class="site-header">
+      <a href="/" class="logo">
+        Orangesoft<span class="logo-dot">.</span>
+      </a>
+    </header>
+
+    <main class="panels">
+      {services.map((service) => (
+        <article class="panel" data-href={service.href}>
+          <span class="panel-number">{service.number}</span>
+
+          <div class="panel-vertical">
+            <span class="vertical-text">{service.title}</span>
+          </div>
+
+          <div class="panel-content">
+            <h2 class="panel-title">{service.title}</h2>
+            <p class="panel-tagline">{service.tagline}</p>
+            <p class="panel-desc">{service.description}</p>
+            <span class="panel-cta">
+              Explore
+              <svg
+                class="cta-arrow"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 10h12m0 0l-4-4m4 4l-4 4"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </div>
+        </article>
+      ))}
+    </main>
+
+    <footer class="site-footer">
+      <p class="footer-text">&copy; 2026 Orangesoft. All rights reserved.</p>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  /* ── Page structure ── */
+
+  .page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Header & Logo ── */
+
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    padding: 2rem 2.5rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeIn 0.8s ease 0.6s forwards;
+  }
+
+  .logo-dot {
+    color: var(--color-brand);
+  }
+
+  /* ── Panels container ── */
+
+  .panels {
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  /* ── Individual panel ── */
+
+  .panel {
+    flex: 1 1 0%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-right: 1px solid var(--color-divider);
+    display: flex;
+    flex-direction: column;
+    padding: 6rem 1.5rem 3rem;
+    transition:
+      flex 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.5s ease;
+    opacity: 0;
+    animation: panelReveal 0.9s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  }
+
+  .panel:last-child {
+    border-right: none;
+  }
+
+  /* Staggered entrance */
+  .panel:nth-child(1) { animation-delay: 0.1s; }
+  .panel:nth-child(2) { animation-delay: 0.2s; }
+  .panel:nth-child(3) { animation-delay: 0.3s; }
+  .panel:nth-child(4) { animation-delay: 0.4s; }
+  .panel:nth-child(5) { animation-delay: 0.5s; }
+
+  /* ── Panel hover behaviour ── */
+
+  .panels:hover .panel {
+    flex: 0.7 1 0%;
+  }
+
+  .panels:hover .panel:hover {
+    flex: 2.5 1 0%;
+    background-color: var(--color-brand-light);
+  }
+
+  /* ── Panel number ── */
+
+  .panel-number {
+    font-size: 0.6875rem;
+    font-weight: 300;
+    color: var(--color-muted);
+    letter-spacing: 0.15em;
+    margin-bottom: 2rem;
+    transition: opacity 0.4s ease;
+  }
+
+  .panels:hover .panel:not(:hover) .panel-number {
+    opacity: 0.35;
+  }
+
+  /* ── Vertical title (collapsed state) ── */
+
+  .panel-vertical {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+
+  .vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--color-foreground);
+    white-space: nowrap;
+    transition: opacity 0.4s ease;
+  }
+
+  .panels:hover .panel:hover .panel-vertical {
+    opacity: 0;
+  }
+
+  .panels:hover .panel:not(:hover) .vertical-text {
+    opacity: 0.35;
+  }
+
+  /* ── Expanded content (hover state) ── */
+
+  .panel-content {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+    margin-top: auto;
+    pointer-events: none;
+  }
+
+  .panels:hover .panel:hover .panel-content {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.12s;
+    pointer-events: auto;
+  }
+
+  .panel-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--color-foreground);
+    margin-bottom: 0.875rem;
+    letter-spacing: -0.02em;
+  }
+
+  .panel-tagline {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-brand);
+    margin-bottom: 1rem;
+  }
+
+  .panel-desc {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+    max-width: 280px;
+  }
+
+  .panel-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-brand);
+    letter-spacing: 0.02em;
+  }
+
+  .cta-arrow {
+    width: 1.125rem;
+    height: 1.125rem;
+    transition: transform 0.3s ease;
+  }
+
+  .panel:hover .cta-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ── Footer ── */
+
+  .site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.25rem 2.5rem;
+    text-align: center;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .footer-text {
+    font-size: 0.6875rem;
+    color: var(--color-muted);
+    letter-spacing: 0.05em;
+    opacity: 0.5;
+  }
+
+  /* ── Keyframes ── */
+
+  @keyframes panelReveal {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ── Mobile ── */
+
+  @media (max-width: 768px) {
+    .site-header {
+      position: relative;
+      padding: 2rem 1.5rem 1rem;
+    }
+
+    .logo {
+      animation-delay: 0s;
+    }
+
+    .panels {
+      flex-direction: column;
+      min-height: auto;
+    }
+
+    .panel {
+      flex: none !important;
+      border-right: none;
+      border-bottom: 1px solid var(--color-divider);
+      padding: 1.75rem 1.5rem;
+      animation: panelRevealMobile 0.6s ease forwards;
+      background-color: transparent !important;
+    }
+
+    .panel:nth-child(1) { animation-delay: 0.05s; }
+    .panel:nth-child(2) { animation-delay: 0.1s; }
+    .panel:nth-child(3) { animation-delay: 0.15s; }
+    .panel:nth-child(4) { animation-delay: 0.2s; }
+    .panel:nth-child(5) { animation-delay: 0.25s; }
+
+    .panel:last-child {
+      border-bottom: none;
+    }
+
+    .panel-vertical {
+      display: none;
+    }
+
+    .panel-content {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      pointer-events: auto;
+    }
+
+    .panel-number {
+      margin-bottom: 0.5rem;
+      opacity: 1 !important;
+    }
+
+    .panel-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-desc {
+      display: none;
+    }
+
+    .panel-tagline {
+      margin-bottom: 0.75rem;
+    }
+
+    .site-footer {
+      position: relative;
+      padding: 2rem 1.5rem;
+    }
+
+    .footer-text {
+      opacity: 0.7;
+    }
+
+    @keyframes panelRevealMobile {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+</style>
+
+<script>
+  const panels = document.querySelectorAll<HTMLElement>('[data-href]');
+
+  panels.forEach((panel) => {
+    panel.addEventListener('click', () => {
+      const rect = panel.getBoundingClientRect();
+      const href = panel.dataset.href;
+      if (!href) return;
+
+      // Create expanding overlay
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = `${rect.top}px`;
+      overlay.style.left = `${rect.left}px`;
+      overlay.style.width = `${rect.width}px`;
+      overlay.style.height = `${rect.height}px`;
+      overlay.style.backgroundColor = getComputedStyle(document.documentElement)
+        .getPropertyValue('--color-brand')
+        .trim() || '#E8720C';
+      overlay.style.zIndex = '9999';
+      overlay.style.pointerEvents = 'none';
+      document.body.appendChild(overlay);
+
+      // Force reflow then animate to fullscreen
+      overlay.offsetHeight;
+      overlay.style.transition = 'all 0.85s cubic-bezier(0.76, 0, 0.24, 1)';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+
+      // Fade out page content
+      const page = document.querySelector<HTMLElement>('.page');
+      if (page) {
+        page.style.transition = 'opacity 0.4s ease 0.1s';
+        page.style.opacity = '0';
+      }
+
+      // Navigate after animation completes
+      setTimeout(() => {
+        window.location.href = href;
+      }, 950);
+    });
+  });
+</script>
