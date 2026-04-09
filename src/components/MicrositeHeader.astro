@@ -1,0 +1,87 @@
+---
+interface Props {
+  active?: 'solutions' | 'work' | 'about' | 'contact';
+}
+
+const { active } = Astro.props;
+---
+
+<header class="ms-header">
+  <div class="ms-header-inner">
+    <a href="/custom" class="ms-logo">Orangesoft<span class="ms-logo-dot">.</span></a>
+    <nav class="ms-nav">
+      <a href="/custom#solutions" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'solutions' }]}>Solutions</a>
+      <a href="/custom/work" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'work' }]}>Work</a>
+      <a href="/custom/about" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'about' }]}>About</a>
+      <a href="/custom/contact" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'contact' }]}>Contact</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .ms-header {
+    padding: 2rem 1.5rem;
+    opacity: 0;
+    animation: msHeaderIn 0.8s ease 0.8s forwards;
+  }
+
+  .ms-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ms-logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .ms-logo-dot {
+    color: var(--color-brand);
+  }
+
+  .ms-nav {
+    display: flex;
+    gap: 1.75rem;
+  }
+
+  .ms-nav-link {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .ms-nav-link:hover,
+  .ms-nav-link--active {
+    color: var(--color-foreground);
+  }
+
+  .ms-nav-link--active {
+    font-weight: 600;
+  }
+
+  @keyframes msHeaderIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ms-header {
+      animation: none;
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .ms-nav {
+      display: none;
+    }
+  }
+</style>

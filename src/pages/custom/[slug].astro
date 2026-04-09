@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../components/MicrositeFooter.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import FaqItem from '../../components/FaqItem.astro';
@@ -59,23 +61,10 @@ const faqSchema = solution.faq.length > 0 ? {
 
   <EntranceOverlay />
 
-  <!-- ════ HEADER ════ -->
-  <header class="page-header">
-    <div class="header-inner">
-      <a href="/" class="logo">Orangesoft<span class="logo-dot">.</span></a>
-      <nav class="page-nav">
-        <a href="/custom" class="nav-link nav-link--active">Custom</a>
-        <a href="/wordpress" class="nav-link">WordPress</a>
-        <a href="/kentico" class="nav-link">Kentico</a>
-        <a href="/support" class="nav-link">Support</a>
-        <a href="/seo" class="nav-link">SEO</a>
-      </nav>
-    </div>
-  </header>
-
+  <MicrositeHeader active="solutions" />
   <Breadcrumb items={[
-    { label: 'Home', href: '/' },
-    { label: 'Custom', href: '/custom' },
+    { label: 'Home', href: '/custom' },
+    { label: 'Solutions', href: '/custom#solutions' },
     { label: solution.name },
   ]} />
 
@@ -179,20 +168,7 @@ const faqSchema = solution.faq.length > 0 ? {
     </div>
   </section>
 
-  <!-- ════ FOOTER ════ -->
-  <footer class="page-footer">
-    <div class="footer-inner">
-      <a href="/" class="footer-logo">Orangesoft<span class="logo-dot">.</span></a>
-      <nav class="footer-nav">
-        <a href="/custom">Custom</a>
-        <a href="/wordpress">WordPress</a>
-        <a href="/kentico">Kentico</a>
-        <a href="/support">Support</a>
-        <a href="/seo">SEO</a>
-      </nav>
-      <p class="footer-copy">&copy; 2026 Orangesoft. All rights reserved.</p>
-    </div>
-  </footer>
+  <MicrositeFooter />
 
   <Animations />
 </Layout>
@@ -205,29 +181,6 @@ const faqSchema = solution.faq.length > 0 ? {
   .section-inner--narrow { max-width: 800px; }
   .section-alt { background: white; }
   .section-dark { background: var(--color-surface-dark, #1C1917); }
-
-  /* ── Header ── */
-
-  .page-header {
-    padding: 2rem 1.5rem;
-    opacity: 0;
-    animation: fadeIn 0.8s ease 0.8s forwards;
-  }
-
-  .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .logo { font-size: 1.25rem; font-weight: 600; color: var(--color-foreground); text-decoration: none; letter-spacing: -0.02em; }
-  .logo-dot { color: var(--color-brand); }
-  .page-nav { display: flex; gap: 1.5rem; }
-  .nav-link { font-size: 0.8125rem; font-weight: 500; color: var(--color-muted); text-decoration: none; transition: color 0.3s ease; }
-  .nav-link:hover, .nav-link--active { color: var(--color-foreground); }
-  .nav-link--active { font-weight: 600; }
 
   /* ── Hero ── */
 
@@ -427,16 +380,6 @@ const faqSchema = solution.faq.length > 0 ? {
     color: var(--color-muted);
   }
 
-  /* ── Footer ── */
-
-  .page-footer { padding: 3rem 1.5rem; border-top: 1px solid var(--color-divider); }
-  .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-size: 1rem; font-weight: 600; color: var(--color-foreground); text-decoration: none; }
-  .footer-nav { display: flex; gap: 1.5rem; }
-  .footer-nav a { font-size: 0.8125rem; color: var(--color-muted); text-decoration: none; transition: color 0.3s ease; }
-  .footer-nav a:hover { color: var(--color-foreground); }
-  .footer-copy { font-size: 0.75rem; color: var(--color-muted); }
-
   /* ── Keyframes ── */
 
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -455,7 +398,6 @@ const faqSchema = solution.faq.length > 0 ? {
 
   @media (max-width: 768px) {
     .section { padding: 3rem 1.5rem; }
-    .page-nav { display: none; }
     .hero-title { font-size: 2rem; }
     .hero-tagline { font-size: 1.0625rem; }
     .hero-actions { flex-direction: column; align-items: flex-start; }
@@ -463,7 +405,5 @@ const faqSchema = solution.faq.length > 0 ? {
     .outcomes-grid { grid-template-columns: 1fr; }
     .cap-grid { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; }
-    .footer-inner { flex-direction: column; text-align: center; }
-    .footer-nav { flex-wrap: wrap; justify-content: center; }
   }
 </style>

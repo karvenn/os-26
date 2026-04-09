@@ -12,6 +12,8 @@ import CtaBand from '../components/CtaBand.astro';
 import ContactForm from '../components/ContactForm.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
 import SolutionCard from '../components/SolutionCard.astro';
+import MicrositeHeader from '../components/MicrositeHeader.astro';
+import MicrositeFooter from '../components/MicrositeFooter.astro';
 import Animations from '../components/Animations.astro';
 
 import { services } from '../data/services-custom';
@@ -72,16 +74,7 @@ const faqSchema = {
   <!-- ════ HERO ════ -->
   <section id="hero" class="hero">
     <div class="hero-inner">
-      <header class="page-header">
-        <a href="/" class="logo">Orangesoft<span class="logo-dot">.</span></a>
-        <nav class="page-nav">
-          <a href="/custom" class="nav-link nav-link--active">Custom</a>
-          <a href="/wordpress" class="nav-link">WordPress</a>
-          <a href="/kentico" class="nav-link">Kentico</a>
-          <a href="/support" class="nav-link">Support</a>
-          <a href="/seo" class="nav-link">SEO</a>
-        </nav>
-      </header>
+      <MicrositeHeader />
 
       <div class="hero-content">
         <h1 class="hero-title">
@@ -244,19 +237,7 @@ const faqSchema = {
   </div>
 
   <!-- ════ FOOTER ════ -->
-  <footer class="page-footer">
-    <div class="footer-inner">
-      <a href="/" class="footer-logo">Orangesoft<span class="logo-dot">.</span></a>
-      <nav class="footer-nav">
-        <a href="/custom">Custom</a>
-        <a href="/wordpress">WordPress</a>
-        <a href="/kentico">Kentico</a>
-        <a href="/support">Support</a>
-        <a href="/seo">SEO</a>
-      </nav>
-      <p class="footer-copy">&copy; 2026 Orangesoft. All rights reserved.</p>
-    </div>
-  </footer>
+  <MicrositeFooter />
 
   <Animations />
 </Layout>

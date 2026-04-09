@@ -1,0 +1,108 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import Animations from '../../components/Animations.astro';
+---
+
+<Layout
+  title="Contact Us | Orangesoft Custom"
+  description="Get in touch with Orangesoft's custom web development team. Free consultations for corporate clients in Malaysia and Southeast Asia."
+>
+  <EntranceOverlay />
+  <MicrositeHeader active="contact" />
+  <Breadcrumb items={[{ label: 'Home', href: '/custom' }, { label: 'Contact' }]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <h1 class="hero-title">Let's Talk</h1>
+      <p class="hero-lead">
+        Whether you have a clear brief or just an idea, we would love to hear from you. Every conversation starts with listening.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section section-dark">
+    <div class="section-inner" data-animate="fade-up">
+      <ContactForm />
+    </div>
+  </section>
+
+  <!-- Details -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="details-grid" data-animate="stagger">
+        <div class="detail">
+          <h3>Response Time</h3>
+          <p>We respond to every inquiry within 24 hours during business days. Most enquiries receive a same-day reply.</p>
+        </div>
+        <div class="detail">
+          <h3>What Happens Next</h3>
+          <p>After your message, we will schedule a free 30-minute discovery call to understand your project and discuss how we can help.</p>
+        </div>
+        <div class="detail">
+          <h3>No Commitment</h3>
+          <p>Initial consultations are always free. We will provide an honest assessment of your project and a clear proposal with no obligation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Info -->
+  <section class="section section-alt">
+    <div class="section-inner" data-animate="fade-up">
+      <div class="office">
+        <h2 class="office-heading">Our Office</h2>
+        <p class="office-location">Kuala Lumpur, Malaysia</p>
+        <p class="office-note">
+          Serving clients across Malaysia, Singapore, and Southeast Asia. We work with teams globally via video calls and shared project dashboards.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+  .section-dark { background: var(--color-surface-dark, #1C1917); }
+
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 560px;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+
+  .details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .detail { padding: 1.75rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; }
+  .detail h3 { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; }
+  .detail p { font-size: 0.8125rem; line-height: 1.7; color: var(--color-muted); }
+
+  .office { text-align: center; max-width: 480px; margin: 0 auto; }
+  .office-heading { font-size: 1.5rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; }
+  .office-location { font-size: 1rem; font-weight: 500; color: var(--color-brand); margin-bottom: 1rem; }
+  .office-note { font-size: 0.875rem; line-height: 1.7; color: var(--color-muted); }
+
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; } }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .details-grid { grid-template-columns: 1fr; }
+  }
+</style>

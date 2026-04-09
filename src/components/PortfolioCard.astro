@@ -11,7 +11,7 @@ const { project, variant = 'half' } = Astro.props;
 
 <a
   class:list={['pcard', `pcard--${variant}`]}
-  href={project.caseStudySlug ? `/case-studies/${project.caseStudySlug}` : '#'}
+  href={project.caseStudySlug ? `/custom/case-studies/${project.caseStudySlug}` : '#'}
 >
   <div class="pcard-image">
     <div class="pcard-placeholder">

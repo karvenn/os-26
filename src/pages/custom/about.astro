@@ -1,0 +1,219 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Animations from '../../components/Animations.astro';
+import { trustStats } from '../../data/clients';
+import { processSteps } from '../../data/process';
+---
+
+<Layout
+  title="About Us | Orangesoft Custom"
+  description="Meet the team behind Orangesoft's custom web development division. 19+ years of experience building digital solutions for corporate clients in Malaysia."
+>
+  <EntranceOverlay />
+  <MicrositeHeader active="about" />
+  <Breadcrumb items={[{ label: 'Home', href: '/custom' }, { label: 'About' }]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <h1 class="hero-title">Built on 19 Years<br />of Doing This Right</h1>
+      <p class="hero-lead">
+        Orangesoft is a Malaysian web agency that has been designing and building digital solutions since 2007. Our custom development division specialises in high-performance websites and web applications for organisations that demand more than templates can deliver.
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="stats-grid" data-animate="stagger">
+        {trustStats.map((stat) => (
+          <div class="stat">
+            <span class="stat-value" data-target={stat.value} data-decimals={stat.decimals || 0} data-suffix={stat.suffix}>0{stat.suffix}</span>
+            <span class="stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="philosophy" data-animate="fade-up">
+        <h2 class="section-title">How We Think</h2>
+        <div class="philosophy-grid">
+          <div class="principle">
+            <h3>Outcomes over outputs</h3>
+            <p>We measure success by business results, not deliverables. Every design choice and line of code ties back to a measurable goal.</p>
+          </div>
+          <div class="principle">
+            <h3>Transparent by default</h3>
+            <p>Weekly demos, shared dashboards, and honest timelines. You will never wonder where your project stands.</p>
+          </div>
+          <div class="principle">
+            <h3>Own your platform</h3>
+            <p>No vendor lock-in, no recurring license fees. You own the code, the data, and the infrastructure. We make sure you can run it independently.</p>
+          </div>
+          <div class="principle">
+            <h3>Built to last</h3>
+            <p>Clean architecture, comprehensive testing, and thorough documentation. Our projects are built for the team that maintains them after us.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <h2 class="section-title">The Team</h2>
+      <p class="section-subtitle">A multidisciplinary team of designers, engineers, and strategists based in Malaysia.</p>
+      <div class="team-grid" data-animate="stagger">
+        <div class="team-member">
+          <div class="member-avatar">
+            <span>KV</span>
+          </div>
+          <h3 class="member-name">Founding Director</h3>
+          <p class="member-role">Strategy & Architecture</p>
+          <p class="member-bio">19 years leading digital projects for corporate clients across Southeast Asia. Oversees every project from discovery to launch.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar"><span>LD</span></div>
+          <h3 class="member-name">Lead Designer</h3>
+          <p class="member-role">UX & Visual Design</p>
+          <p class="member-bio">Specialises in conversion-focused design for corporate audiences. Bridges business objectives with user experience.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar"><span>SE</span></div>
+          <h3 class="member-name">Senior Engineer</h3>
+          <p class="member-role">NuxtJS, Laravel & Strapi</p>
+          <p class="member-bio">Full-stack development lead with deep expertise in the frameworks that power our custom solutions.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar"><span>PM</span></div>
+          <h3 class="member-name">Project Manager</h3>
+          <p class="member-role">Delivery & Client Success</p>
+          <p class="member-bio">Your primary point of contact. Ensures timelines, budgets, and expectations are met at every milestone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section">
+    <div class="section-inner">
+      <h2 class="section-title">Our Process</h2>
+      <p class="section-subtitle">A proven 5-step methodology refined over 600+ projects.</p>
+      <div class="process-list" data-animate="fade-up">
+        {processSteps.map((step) => (
+          <div class="process-item">
+            <span class="process-num">{String(step.number).padStart(2, '0')}</span>
+            <div>
+              <h3 class="process-title">{step.title}</h3>
+              <p class="process-desc">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologies -->
+  <section class="section section-alt">
+    <div class="section-inner" data-animate="fade-up">
+      <h2 class="section-title">Our Stack</h2>
+      <p class="section-subtitle">We build with proven, open-source technologies that scale with your business.</p>
+      <div class="stack-grid">
+        <div class="stack-item">
+          <h3>NuxtJS</h3>
+          <p>High-performance front ends with server-side rendering, static generation, and exceptional Core Web Vitals.</p>
+        </div>
+        <div class="stack-item">
+          <h3>Laravel</h3>
+          <p>Robust back-end logic, API development, and application architecture trusted by enterprises worldwide.</p>
+        </div>
+        <div class="stack-item">
+          <h3>Strapi</h3>
+          <p>Headless CMS that gives your marketing team full content control with a modern, intuitive interface.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Ready to work together?" buttonText="Get in Touch" buttonHref="/custom/contact" />
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1.25rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+
+  .section-title { font-size: 2rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+  .section-subtitle { font-size: 1rem; color: var(--color-muted); margin-bottom: 2.5rem; max-width: 560px; }
+
+  /* Stats */
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+  .stat-value { display: block; font-size: 2.5rem; font-weight: 700; color: var(--color-foreground); letter-spacing: -0.02em; }
+  .stat-label { display: block; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); margin-top: 0.25rem; }
+
+  /* Philosophy */
+  .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .principle { padding: 1.75rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; }
+  .principle h3 { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; }
+  .principle p { font-size: 0.875rem; line-height: 1.7; color: var(--color-muted); }
+
+  /* Team */
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .team-member { text-align: center; }
+  .member-avatar {
+    width: 4rem; height: 4rem; border-radius: 50%; background: var(--color-brand-light);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;
+  }
+  .member-avatar span { font-size: 0.875rem; font-weight: 700; color: var(--color-brand); }
+  .member-name { font-size: 1rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.25rem; }
+  .member-role { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand); margin-bottom: 0.75rem; }
+  .member-bio { font-size: 0.8125rem; line-height: 1.6; color: var(--color-muted); }
+
+  /* Process */
+  .process-list { max-width: 640px; }
+  .process-item { display: flex; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--color-divider); }
+  .process-item:last-child { border-bottom: none; }
+  .process-num { font-size: 0.6875rem; font-weight: 300; color: var(--color-brand); letter-spacing: 0.1em; padding-top: 0.25rem; }
+  .process-title { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.375rem; }
+  .process-desc { font-size: 0.8125rem; line-height: 1.7; color: var(--color-muted); }
+
+  /* Stack */
+  .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .stack-item { padding: 1.75rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; }
+  .stack-item h3 { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; }
+  .stack-item p { font-size: 0.8125rem; line-height: 1.7; color: var(--color-muted); }
+
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; } }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .philosophy-grid, .team-grid, .stack-grid { grid-template-columns: 1fr; }
+  }
+</style>
