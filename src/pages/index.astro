@@ -51,6 +51,11 @@ const services = [
       <a href="/" class="logo">
         Orangesoft<span class="logo-dot">.</span>
       </a>
+      <nav class="site-nav">
+        <a href="/about" class="site-nav-link">About</a>
+        <a href="/careers" class="site-nav-link">Careers</a>
+        <a href="/contact" class="site-nav-link">Contact</a>
+      </nav>
     </header>
 
     <main class="panels">
@@ -89,6 +94,11 @@ const services = [
     </main>
 
     <footer class="site-footer">
+      <nav class="footer-links">
+        <a href="/about">About</a>
+        <a href="/careers">Careers</a>
+        <a href="/contact">Contact</a>
+      </nav>
       <p class="footer-text">&copy; 2026 Orangesoft. All rights reserved.</p>
     </footer>
   </div>
@@ -112,8 +122,31 @@ const services = [
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     z-index: 20;
     padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-nav {
+    display: flex;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease 0.6s forwards;
+  }
+
+  .site-nav-link {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .site-nav-link:hover {
+    color: var(--color-foreground);
   }
 
   .logo {
@@ -303,6 +336,25 @@ const services = [
     pointer-events: none;
   }
 
+  .footer-links {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 0.5rem;
+    pointer-events: auto;
+  }
+
+  .footer-links a {
+    font-size: 0.6875rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    opacity: 1;
+  }
+
   .footer-text {
     font-size: 0.6875rem;
     color: var(--color-muted);
@@ -338,6 +390,10 @@ const services = [
 
     .logo {
       animation-delay: 0s;
+    }
+
+    .site-nav {
+      display: none;
     }
 
     .panels {

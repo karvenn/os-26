@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Animations from '../components/Animations.astro';
+---
+
+<Layout
+  title="Contact Orangesoft — Get in Touch"
+  description="Contact Orangesoft for web design, development, and digital marketing enquiries. Based in Kuala Lumpur, serving clients across Malaysia and Southeast Asia."
+>
+  <header class="co-header">
+    <div class="co-header-inner">
+      <a href="/" class="logo">Orangesoft<span class="dot">.</span></a>
+      <nav class="co-nav">
+        <a href="/about" class="co-nav-link">About</a>
+        <a href="/careers" class="co-nav-link">Careers</a>
+        <a href="/contact" class="co-nav-link co-nav-link--active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="inner">
+      <h1 class="hero-title">Get in Touch</h1>
+      <p class="hero-lead">
+        Whether you have a project brief ready or just an early idea, we are happy to talk. Every conversation starts with listening.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="inner" data-animate="fade-up">
+      <ContactForm />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="inner">
+      <div class="contact-grid" data-animate="stagger">
+        <div class="contact-card">
+          <h3>General Enquiries</h3>
+          <p>For project discussions, partnerships, and general questions.</p>
+          <a href="mailto:hello@orangesoft.com.my" class="contact-link">hello@orangesoft.com.my</a>
+        </div>
+        <div class="contact-card">
+          <h3>Careers</h3>
+          <p>Interested in joining the team? Send us your CV.</p>
+          <a href="mailto:careers@orangesoft.com.my" class="contact-link">careers@orangesoft.com.my</a>
+        </div>
+        <div class="contact-card">
+          <h3>Office</h3>
+          <p>Kuala Lumpur, Malaysia</p>
+          <span class="contact-note">Serving clients across Malaysia, Singapore, and Southeast Asia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="inner" data-animate="fade-up">
+      <div class="response">
+        <h2>What happens next?</h2>
+        <div class="steps">
+          <div class="step"><span class="step-num">01</span><p>We respond to every enquiry within 24 hours during business days.</p></div>
+          <div class="step"><span class="step-num">02</span><p>We schedule a free 30-minute discovery call to understand your needs.</p></div>
+          <div class="step"><span class="step-num">03</span><p>Within 5 business days, you receive a detailed proposal with scope, timeline, and pricing.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="co-footer">
+    <div class="co-footer-inner">
+      <a href="/" class="footer-logo">Orangesoft<span class="dot">.</span></a>
+      <nav class="footer-nav">
+        <a href="/about">About</a>
+        <a href="/careers">Careers</a>
+        <a href="/contact">Contact</a>
+      </nav>
+      <p class="footer-copy">&copy; 2026 Orangesoft. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <Animations />
+</Layout>
+
+<style>
+  .co-header { padding: 2rem 1.5rem; }
+  .co-header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-size: 1.25rem; font-weight: 600; color: var(--color-foreground); text-decoration: none; letter-spacing: -0.02em; }
+  .dot { color: var(--color-brand); }
+  .co-nav { display: flex; gap: 1.5rem; }
+  .co-nav-link { font-size: 0.8125rem; font-weight: 500; color: var(--color-muted); text-decoration: none; transition: color 0.3s ease; }
+  .co-nav-link:hover, .co-nav-link--active { color: var(--color-foreground); }
+  .co-nav-link--active { font-weight: 600; }
+
+  .section { padding: 5rem 1.5rem; }
+  .inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+  .section-dark { background: var(--color-surface-dark, #1C1917); }
+
+  .hero { padding: 4rem 1.5rem 3rem; }
+  .hero-title { font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--color-foreground); margin-bottom: 1rem; }
+  .hero-lead { font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 560px; }
+
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .contact-card { padding: 2rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; }
+  .contact-card h3 { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; }
+  .contact-card p { font-size: 0.875rem; line-height: 1.6; color: var(--color-muted); margin-bottom: 0.75rem; }
+  .contact-link { font-size: 0.875rem; font-weight: 500; color: var(--color-brand); text-decoration: none; transition: opacity 0.3s ease; }
+  .contact-link:hover { opacity: 0.7; }
+  .contact-note { font-size: 0.75rem; color: var(--color-muted); }
+
+  .response { max-width: 640px; margin: 0 auto; }
+  .response h2 { font-size: 1.75rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 2rem; letter-spacing: -0.02em; text-align: center; }
+  .steps { display: flex; flex-direction: column; gap: 1.25rem; }
+  .step { display: flex; gap: 1.25rem; align-items: flex-start; }
+  .step-num { font-size: 0.6875rem; font-weight: 300; color: var(--color-brand); letter-spacing: 0.1em; padding-top: 0.2rem; flex-shrink: 0; }
+  .step p { font-size: 0.9375rem; line-height: 1.6; color: var(--color-muted); }
+
+  .co-footer { padding: 3rem 1.5rem; border-top: 1px solid var(--color-divider); }
+  .co-footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-size: 1rem; font-weight: 600; color: var(--color-foreground); text-decoration: none; }
+  .footer-nav { display: flex; gap: 1.5rem; }
+  .footer-nav a { font-size: 0.8125rem; color: var(--color-muted); text-decoration: none; transition: color 0.3s ease; }
+  .footer-nav a:hover { color: var(--color-foreground); }
+  .footer-copy { font-size: 0.75rem; color: var(--color-muted); }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .co-footer-inner { flex-direction: column; text-align: center; }
+  }
+</style>
