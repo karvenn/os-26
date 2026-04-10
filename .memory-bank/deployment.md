@@ -12,10 +12,15 @@
 - Output directory: dist/
 - Config: netlify.toml
 
-## Pages
-- /custom/work/
+## Pages (25 total)
+- / (root index)
+- /custom/ (microsite index)
 - /custom/about/
 - /custom/contact/
+- /custom/work/
+- /custom/services/
+- /custom/solutions/
+- /custom/pricing/
 - /custom/case-studies/
 - /custom/case-studies/meridian-properties/
 - /custom/case-studies/pinnacle-financial/
@@ -26,11 +31,18 @@
 - /custom/survey-dashboard/
 - /custom/booking-system/
 - /custom/kiosk-sales-kit/
-- /custom/ (index)
-- / (index)
+- /custom/insights/
+- /custom/insights/hidden-cost-of-templates/
+- /custom/insights/custom-website-cost-malaysia/
+- /custom/insights/choosing-custom-development-agency/
+- /custom/insights/headless-cms-explained/
+- /custom/insights/nuxtjs-vs-wordpress/
+- /custom/insights/signs-outgrown-wordpress/
 
 ## Last Deployment
 - Date: 2026-04-08
-- Commit: 14209d0 (Restructure /custom as self-contained microsite)
-- Deploy URL: https://69d73595a9622cc1d1398fff--os-26.netlify.app
-- Status: Live, verified (HTTP 200 on all 5 new URLs, HTTP 404 on old /case-studies/ path)
+- Commit: f226a75 (Expand microsite to 25 pages with blog, pricing, services, solutions)
+- Deploy ID: 69d861f9f90c2b8f7818cf3f
+- Deploy URL: https://69d861f9f90c2b8f7818cf3f--os-26.netlify.app
+- Build logs: https://app.netlify.com/projects/os-26/deploys/69d861f9f90c2b8f7818cf3f
+- Status: Live, verified (HTTP 200 on all 6 new URLs: /custom/services/, /custom/solutions/, /custom/pricing/, /custom/insights/, /custom/insights/nuxtjs-vs-wordpress/, /custom/insights/custom-website-cost-malaysia/)
