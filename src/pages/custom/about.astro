@@ -8,6 +8,7 @@ import CtaBand from '../../components/CtaBand.astro';
 import Animations from '../../components/Animations.astro';
 import { trustStats } from '../../data/clients';
 import { processSteps } from '../../data/process';
+import { differentiators, comparisons } from '../../data/differentiators';
 ---
 
 <Layout
@@ -38,6 +39,56 @@ import { processSteps } from '../../data/process';
             <span class="stat-label">{stat.label}</span>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section class="section">
+    <div class="section-inner">
+      <h2 class="section-title">Why Orangesoft</h2>
+      <p class="section-subtitle">Six reasons corporate clients choose us for their most important digital projects.</p>
+      <div class="diff-grid" data-animate="stagger">
+        {differentiators.map((d) => (
+          <div class="diff">
+            <span class="diff-num">{d.number}</span>
+            <h3 class="diff-title">{d.title}</h3>
+            <p class="diff-desc">{d.description}</p>
+            <p class="diff-proof">{d.proof}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <h2 class="section-title">How We Compare</h2>
+      <p class="section-subtitle">An honest look at how Orangesoft stacks up against your other options.</p>
+      <div class="compare-wrap" data-animate="fade-up">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="highlight">Orangesoft</th>
+              <th>Templates</th>
+              <th>Big Agency</th>
+              <th>Freelancer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisons.map((row) => (
+              <tr>
+                <td class="row-label">{row.row}</td>
+                <td class="highlight">{row.orangesoft}</td>
+                <td>{row.template}</td>
+                <td>{row.bigAgency}</td>
+                <td>{row.freelancer}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -175,6 +226,26 @@ import { processSteps } from '../../data/process';
   .stat-value { display: block; font-size: 2.5rem; font-weight: 700; color: var(--color-foreground); letter-spacing: -0.02em; }
   .stat-label { display: block; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); margin-top: 0.25rem; }
 
+  /* Why Us */
+  .diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .diff { padding: 1.75rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; transition: border-color 0.3s ease; }
+  .diff:hover { border-color: var(--color-brand); }
+  .diff-num { font-size: 0.6875rem; font-weight: 300; color: var(--color-brand); letter-spacing: 0.1em; display: block; margin-bottom: 0.75rem; }
+  .diff-title { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.625rem; }
+  .diff-desc { font-size: 0.8125rem; line-height: 1.7; color: var(--color-muted); margin-bottom: 0.75rem; }
+  .diff-proof { font-size: 0.75rem; line-height: 1.6; color: var(--color-brand); font-weight: 500; padding-top: 0.75rem; border-top: 1px solid var(--color-divider); font-style: italic; }
+
+  /* Comparison table */
+  .compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--color-divider); border-radius: 0.5rem; }
+  .compare { width: 100%; min-width: 800px; border-collapse: collapse; font-size: 0.8125rem; }
+  .compare thead { background: var(--color-surface); }
+  .compare th { text-align: left; padding: 1rem 1.25rem; font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted); border-bottom: 1px solid var(--color-divider); white-space: nowrap; }
+  .compare th.highlight { color: var(--color-brand); }
+  .compare td { padding: 1rem 1.25rem; color: var(--color-muted); border-bottom: 1px solid var(--color-divider); vertical-align: top; }
+  .compare tbody tr:last-child td { border-bottom: none; }
+  .compare td.row-label { font-weight: 600; color: var(--color-foreground); white-space: nowrap; }
+  .compare td.highlight { color: var(--color-foreground); font-weight: 500; background: var(--color-brand-light); }
+
   /* Philosophy */
   .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
   .principle { padding: 1.75rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; }
@@ -214,6 +285,6 @@ import { processSteps } from '../../data/process';
     .section { padding: 3rem 1.5rem; }
     .hero-title { font-size: 2rem; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .philosophy-grid, .team-grid, .stack-grid { grid-template-columns: 1fr; }
+    .philosophy-grid, .team-grid, .stack-grid, .diff-grid { grid-template-columns: 1fr; }
   }
 </style>

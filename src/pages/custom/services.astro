@@ -1,0 +1,115 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import SolutionCard from '../../components/SolutionCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Animations from '../../components/Animations.astro';
+import { services } from '../../data/services-custom';
+import { solutions } from '../../data/solutions';
+---
+
+<Layout
+  title="Our Services | Orangesoft Custom"
+  description="Custom websites, web applications, headless CMS, and integrations \u2014 plus 6 proven platforms we customise for corporate clients in Malaysia and Southeast Asia."
+>
+  <EntranceOverlay />
+  <MicrositeHeader active="services" />
+  <Breadcrumb items={[{ label: 'Home', href: '/custom' }, { label: 'Services' }]} />
+
+  <section class="hero">
+    <div class="section-inner">
+      <h1 class="hero-title">What We Build</h1>
+      <p class="hero-lead">
+        Two ways to work with us: fully custom development tailored to your unique requirements, or proven solutions we customise to your brand. Both deliver the same premium quality.
+      </p>
+    </div>
+  </section>
+
+  <!-- Custom Development -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="Custom Development"
+        subtitle="Built from the ground up for organisations with unique requirements that off-the-shelf platforms cannot deliver."
+      />
+      <div class="svc-grid" data-animate="stagger">
+        {services.map((service) => (
+          <div><ServiceCard {...service} /></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Proven Solutions -->
+  <section class="section">
+    <div class="section-inner">
+      <SectionHeading
+        title="Proven Solutions"
+        subtitle="Pre-built platforms refined over dozens of implementations. Customised to your brand, workflows, and integrations."
+      />
+      <div class="sol-grid" data-animate="stagger">
+        {solutions.map((s) => (
+          <div><SolutionCard slug={s.slug} name={s.name} tagline={s.tagline} /></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How we decide -->
+  <section class="section section-alt">
+    <div class="section-inner" data-animate="fade-up">
+      <div class="decide">
+        <h2 class="decide-title">Not sure which fits your project?</h2>
+        <p class="decide-lead">
+          Here is a simple way to decide: if your requirements are truly unique and no existing platform comes close, we build custom. If you need a contest system, e-commerce store, CRM, survey tool, booking system, or kiosk sales kit, one of our proven solutions is probably 70-80% of what you need. We customise the remaining 20-30% to your brand and workflows.
+        </p>
+        <p class="decide-lead">
+          Either way, you end up with the same thing: a high-performance, secure, customised solution you fully own. The difference is how we get there \u2014 and how much it costs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Ready to talk about your project?" buttonText="Get a Custom Quote" buttonHref="/custom/contact" />
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+
+  .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .sol-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .decide { max-width: 720px; margin: 0 auto; text-align: center; }
+  .decide-title { font-size: 1.75rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+  .decide-lead { font-size: 1rem; line-height: 1.8; color: var(--color-muted); margin-bottom: 1rem; }
+
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; } }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .svc-grid, .sol-grid { grid-template-columns: 1fr; }
+    .decide-title { font-size: 1.5rem; }
+  }
+</style>

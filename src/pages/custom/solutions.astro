@@ -1,0 +1,168 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Animations from '../../components/Animations.astro';
+import { solutions } from '../../data/solutions';
+---
+
+<Layout
+  title="Proven Solutions | Orangesoft Custom"
+  description="Pre-built platforms we customise for corporate clients: contest management, eCommerce, CRM, survey dashboards, booking systems, and kiosk sales kits."
+>
+  <EntranceOverlay />
+  <MicrositeHeader active="solutions" />
+  <Breadcrumb items={[{ label: 'Home', href: '/custom' }, { label: 'Solutions' }]} />
+
+  <section class="hero">
+    <div class="section-inner">
+      <h1 class="hero-title">Proven Solutions,<br />Tailored to You</h1>
+      <p class="hero-lead">
+        Six pre-built platforms refined over dozens of implementations. Each can be customised to your brand, workflows, and integrations \u2014 delivering 80% of what you need in half the time of a fully custom build.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="sol-list" data-animate="fade-up">
+        {solutions.map((s, i) => (
+          <a href={`/custom/${s.slug}`} class="sol-item">
+            <div class="sol-num">{String(i + 1).padStart(2, '0')}</div>
+            <div class="sol-content">
+              <h2 class="sol-name">{s.name}</h2>
+              <p class="sol-tagline">{s.tagline}</p>
+              <p class="sol-desc">{s.description}</p>
+              <div class="sol-tech">
+                {s.technologies.map((t) => <span class="tech">{t}</span>)}
+              </div>
+              <span class="sol-cta">
+                Explore {s.name.toLowerCase()}
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Do not see what you need?" buttonText="Talk to Us About Custom Development" buttonHref="/custom/contact" />
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+
+  .sol-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .sol-item {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 2rem;
+    padding: 2.5rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .sol-item:hover {
+    border-color: var(--color-brand);
+    transform: translateY(-2px);
+  }
+
+  .sol-num {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--color-brand);
+    letter-spacing: 0.1em;
+  }
+
+  .sol-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.375rem;
+    letter-spacing: -0.01em;
+  }
+
+  .sol-tagline {
+    font-size: 1rem;
+    color: var(--color-brand);
+    margin-bottom: 1rem;
+  }
+
+  .sol-desc {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    margin-bottom: 1.25rem;
+    max-width: 720px;
+  }
+
+  .sol-tech {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+
+  .tech {
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    background: var(--color-surface);
+    padding: 0.25rem 0.625rem;
+    border-radius: 2rem;
+  }
+
+  .sol-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-brand);
+  }
+
+  .sol-cta svg {
+    transition: transform 0.3s ease;
+  }
+
+  .sol-item:hover .sol-cta svg {
+    transform: translateX(3px);
+  }
+
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; } }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .sol-item { grid-template-columns: 1fr; gap: 1rem; padding: 1.75rem; }
+    .sol-name { font-size: 1.25rem; }
+  }
+</style>
