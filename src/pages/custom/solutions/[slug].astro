@@ -1,17 +1,17 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import EntranceOverlay from '../../components/EntranceOverlay.astro';
-import MicrositeHeader from '../../components/MicrositeHeader.astro';
-import MicrositeFooter from '../../components/MicrositeFooter.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
-import FaqItem from '../../components/FaqItem.astro';
-import CtaBand from '../../components/CtaBand.astro';
-import ContactForm from '../../components/ContactForm.astro';
-import CaseStudyCard from '../../components/CaseStudyCard.astro';
-import Animations from '../../components/Animations.astro';
-import { solutions, type Solution } from '../../data/solutions';
-import { caseStudies } from '../../data/case-studies';
+import Layout from '../../../layouts/Layout.astro';
+import EntranceOverlay from '../../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import FaqItem from '../../../components/FaqItem.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import CaseStudyCard from '../../../components/CaseStudyCard.astro';
+import Animations from '../../../components/Animations.astro';
+import { solutions, type Solution } from '../../../data/solutions';
+import { caseStudies } from '../../../data/case-studies';
 
 export function getStaticPaths() {
   return solutions.map((s) => ({
@@ -35,7 +35,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my' },
     { '@type': 'ListItem', position: 2, name: 'Custom', item: 'https://orangesoft.com.my/custom' },
-    { '@type': 'ListItem', position: 3, name: solution.name, item: `https://orangesoft.com.my/custom/${solution.slug}` },
+    { '@type': 'ListItem', position: 3, name: solution.name, item: `https://orangesoft.com.my/custom/solutions/${solution.slug}` },
   ],
 };
 
@@ -64,7 +64,7 @@ const faqSchema = solution.faq.length > 0 ? {
   <MicrositeHeader active="solutions" />
   <Breadcrumb items={[
     { label: 'Home', href: '/custom' },
-    { label: 'Solutions', href: '/custom#solutions' },
+    { label: 'Solutions', href: '/custom/solutions' },
     { label: solution.name },
   ]} />
 

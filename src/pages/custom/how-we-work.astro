@@ -1,0 +1,196 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Animations from '../../components/Animations.astro';
+---
+
+<Layout
+  title="How We Work | Orangesoft Custom"
+  description="Our methodology, technology stack, hosting platforms, and 7-phase process — built on 19 years of delivering custom web solutions for corporate clients."
+>
+  <EntranceOverlay />
+  <MicrositeHeader active="about" />
+  <Breadcrumb items={[{ label: 'Home', href: '/custom' }, { label: 'How We Work' }]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <h1 class="hero-title">How We Work</h1>
+      <p class="hero-lead">
+        Great results come from great methodology. We combine proven technologies, reliable infrastructure, and a structured 7-phase process to deliver digital platforms that perform — and last.
+      </p>
+    </div>
+  </section>
+
+  <!-- Three Pillars -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="pillars" data-animate="stagger">
+        <a href="/custom/technologies" class="pillar">
+          <span class="pillar-num">01</span>
+          <h2 class="pillar-title">Technologies</h2>
+          <p class="pillar-desc">
+            NuxtJS for blazing-fast frontends, Laravel for robust backend logic, and Strapi for flexible content management. Three technologies, chosen deliberately, mastered deeply.
+          </p>
+          <span class="pillar-link">Learn more &rarr;</span>
+        </a>
+        <a href="/custom/platforms" class="pillar">
+          <span class="pillar-num">02</span>
+          <h2 class="pillar-title">Platforms</h2>
+          <p class="pillar-desc">
+            From edge-optimised hosting on Vercel to managed cloud infrastructure on Cloudways and Laravel Cloud. We match each project to the platform that delivers the best performance and value.
+          </p>
+          <span class="pillar-link">Learn more &rarr;</span>
+        </a>
+        <a href="/custom/process" class="pillar">
+          <span class="pillar-num">03</span>
+          <h2 class="pillar-title">Process</h2>
+          <p class="pillar-desc">
+            Seven structured phases from research to post-launch marketing. Clear milestones, defined deliverables, and transparent communication at every step.
+          </p>
+          <span class="pillar-link">Learn more &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="section">
+    <div class="section-inner" data-animate="fade-up">
+      <div class="philosophy">
+        <h2 class="philosophy-title">The Right Tool for Every Project</h2>
+        <p class="philosophy-text">
+          We do not chase trends or pad proposals with unnecessary technology. Every tool in our stack is there because it solves a specific problem better than the alternatives. NuxtJS delivers the performance that search engines and users demand. Laravel handles the business logic that makes your platform genuinely useful. Strapi gives your marketing team the editorial freedom they need without compromising speed.
+        </p>
+        <p class="philosophy-text">
+          This focused approach means our team builds deep expertise rather than shallow familiarity. When you work with us, you are getting engineers who have deployed hundreds of projects on these technologies — not generalists figuring things out as they go.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <h2 class="section-title">What Guides Our Work</h2>
+      <p class="section-subtitle">Four principles that shape every decision, from technology selection to deployment strategy.</p>
+      <div class="principles-grid" data-animate="stagger">
+        <div class="principle-card">
+          <h3 class="principle-heading">Performance First</h3>
+          <p class="principle-body">Every architecture decision starts with speed. Sub-second load times are not aspirational — they are the baseline. We build for 95+ Lighthouse scores because your visitors and search rankings depend on it.</p>
+        </div>
+        <div class="principle-card">
+          <h3 class="principle-heading">You Own Everything</h3>
+          <p class="principle-body">No vendor lock-in, no proprietary frameworks, no recurring license fees for code we wrote. Your codebase, your infrastructure, your data. We build platforms you can operate independently.</p>
+        </div>
+        <div class="principle-card">
+          <h3 class="principle-heading">Transparency at Every Step</h3>
+          <p class="principle-body">Weekly demos, shared project dashboards, and honest timelines. You will never have to ask where your project stands. If something changes, you hear about it before it becomes a problem.</p>
+        </div>
+        <div class="principle-card">
+          <h3 class="principle-heading">Built to Last</h3>
+          <p class="principle-body">Clean architecture, comprehensive testing, and thorough documentation. We build for the team that maintains the platform after us — even if that team is still ours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Want to understand how we would approach your project?" buttonText="Start a Conversation" buttonHref="/custom/contact" />
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1.25rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+
+  .section-title { font-size: 2rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+  .section-subtitle { font-size: 1rem; color: var(--color-muted); margin-bottom: 2.5rem; max-width: 560px; }
+
+  /* Pillars */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .pillar {
+    display: block;
+    padding: 2.25rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pillar:hover {
+    border-color: var(--color-brand);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  }
+  .pillar-num {
+    font-size: 0.6875rem; font-weight: 300; color: var(--color-brand);
+    letter-spacing: 0.1em; display: block; margin-bottom: 1rem;
+  }
+  .pillar-title {
+    font-size: 1.375rem; font-weight: 600; color: var(--color-foreground);
+    margin-bottom: 0.75rem; letter-spacing: -0.02em;
+  }
+  .pillar-desc {
+    font-size: 0.875rem; line-height: 1.7; color: var(--color-muted);
+    margin-bottom: 1.5rem;
+  }
+  .pillar-link {
+    font-size: 0.8125rem; font-weight: 600; color: var(--color-brand);
+    transition: color 0.2s ease;
+  }
+  .pillar:hover .pillar-link { color: var(--color-brand-dark); }
+
+  /* Philosophy */
+  .philosophy { max-width: 720px; margin: 0 auto; text-align: center; }
+  .philosophy-title {
+    font-size: 1.75rem; font-weight: 600; color: var(--color-foreground);
+    margin-bottom: 1.5rem; letter-spacing: -0.02em;
+  }
+  .philosophy-text {
+    font-size: 1rem; line-height: 1.8; color: var(--color-muted); margin-bottom: 1.25rem;
+  }
+  .philosophy-text:last-child { margin-bottom: 0; }
+
+  /* Principles */
+  .principles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .principle-card {
+    padding: 1.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+  .principle-card:hover { border-color: var(--color-brand); }
+  .principle-heading {
+    font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+  .principle-body {
+    font-size: 0.8125rem; line-height: 1.7; color: var(--color-muted);
+  }
+
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; } }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .pillars { grid-template-columns: 1fr; }
+    .principles-grid { grid-template-columns: 1fr; }
+    .philosophy-title { font-size: 1.5rem; }
+  }
+</style>

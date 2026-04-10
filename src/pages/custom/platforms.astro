@@ -1,0 +1,279 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Animations from '../../components/Animations.astro';
+import { platforms } from '../../data/platforms';
+
+const categoryLabels: Record<string, string> = {
+  hosting: 'Hosting',
+  deployment: 'Deployment',
+  application: 'Application Platform',
+  code: 'Source Control',
+};
+---
+
+<Layout
+  title="Platforms & Infrastructure | Orangesoft Custom"
+  description="Vercel, Cloudways, Laravel Cloud, Netlify, and GitHub — the hosting and deployment platforms we use to deliver fast, reliable, and secure web solutions."
+>
+  <EntranceOverlay />
+  <MicrositeHeader active="about" />
+  <Breadcrumb items={[
+    { label: 'Home', href: '/custom' },
+    { label: 'How We Work', href: '/custom/how-we-work' },
+    { label: 'Platforms' },
+  ]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <h1 class="hero-title">Platforms &amp; Infrastructure</h1>
+      <p class="hero-lead">
+        The technology you build with is only half the equation. Where and how you deploy it determines whether your platform is fast, reliable, and cost-effective in the real world.
+      </p>
+    </div>
+  </section>
+
+  <!-- Platform Deep Dives -->
+  {platforms.map((platform, i) => (
+    <section class:list={['section', { 'section-alt': i % 2 === 0 }]} id={platform.slug}>
+      <div class="section-inner">
+        <div class="platform-header" data-animate="fade-up">
+          <span class="platform-category">{categoryLabels[platform.category]}</span>
+          <h2 class="platform-name">{platform.name}</h2>
+          <p class="platform-tagline">{platform.tagline}</p>
+        </div>
+
+        <div class="platform-body" data-animate="fade-up">
+          <p class="platform-description">{platform.description}</p>
+
+          <div class="platform-details">
+            <div class="platform-reasons">
+              <h3 class="detail-title">Why We Use {platform.name}</h3>
+              <ul class="detail-list">
+                {platform.whyWeUse.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div class="platform-usage">
+              <h3 class="detail-title">When We Use It</h3>
+              <p class="usage-text">{platform.whenWeUseIt}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- How We Choose -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <h2 class="choose-title" data-animate="fade-up">How We Choose the Right Platform</h2>
+      <p class="choose-intro" data-animate="fade-up">
+        Platform selection is not a default — it is a deliberate decision based on your project's specific needs. Here are the factors we evaluate for every engagement.
+      </p>
+      <div class="factors-grid" data-animate="stagger">
+        <div class="factor">
+          <span class="factor-num">01</span>
+          <h3 class="factor-title">Performance Requirements</h3>
+          <p class="factor-desc">
+            Static marketing sites benefit from edge deployment on Vercel or Netlify. Dynamic applications with server-side processing need managed cloud infrastructure like Cloudways or Laravel Cloud.
+          </p>
+        </div>
+        <div class="factor">
+          <span class="factor-num">02</span>
+          <h3 class="factor-title">Data Residency</h3>
+          <p class="factor-desc">
+            Some organisations require data to remain in specific regions. Cloudways lets us select Southeast Asian data centres on DigitalOcean, AWS, or Google Cloud to meet compliance requirements.
+          </p>
+        </div>
+        <div class="factor">
+          <span class="factor-num">03</span>
+          <h3 class="factor-title">Budget &amp; Scale</h3>
+          <p class="factor-desc">
+            A small marketing site on Netlify's free tier costs nothing to host. An enterprise application with high traffic needs scalable infrastructure. We match platform costs to project budgets and growth plans.
+          </p>
+        </div>
+        <div class="factor">
+          <span class="factor-num">04</span>
+          <h3 class="factor-title">Team Capabilities</h3>
+          <p class="factor-desc">
+            If your internal team will manage the platform after handover, we factor their technical comfort level into the recommendation. Managed platforms reduce the DevOps burden on smaller teams.
+          </p>
+        </div>
+        <div class="factor">
+          <span class="factor-num">05</span>
+          <h3 class="factor-title">Technology Stack</h3>
+          <p class="factor-desc">
+            NuxtJS frontends deploy best on Vercel or Netlify. Laravel applications need PHP-optimised servers on Cloudways or Laravel Cloud. The technology dictates the shortlist; the project dictates the choice.
+          </p>
+        </div>
+        <div class="factor">
+          <span class="factor-num">06</span>
+          <h3 class="factor-title">Reliability &amp; Uptime</h3>
+          <p class="factor-desc">
+            Every platform we use provides automated backups, SSL certificates, and monitoring. For mission-critical applications, we architect redundancy and failover strategies into the deployment plan.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Infrastructure Philosophy -->
+  <section class="section">
+    <div class="section-inner" data-animate="fade-up">
+      <div class="infra-philosophy">
+        <h2 class="ip-title">Infrastructure You Can Trust</h2>
+        <p class="ip-text">
+          Every platform in our stack is backed by global infrastructure providers with enterprise-grade reliability. We do not manage bare metal servers or maintain custom server configurations. Instead, we leverage managed platforms that handle security patches, SSL certificates, backups, and scaling — so your team can focus on running the business, not the servers.
+        </p>
+        <p class="ip-text">
+          All deployments include automated CI/CD pipelines through GitHub Actions, preview environments for stakeholder review, and zero-downtime deployment strategies. Your users never experience an outage during a release.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Need help choosing the right platform for your project?" buttonText="Get Expert Advice" buttonHref="/custom/contact" />
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1.25rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+
+  /* Platform Header */
+  .platform-header { margin-bottom: 2rem; }
+  .platform-category {
+    display: inline-block;
+    font-size: 0.6875rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--color-brand);
+    margin-bottom: 0.75rem;
+  }
+  .platform-name {
+    font-size: 2.25rem; font-weight: 700; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 0.625rem;
+  }
+  .platform-tagline {
+    font-size: 1.125rem; line-height: 1.6; color: var(--color-muted);
+    max-width: 600px;
+  }
+
+  /* Platform Body */
+  .platform-description {
+    font-size: 1rem; line-height: 1.8; color: var(--color-muted);
+    max-width: 720px; margin-bottom: 2.5rem;
+  }
+
+  .platform-details {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .detail-title {
+    font-size: 0.875rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--color-foreground);
+    margin-bottom: 1rem;
+  }
+
+  .detail-list {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .detail-list li {
+    position: relative;
+    padding: 0.5rem 0 0.5rem 1.25rem;
+    font-size: 0.875rem; line-height: 1.6; color: var(--color-muted);
+    border-bottom: 1px solid var(--color-divider);
+  }
+  .detail-list li:last-child { border-bottom: none; }
+  .detail-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.875rem;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--color-brand);
+  }
+
+  .usage-text {
+    font-size: 0.9375rem; line-height: 1.7; color: var(--color-muted);
+    padding: 1.25rem;
+    background: var(--color-brand-light);
+    border-radius: 0.5rem;
+    border-left: 3px solid var(--color-brand);
+  }
+
+  /* How We Choose */
+  .choose-title {
+    font-size: 2rem; font-weight: 600; color: var(--color-foreground);
+    letter-spacing: -0.02em; margin-bottom: 0.75rem;
+  }
+  .choose-intro {
+    font-size: 1rem; line-height: 1.7; color: var(--color-muted);
+    max-width: 560px; margin-bottom: 2.5rem;
+  }
+
+  .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .factor {
+    padding: 1.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+  .factor:hover { border-color: var(--color-brand); }
+  .factor-num {
+    display: block;
+    font-size: 0.6875rem; font-weight: 300; color: var(--color-brand);
+    letter-spacing: 0.1em; margin-bottom: 0.75rem;
+  }
+  .factor-title {
+    font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+  .factor-desc {
+    font-size: 0.8125rem; line-height: 1.7; color: var(--color-muted);
+  }
+
+  /* Philosophy */
+  .infra-philosophy { max-width: 720px; margin: 0 auto; text-align: center; }
+  .ip-title {
+    font-size: 1.75rem; font-weight: 600; color: var(--color-foreground);
+    margin-bottom: 1.5rem; letter-spacing: -0.02em;
+  }
+  .ip-text {
+    font-size: 1rem; line-height: 1.8; color: var(--color-muted); margin-bottom: 1.25rem;
+  }
+  .ip-text:last-child { margin-bottom: 0; }
+
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; } }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .platform-name { font-size: 1.75rem; }
+    .platform-details { grid-template-columns: 1fr; gap: 2rem; }
+    .factors-grid { grid-template-columns: 1fr; }
+    .choose-title { font-size: 1.5rem; }
+    .ip-title { font-size: 1.5rem; }
+  }
+</style>

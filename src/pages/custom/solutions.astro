@@ -31,7 +31,7 @@ import { solutions } from '../../data/solutions';
     <div class="section-inner">
       <div class="sol-list" data-animate="fade-up">
         {solutions.map((s, i) => (
-          <a href={`/custom/${s.slug}`} class="sol-item">
+          <a href={`/custom/solutions/${s.slug}`} class="sol-item">
             <div class="sol-num">{String(i + 1).padStart(2, '0')}</div>
             <div class="sol-content">
               <h2 class="sol-name">{s.name}</h2>

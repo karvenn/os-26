@@ -1,0 +1,409 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import EntranceOverlay from '../../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import FaqItem from '../../../components/FaqItem.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import Animations from '../../../components/Animations.astro';
+---
+
+<Layout
+  title="Custom Design | Orangesoft Custom"
+  description="UX research, wireframing, visual design, design systems, and prototyping for organisations that demand a premium digital presence. Conversion-focused design from a Malaysian web agency."
+>
+  <EntranceOverlay />
+  <MicrositeHeader active="services" />
+  <Breadcrumb items={[
+    { label: 'Home', href: '/custom' },
+    { label: 'Services', href: '/custom/services' },
+    { label: 'Custom Design' }
+  ]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <span class="hero-label">Custom Design</span>
+      <h1 class="hero-title">Design That Works<br />as Hard as You Do</h1>
+      <p class="hero-lead">
+        Beautiful interfaces are table stakes. We design digital experiences that move the needle on your business metrics, from first impression to final conversion. Every research finding, wireframe, and visual decision is grounded in strategy and built for measurable results.
+      </p>
+    </div>
+  </section>
+
+  <!-- What We Deliver -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="What We Deliver"
+        subtitle="A comprehensive design service that covers every stage from initial research through to production-ready assets."
+      />
+      <div class="deliverables-grid" data-animate="stagger">
+        <div class="deliverable">
+          <span class="deliverable-num">01</span>
+          <h3 class="deliverable-title">UX Research</h3>
+          <p class="deliverable-desc">Stakeholder interviews, competitive analysis, user journey mapping, and heuristic evaluations. We build a deep understanding of your users before designing a single screen.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">02</span>
+          <h3 class="deliverable-title">Wireframing</h3>
+          <p class="deliverable-desc">Low-fidelity layouts that define content hierarchy, user flows, and interaction patterns. This is where we solve structural problems before investing in visual polish.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">03</span>
+          <h3 class="deliverable-title">UI Design</h3>
+          <p class="deliverable-desc">High-fidelity mockups for every screen, state, and breakpoint. Typography, colour, spacing, and imagery are all crafted to reinforce your brand while maximising usability.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">04</span>
+          <h3 class="deliverable-title">Design Systems</h3>
+          <p class="deliverable-desc">Reusable component libraries with documented tokens, patterns, and usage guidelines. Your design language stays consistent as your product and team grow.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">05</span>
+          <h3 class="deliverable-title">Prototyping</h3>
+          <p class="deliverable-desc">Interactive prototypes that simulate the real experience. Test ideas with stakeholders and users before a single line of code is written, reducing risk and rework.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">06</span>
+          <h3 class="deliverable-title">Brand Guidelines</h3>
+          <p class="deliverable-desc">Digital-first brand documentation that covers logo usage, colour palettes, typography, imagery, tone of voice, and application examples across all touchpoints.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
+  <section class="section">
+    <div class="section-inner">
+      <SectionHeading
+        title="Our Design Approach"
+        subtitle="Three principles that guide every design decision we make."
+      />
+      <div class="approach-grid" data-animate="stagger">
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+          <h3 class="approach-title">User-Centred</h3>
+          <p class="approach-desc">Every design decision starts with the user. We conduct research to understand behaviours, frustrations, and goals before opening any design tool. The result is interfaces people genuinely want to use.</p>
+        </div>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Conversion-Focused</h3>
+          <p class="approach-desc">Aesthetics serve a purpose. We design with business goals in mind, using proven patterns for information hierarchy, call-to-action placement, and trust signals that guide users toward meaningful actions.</p>
+        </div>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Systematic</h3>
+          <p class="approach-desc">We don't design pages, we design systems. Every component, token, and pattern is documented and reusable, ensuring consistency today and enabling your team to scale the design language independently.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="section section-alt">
+    <div class="section-inner" data-animate="fade-up">
+      <SectionHeading
+        title="Who This Is For"
+        subtitle="Our design service is the right fit if you recognise any of these situations."
+      />
+      <div class="audience-grid">
+        <div class="audience-card">
+          <h3 class="audience-title">Launching a New Brand</h3>
+          <p class="audience-desc">You are building a new product, business unit, or subsidiary and need a digital presence that establishes credibility from day one. We create the complete visual identity and UX framework to launch with confidence.</p>
+        </div>
+        <div class="audience-card">
+          <h3 class="audience-title">Rebranding or Refreshing</h3>
+          <p class="audience-desc">Your brand has evolved but your digital experience hasn't kept pace. We modernise your visual language, improve usability, and ensure every digital touchpoint reflects who you are today and where you're headed.</p>
+        </div>
+        <div class="audience-card">
+          <h3 class="audience-title">Inconsistent Digital Presence</h3>
+          <p class="audience-desc">Different teams, different agencies, different eras: your digital properties look like they belong to different companies. We unify everything under a cohesive design system that brings consistency and professionalism.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- See Our Work -->
+  <section class="section">
+    <div class="section-inner" data-animate="fade-up">
+      <div class="work-cta">
+        <h2 class="work-cta-title">See Our Design Work</h2>
+        <p class="work-cta-desc">
+          Browse real projects where our design process transformed brand perception and improved conversion rates for corporate clients across Southeast Asia.
+        </p>
+        <a href="/custom/work" class="work-cta-link">
+          See our design work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="Frequently Asked Questions"
+        subtitle="Common questions about our design service."
+      />
+      <div class="faq-list" data-animate="fade-up">
+        <FaqItem
+          question="What does your design process look like from start to finish?"
+          answer="Every engagement begins with a discovery phase where we interview stakeholders, audit existing materials, and research your users and competitors. From there, we move into wireframing to define page structures and user flows. Once wireframes are approved, we develop the visual design language and apply it across all screens and breakpoints. The final deliverables include high-fidelity mockups, an interactive prototype, and a documented design system. Depending on project scope, this process typically takes 4 to 8 weeks."
+        />
+        <FaqItem
+          question="How long does a typical design project take?"
+          answer="A focused design engagement for a corporate website typically takes 4 to 6 weeks. Larger projects involving design systems, multiple products, or extensive UX research may take 8 to 12 weeks. We provide a detailed timeline during the proposal phase so you know exactly what to expect before committing."
+        />
+        <FaqItem
+          question="What deliverables will we receive?"
+          answer="You receive everything needed to build and maintain a consistent digital presence: UX research documentation, wireframes, high-fidelity mockups for every unique page and breakpoint, an interactive prototype, a design system with documented components and tokens, and brand guidelines for digital applications. All source files are delivered in Figma and are fully yours to own."
+        />
+        <FaqItem
+          question="Can you work with our existing brand guidelines?"
+          answer="Absolutely. Many of our clients come with established brand guidelines. We extend your existing visual language into a digital-first system, ensuring your website feels unmistakably on-brand while optimised for screen-based interactions. We also identify and resolve any gaps between print-oriented guidelines and digital requirements."
+        />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Ready to elevate your digital presence?" buttonText="Start a Design Project" buttonHref="/custom/contact" />
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  /* Hero */
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-label {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand);
+    margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1.25rem;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.3s forwards;
+  }
+
+  /* Deliverables */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .deliverable {
+    padding: 1.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .deliverable:hover {
+    border-color: var(--color-brand);
+  }
+
+  .deliverable-num {
+    font-size: 0.6875rem;
+    font-weight: 300;
+    color: var(--color-brand);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .deliverable-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .deliverable-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Approach */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .approach-card {
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .approach-card:hover {
+    border-color: var(--color-brand);
+  }
+
+  .approach-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-brand-light);
+    border-radius: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .approach-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-brand);
+  }
+
+  .approach-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .approach-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Audience */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .audience-card {
+    padding: 1.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .audience-card:hover {
+    border-color: var(--color-brand);
+  }
+
+  .audience-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .audience-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Work CTA */
+  .work-cta {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.75rem;
+    background: white;
+  }
+
+  .work-cta-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .work-cta-desc {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .work-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-brand);
+    text-decoration: none;
+    transition: gap 0.3s ease;
+  }
+
+  .work-cta-link:hover {
+    gap: 0.75rem;
+  }
+
+  .work-cta-link svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* FAQ */
+  .faq-list {
+    max-width: 720px;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-label, .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .deliverables-grid { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .audience-grid { grid-template-columns: 1fr; }
+    .work-cta { padding: 2rem; }
+    .work-cta-title { font-size: 1.5rem; }
+  }
+</style>

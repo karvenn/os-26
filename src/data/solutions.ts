@@ -33,6 +33,98 @@ export interface Solution {
 
 export const solutions: Solution[] = [
   {
+    slug: 'website',
+    name: 'Custom Website',
+    tagline: 'Corporate credibility, engineered for growth',
+    description:
+      'A fully custom corporate website designed around your brand and built for speed, SEO, and conversion. Every element \u2014 from the design system to the content architecture \u2014 is crafted to support your business goals.',
+    outcomes: [
+      {
+        title: 'Premium brand experience',
+        description: 'Every interaction reflects your brand. No template constraints, no design compromises, no off-the-shelf compromises.',
+      },
+      {
+        title: 'Exceptional performance',
+        description: 'Sub-second load times, 95+ Lighthouse scores, and Core Web Vitals that pass consistently on every page.',
+      },
+      {
+        title: 'SEO that compounds',
+        description: 'Technical SEO foundations, schema markup, and fast performance that improves search rankings month over month.',
+      },
+      {
+        title: 'Content team autonomy',
+        description: 'Modern headless CMS integration lets your marketing team update the site without waiting for developers.',
+      },
+    ],
+    capabilities: [
+      { title: 'Custom Design System', description: 'A complete design language built around your brand \u2014 colours, typography, components, and interaction patterns.' },
+      { title: 'Headless CMS Integration', description: 'Intuitive content management via Strapi or your preferred headless CMS, optimised for your editorial workflow.' },
+      { title: 'Performance Optimisation', description: 'Static site generation, image optimisation, code splitting, and edge caching for instant page loads.' },
+      { title: 'Technical SEO', description: 'Schema markup, sitemap generation, meta tag management, and Core Web Vitals optimisation built in.' },
+      { title: 'Analytics & Tracking', description: 'Integration with Google Analytics, Tag Manager, and any custom analytics platforms your team uses.' },
+      { title: 'Multi-language Support', description: 'Optional multi-language capability with hreflang setup for international audiences.' },
+    ],
+    customizationSteps: [
+      { title: 'Brand & Strategy Discovery', description: 'We understand your brand, audience, and business goals to inform every design and technical decision.' },
+      { title: 'Design & Development', description: 'We create a custom design system and build your site using NuxtJS + Strapi for performance and flexibility.' },
+      { title: 'Launch & Optimisation', description: 'We deploy with zero downtime, train your team, and continuously optimise based on real user data.' },
+    ],
+    faq: [
+      { question: 'How long does a custom website take to build?', answer: 'Most corporate websites take 8\u201312 weeks from kickoff to launch, including discovery, design, development, and testing. Complex sites with extensive content or multi-language support may take longer.' },
+      { question: 'Can we keep our existing branding?', answer: 'Absolutely. We can work with your existing brand guidelines and visual identity, or we can refresh them as part of the project if needed.' },
+      { question: 'Will our team be able to update the content?', answer: 'Yes. We integrate a headless CMS (typically Strapi) that gives your marketing team full control over content, media, and publishing workflows.' },
+      { question: 'Is the site mobile-optimised?', answer: 'Every site we build is mobile-first. We design for mobile devices first, then progressively enhance for tablet and desktop.' },
+    ],
+    technologies: ['NuxtJS', 'Strapi', 'Tailwind CSS', 'Vercel'],
+    relatedCaseStudy: 'meridian-properties',
+  },
+  {
+    slug: 'cms',
+    name: 'Custom CMS',
+    tagline: 'Content management on your terms',
+    description:
+      'A bespoke content management system built around how your team actually works. When off-the-shelf CMS platforms do not fit your content model, editorial workflow, or publishing requirements, we build one that does.',
+    outcomes: [
+      {
+        title: 'Content model that fits your business',
+        description: 'Custom content types, fields, and relationships that match exactly how your team thinks about content.',
+      },
+      {
+        title: 'Editorial workflow that works',
+        description: 'Role-based access, approval workflows, scheduled publishing, and draft states designed around your team structure.',
+      },
+      {
+        title: 'Multi-channel publishing',
+        description: 'One content source feeds your website, mobile app, partner portals, and any other channels you need.',
+      },
+      {
+        title: 'No vendor lock-in',
+        description: 'You own the platform and data. No per-seat licensing, no feature paywalls, no hostage content.',
+      },
+    ],
+    capabilities: [
+      { title: 'Custom Content Types', description: 'Model your content exactly as your business needs \u2014 products, articles, resources, team members, and anything else.' },
+      { title: 'Role-Based Access', description: 'Editors, reviewers, publishers, and administrators with fine-grained permissions for each content type.' },
+      { title: 'Media Management', description: 'Organised media library with automatic image optimisation, CDN delivery, and metadata management.' },
+      { title: 'API-First Architecture', description: 'REST and GraphQL APIs out of the box, ready to power websites, apps, and integrations.' },
+      { title: 'Editorial Workflows', description: 'Draft, review, approve, and publish workflows that match your team processes.' },
+      { title: 'Multi-Language Support', description: 'Native internationalisation with locale-specific content and fallback logic.' },
+    ],
+    customizationSteps: [
+      { title: 'Map Your Content', description: 'We document how your team currently manages content and design the optimal content model for your business.' },
+      { title: 'Build & Configure', description: 'We set up Strapi (or a custom CMS) with your content types, workflows, and integrations.' },
+      { title: 'Train & Support', description: 'We onboard your team with role-based training and provide ongoing support as your content needs evolve.' },
+    ],
+    faq: [
+      { question: 'Why not use WordPress or another popular CMS?', answer: 'Popular CMS platforms work when your content model fits their assumptions. When it does not, you spend years fighting the platform. A custom CMS costs more upfront but delivers exactly what your team needs.' },
+      { question: 'Can we migrate content from our existing CMS?', answer: 'Yes. We migrate content from WordPress, Drupal, Contentful, or any other platform, preserving relationships, media, and metadata.' },
+      { question: 'How is this different from building a website?', answer: 'A custom CMS focuses specifically on the content management layer, which can power multiple websites, apps, and channels. A website project focuses on the public-facing experience.' },
+      { question: 'Do you use Strapi exclusively?', answer: 'Strapi is our default choice because of its flexibility and open-source model. For specific requirements, we also work with Sanity, Contentful, or fully custom solutions.' },
+    ],
+    technologies: ['Strapi', 'Node.js', 'PostgreSQL', 'AWS S3'],
+    relatedCaseStudy: null,
+  },
+  {
     slug: 'contest-management',
     name: 'Contest Management System',
     tagline: 'Run campaigns that engage and convert',
