@@ -7,7 +7,6 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import Animations from '../../components/Animations.astro';
 import { trustStats } from '../../data/clients';
-import { processSteps } from '../../data/process';
 import { differentiators, comparisons } from '../../data/differentiators';
 ---
 
@@ -120,79 +119,70 @@ import { differentiators, comparisons } from '../../data/differentiators';
     </div>
   </section>
 
-  <!-- Team -->
+  <!-- The Custom Division Team -->
   <section class="section section-alt">
     <div class="section-inner">
-      <h2 class="section-title">The Team</h2>
-      <p class="section-subtitle">A multidisciplinary team of designers, engineers, and strategists based in Malaysia.</p>
+      <h2 class="section-title">The Custom Division Team</h2>
+      <p class="section-subtitle">The specialists who design, build, and deliver your custom project. This is who you will actually work with.</p>
       <div class="team-grid" data-animate="stagger">
         <div class="team-member">
-          <div class="member-avatar">
-            <span>KV</span>
-          </div>
-          <h3 class="member-name">Founding Director</h3>
-          <p class="member-role">Strategy & Architecture</p>
-          <p class="member-bio">19 years leading digital projects for corporate clients across Southeast Asia. Oversees every project from discovery to launch.</p>
+          <div class="member-avatar"><span>SA</span></div>
+          <h3 class="member-name">Solutions Architect</h3>
+          <p class="member-role">Discovery & Technical Strategy</p>
+          <p class="member-bio">Translates business requirements into technical architecture. Leads discovery workshops, defines system design, and ensures every project starts on solid foundations.</p>
         </div>
         <div class="team-member">
-          <div class="member-avatar"><span>LD</span></div>
-          <h3 class="member-name">Lead Designer</h3>
-          <p class="member-role">UX & Visual Design</p>
-          <p class="member-bio">Specialises in conversion-focused design for corporate audiences. Bridges business objectives with user experience.</p>
+          <div class="member-avatar"><span>UX</span></div>
+          <h3 class="member-name">UX/UI Designer</h3>
+          <p class="member-role">Research, Wireframes & Visual Design</p>
+          <p class="member-bio">Specialises in conversion-focused design for corporate audiences. Conducts user research, builds prototypes, and creates design systems that scale.</p>
         </div>
         <div class="team-member">
-          <div class="member-avatar"><span>SE</span></div>
-          <h3 class="member-name">Senior Engineer</h3>
-          <p class="member-role">NuxtJS, Laravel & Strapi</p>
-          <p class="member-bio">Full-stack development lead with deep expertise in the frameworks that power our custom solutions.</p>
+          <div class="member-avatar"><span>FE</span></div>
+          <h3 class="member-name">Frontend Engineer</h3>
+          <p class="member-role">NuxtJS & Vue.js</p>
+          <p class="member-bio">Builds pixel-perfect, high-performance frontends. Expert in NuxtJS, server-side rendering, and delivering 95+ Lighthouse scores consistently.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar"><span>BE</span></div>
+          <h3 class="member-name">Backend Engineer</h3>
+          <p class="member-role">Laravel & API Development</p>
+          <p class="member-bio">Architects robust backend systems, APIs, and database schemas. Handles complex business logic, integrations, and scalable infrastructure.</p>
+        </div>
+        <div class="team-member">
+          <div class="member-avatar"><span>CMS</span></div>
+          <h3 class="member-name">CMS Specialist</h3>
+          <p class="member-role">Strapi & Content Architecture</p>
+          <p class="member-bio">Designs content models, configures editorial workflows, and ensures your marketing team has full control over content without developer dependency.</p>
         </div>
         <div class="team-member">
           <div class="member-avatar"><span>PM</span></div>
-          <h3 class="member-name">Project Manager</h3>
-          <p class="member-role">Delivery & Client Success</p>
-          <p class="member-bio">Your primary point of contact. Ensures timelines, budgets, and expectations are met at every milestone.</p>
+          <h3 class="member-name">Project Delivery Lead</h3>
+          <p class="member-role">Your Single Point of Contact</p>
+          <p class="member-bio">Manages timelines, budgets, and communications. Runs weekly demos, coordinates approvals, and ensures every milestone is met on schedule.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Process -->
+  <!-- Deep Dives -->
   <section class="section">
-    <div class="section-inner">
-      <h2 class="section-title">Our Process</h2>
-      <p class="section-subtitle">A proven 5-step methodology refined over 600+ projects.</p>
-      <div class="process-list" data-animate="fade-up">
-        {processSteps.map((step) => (
-          <div class="process-item">
-            <span class="process-num">{String(step.number).padStart(2, '0')}</span>
-            <div>
-              <h3 class="process-title">{step.title}</h3>
-              <p class="process-desc">{step.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Technologies -->
-  <section class="section section-alt">
     <div class="section-inner" data-animate="fade-up">
-      <h2 class="section-title">Our Stack</h2>
-      <p class="section-subtitle">We build with proven, open-source technologies that scale with your business.</p>
-      <div class="stack-grid">
-        <div class="stack-item">
-          <h3>NuxtJS</h3>
-          <p>High-performance front ends with server-side rendering, static generation, and exceptional Core Web Vitals.</p>
-        </div>
-        <div class="stack-item">
-          <h3>Laravel</h3>
-          <p>Robust back-end logic, API development, and application architecture trusted by enterprises worldwide.</p>
-        </div>
-        <div class="stack-item">
-          <h3>Strapi</h3>
-          <p>Headless CMS that gives your marketing team full content control with a modern, intuitive interface.</p>
-        </div>
+      <h2 class="section-title">Go Deeper</h2>
+      <p class="section-subtitle">Explore how we work in more detail.</p>
+      <div class="deep-links">
+        <a href="/custom/how-we-work" class="deep-link">
+          <h3>How We Work</h3>
+          <p>Our approach to technology, platforms, and the 7-phase process from research to post-launch marketing.</p>
+        </a>
+        <a href="/custom/pricing" class="deep-link">
+          <h3>Pricing & Investment</h3>
+          <p>Transparent investment ranges, what is included, and what shapes your final quote.</p>
+        </a>
+        <a href="/custom/work" class="deep-link">
+          <h3>Our Work</h3>
+          <p>Portfolio and detailed case studies from recent custom development projects.</p>
+        </a>
       </div>
     </div>
   </section>
@@ -264,19 +254,18 @@ import { differentiators, comparisons } from '../../data/differentiators';
   .member-role { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand); margin-bottom: 0.75rem; }
   .member-bio { font-size: 0.8125rem; line-height: 1.6; color: var(--color-muted); }
 
-  /* Process */
-  .process-list { max-width: 640px; }
-  .process-item { display: flex; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--color-divider); }
-  .process-item:last-child { border-bottom: none; }
+  /* Deep Links */
+  .deep-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .deep-link { padding: 1.75rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; text-decoration: none; transition: border-color 0.3s ease, transform 0.3s ease; }
+  .deep-link:hover { border-color: var(--color-brand); transform: translateY(-2px); }
+  .deep-link h3 { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; }
+  .deep-link p { font-size: 0.8125rem; line-height: 1.6; color: var(--color-muted); }
   .process-num { font-size: 0.6875rem; font-weight: 300; color: var(--color-brand); letter-spacing: 0.1em; padding-top: 0.25rem; }
   .process-title { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.375rem; }
   .process-desc { font-size: 0.8125rem; line-height: 1.7; color: var(--color-muted); }
 
-  /* Stack */
-  .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-  .stack-item { padding: 1.75rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; }
-  .stack-item h3 { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; }
-  .stack-item p { font-size: 0.8125rem; line-height: 1.7; color: var(--color-muted); }
+  /* Team grid — 6 members = 3 columns */
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
 
   @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; } }
@@ -285,6 +274,7 @@ import { differentiators, comparisons } from '../../data/differentiators';
     .section { padding: 3rem 1.5rem; }
     .hero-title { font-size: 2rem; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
-    .philosophy-grid, .team-grid, .stack-grid, .diff-grid { grid-template-columns: 1fr; }
+    .philosophy-grid, .diff-grid, .deep-links { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>

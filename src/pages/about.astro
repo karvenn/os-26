@@ -83,6 +83,65 @@ import Animations from '../components/Animations.astro';
     </div>
   </section>
 
+  <!-- Leadership -->
+  <section class="section">
+    <div class="inner">
+      <h2 class="section-title">Leadership</h2>
+      <p class="section-sub">The people who set the direction and ensure every division delivers on our promise.</p>
+      <div class="leadership" data-animate="stagger">
+        <div class="leader">
+          <div class="leader-avatar"><span>KV</span></div>
+          <h3>Founding Director</h3>
+          <p class="leader-role">Vision & Strategy</p>
+          <p class="leader-bio">Founded Orangesoft in 2007 and has since led the company through 19 years of growth. Sets the strategic direction across all five divisions and maintains relationships with key corporate clients.</p>
+        </div>
+        <div class="leader">
+          <div class="leader-avatar"><span>BD</span></div>
+          <h3>Business Development Director</h3>
+          <p class="leader-role">Growth & Partnerships</p>
+          <p class="leader-bio">Drives new business across all divisions, manages strategic partnerships, and ensures client needs are matched with the right Orangesoft team.</p>
+        </div>
+        <div class="leader">
+          <div class="leader-avatar"><span>CD</span></div>
+          <h3>Creative Director</h3>
+          <p class="leader-role">Design & Brand</p>
+          <p class="leader-bio">Oversees design quality across every project. Ensures visual consistency, brand alignment, and user experience standards are met across all five divisions.</p>
+        </div>
+        <div class="leader">
+          <div class="leader-avatar"><span>HT</span></div>
+          <h3>Head of Technology</h3>
+          <p class="leader-role">Architecture & Engineering</p>
+          <p class="leader-bio">Sets technical standards and platform strategy across Orangesoft. Evaluates emerging technologies and ensures every project is built on the right foundation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section section-alt">
+    <div class="inner" data-animate="fade-up">
+      <h2 class="section-title">What We Believe</h2>
+      <div class="values">
+        <div class="value">
+          <h3>Outcomes over outputs</h3>
+          <p>We measure success by business results, not deliverables. Every decision ties back to a measurable goal.</p>
+        </div>
+        <div class="value">
+          <h3>Transparency by default</h3>
+          <p>Honest timelines, clear pricing, shared dashboards. You will never wonder where your project stands.</p>
+        </div>
+        <div class="value">
+          <h3>You own everything</h3>
+          <p>No vendor lock-in. You own the code, the data, the design files. We build platforms you can take with you.</p>
+        </div>
+        <div class="value">
+          <h3>Specialists, not generalists</h3>
+          <p>Five dedicated divisions means your project is handled by a team that does this every day, not occasionally.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="inner" data-animate="fade-up">
       <h2 class="section-title">Where We Are</h2>
@@ -159,6 +218,21 @@ import Animations from '../components/Animations.astro';
   .location-city { font-size: 1.5rem; font-weight: 600; color: var(--color-brand); margin-bottom: 0.75rem; }
   .location-note { font-size: 0.9375rem; line-height: 1.7; color: var(--color-muted); }
 
+  /* Leadership */
+  .leadership { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .leader { text-align: center; }
+  .leader-avatar { width: 4rem; height: 4rem; border-radius: 50%; background: var(--color-brand-light); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+  .leader-avatar span { font-size: 0.875rem; font-weight: 700; color: var(--color-brand); }
+  .leader h3 { font-size: 1rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.25rem; }
+  .leader-role { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand); margin-bottom: 0.75rem; }
+  .leader-bio { font-size: 0.8125rem; line-height: 1.6; color: var(--color-muted); }
+
+  /* Values */
+  .values { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .value { padding: 1.75rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; }
+  .value h3 { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; }
+  .value p { font-size: 0.8125rem; line-height: 1.65; color: var(--color-muted); }
+
   .cta-block { text-align: center; max-width: 480px; margin: 0 auto; }
   .cta-block h2 { font-size: 2rem; font-weight: 600; color: white; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
   .cta-block p { font-size: 1rem; color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
@@ -177,7 +251,8 @@ import Animations from '../components/Animations.astro';
     .section { padding: 3rem 1.5rem; }
     .hero-title { font-size: 2rem; }
     .stats { grid-template-columns: repeat(2, 1fr); }
-    .divisions { grid-template-columns: 1fr; }
+    .divisions, .values { grid-template-columns: 1fr; }
+    .leadership { grid-template-columns: repeat(2, 1fr); }
     .co-footer-inner { flex-direction: column; text-align: center; }
     .footer-nav { flex-wrap: wrap; justify-content: center; }
   }
