@@ -12,7 +12,7 @@
 - Output directory: dist/
 - Config: netlify.toml
 
-## Pages (25 total)
+## Pages (26 total)
 - / (root index)
 - /custom/ (microsite index)
 - /custom/about/
@@ -21,6 +21,7 @@
 - /custom/services/
 - /custom/solutions/
 - /custom/pricing/
+- /custom/faq/
 - /custom/case-studies/
 - /custom/case-studies/meridian-properties/
 - /custom/case-studies/pinnacle-financial/

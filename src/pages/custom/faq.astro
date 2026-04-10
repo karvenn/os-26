@@ -1,0 +1,205 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import FaqItem from '../../components/FaqItem.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Animations from '../../components/Animations.astro';
+import { faqItems } from '../../data/faq-custom';
+import { pricingFaq } from '../../data/pricing';
+
+const workingWithUs = [
+  {
+    question: 'How do we get started?',
+    answer:
+      'It begins with a short discovery call where we learn about your business, goals, and current challenges. From there we prepare a written proposal with scope, timeline, and investment — no obligation, no pressure. If it is a good fit, we schedule a kickoff session and begin the discovery phase.',
+  },
+  {
+    question: 'What information do you need from us?',
+    answer:
+      'To prepare an accurate proposal we typically need: an overview of your business and target audience, examples of websites you admire, any existing brand guidelines or assets, details of required integrations (CRM, ERP, payment gateways), and a rough timeline or launch date if one exists. We guide you through this during our initial call.',
+  },
+  {
+    question: 'How long does a typical project take?',
+    answer:
+      'A corporate website usually takes 8\u201312 weeks from kickoff to launch. Content platforms and e-commerce sites run 12\u201316 weeks. Complex web applications with custom workflows and integrations can take 16\u201324 weeks. We provide a detailed timeline in your proposal and keep you updated at every milestone.',
+  },
+  {
+    question: 'Do you work with clients outside Malaysia?',
+    answer:
+      'Yes. While most of our clients are based in Malaysia and Southeast Asia, we work with organisations globally. Our project management workflow is designed for asynchronous collaboration across time zones, with scheduled calls at times that work for both teams.',
+  },
+  {
+    question: 'What is your minimum project size?',
+    answer:
+      'Our custom projects start from MYR 30,000. This reflects the level of discovery, design, and engineering that goes into every engagement. For smaller budgets, we can recommend trusted partners or template-based solutions that may be a better fit.',
+  },
+];
+
+const technology = [
+  {
+    question: 'Why do you use NuxtJS instead of React?',
+    answer:
+      'NuxtJS (built on Vue.js) offers an exceptional developer experience, built-in server-side rendering, and outstanding performance out of the box. For the types of projects we deliver — corporate websites, content platforms, and business applications — NuxtJS consistently produces faster, more maintainable codebases. That said, the framework choice is always driven by project requirements, not personal preference.',
+  },
+  {
+    question: 'Can we choose our own technology stack?',
+    answer:
+      'Absolutely. While we recommend NuxtJS, Laravel, and Strapi because we deliver the best results with them, we are open to working with your preferred stack if the project demands it. We will always be transparent about where our expertise is deepest and where we would need to bring in specialist support.',
+  },
+  {
+    question: 'Do you build mobile apps?',
+    answer:
+      'Our core expertise is web-based applications, not native iOS or Android development. However, many of the web applications we build are progressive web apps (PWAs) that work seamlessly on mobile devices. For native app requirements, we can recommend trusted partners and ensure your web platform integrates smoothly with their work.',
+  },
+  {
+    question: 'What happens if we want to change the technology later?',
+    answer:
+      'We architect every project with clean separation of concerns — your content lives in a headless CMS, your business logic sits behind well-documented APIs, and the front end is decoupled. This means you can replace any layer without rebuilding the entire system. You own all the code and data, so there is no vendor lock-in.',
+  },
+];
+
+const allFaqs = [
+  ...faqItems,
+  ...pricingFaq,
+  ...workingWithUs,
+  ...technology,
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: allFaqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+---
+
+<Layout
+  title="FAQ | Orangesoft Custom"
+  description="Answers to common questions about custom web development, pricing, our process, and the technology we use. Everything you need to know before starting a project with Orangesoft."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <EntranceOverlay />
+  <MicrositeHeader />
+  <Breadcrumb items={[{ label: 'Home', href: '/custom' }, { label: 'FAQ' }]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <span class="hero-label">Knowledge Base</span>
+      <h1 class="hero-title">Frequently Asked<br />Questions</h1>
+      <p class="hero-lead">
+        Honest answers to the questions we hear most often. If you cannot find what you are looking for, our team is always happy to help.
+      </p>
+    </div>
+  </section>
+
+  <!-- Custom Development -->
+  <section class="section section-alt">
+    <div class="section-inner section-inner--narrow">
+      <SectionHeading title="Custom Development" subtitle="Questions about our custom web development services, timelines, and deliverables." />
+      <div data-animate="fade-up">
+        {faqItems.map((faq) => <FaqItem question={faq.question} answer={faq.answer} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing & Investment -->
+  <section class="section">
+    <div class="section-inner section-inner--narrow">
+      <SectionHeading title="Pricing & Investment" subtitle="Transparency about costs, payment terms, and what is included in every engagement." />
+      <div data-animate="fade-up">
+        {pricingFaq.map((faq) => <FaqItem question={faq.question} answer={faq.answer} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Working With Us -->
+  <section class="section section-alt">
+    <div class="section-inner section-inner--narrow">
+      <SectionHeading title="Working With Us" subtitle="What to expect when you partner with Orangesoft for a custom project." />
+      <div data-animate="fade-up">
+        {workingWithUs.map((faq) => <FaqItem question={faq.question} answer={faq.answer} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology -->
+  <section class="section">
+    <div class="section-inner section-inner--narrow">
+      <SectionHeading title="Technology" subtitle="Our technology choices, stack flexibility, and how we future-proof your platform." />
+      <div data-animate="fade-up">
+        {technology.map((faq) => <FaqItem question={faq.question} answer={faq.answer} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CtaBand heading="Still have questions?" buttonText="Talk to Our Team" buttonHref="/custom/contact" />
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-inner--narrow { max-width: 800px; }
+  .section-alt { background: white; }
+
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-label {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-brand);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: slideUp 0.6s ease 1s forwards;
+  }
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--color-foreground);
+    margin-bottom: 1.25rem;
+    opacity: 0;
+    animation: slideUp 0.7s ease 1.1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    max-width: 640px;
+    opacity: 0;
+    animation: slideUp 0.7s ease 1.2s forwards;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-label, .hero-title, .hero-lead {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+  }
+</style>

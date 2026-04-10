@@ -1,6 +1,6 @@
 ---
 interface Props {
-  active?: 'services' | 'solutions' | 'work' | 'pricing' | 'insights' | 'about' | 'contact';
+  active?: 'services' | 'solutions' | 'how-we-work' | 'work' | 'insights' | 'about' | 'contact';
 }
 
 const { active } = Astro.props;
@@ -10,9 +10,10 @@ const { active } = Astro.props;
   <div class="ms-header-inner">
     <a href="/custom" class="ms-logo">Orangesoft<span class="ms-logo-dot">.</span></a>
     <nav class="ms-nav">
-      <a href="/custom/services" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'services' || active === 'solutions' }]}>Services</a>
+      <a href="/custom/services" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'services' }]}>Services</a>
+      <a href="/custom/solutions" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'solutions' }]}>Solutions</a>
+      <a href="/custom/how-we-work" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'how-we-work' }]}>How We Work</a>
       <a href="/custom/work" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'work' }]}>Work</a>
-      <a href="/custom/pricing" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'pricing' }]}>Pricing</a>
       <a href="/custom/insights" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'insights' }]}>Insights</a>
       <a href="/custom/about" class:list={['ms-nav-link', { 'ms-nav-link--active': active === 'about' }]}>About</a>
       <a href="/custom/contact" class:list={['ms-nav-link ms-nav-cta', { 'ms-nav-link--active': active === 'contact' }]}>Contact</a>
@@ -51,7 +52,7 @@ const { active } = Astro.props;
 
   .ms-nav {
     display: flex;
-    gap: 1.75rem;
+    gap: 1.5rem;
     align-items: center;
   }
 
