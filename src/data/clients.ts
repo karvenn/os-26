@@ -17,6 +17,16 @@ export const clientLogos: ClientLogo[] = [
   { name: 'Perodua', slug: 'perodua' },
   { name: 'MYCC', slug: 'mycc' },
   { name: 'Bank Negara', slug: 'bank-negara' },
+  { name: 'Sime Darby', slug: 'sime-darby' },
+  { name: 'Telekom Malaysia', slug: 'telekom-malaysia' },
+  { name: 'CIMB', slug: 'cimb' },
+  { name: 'Axiata', slug: 'axiata' },
+  { name: 'Gamuda', slug: 'gamuda' },
+  { name: 'UEM Sunrise', slug: 'uem-sunrise' },
+  { name: 'AmBank', slug: 'ambank' },
+  { name: 'Bursa Malaysia', slug: 'bursa-malaysia' },
+  { name: 'TNB', slug: 'tnb' },
+  { name: 'Petronas Chemicals', slug: 'petronas-chemicals' },
 ];
 
 export const trustStats: TrustStat[] = [

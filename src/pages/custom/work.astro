@@ -4,12 +4,15 @@ import EntranceOverlay from '../../components/EntranceOverlay.astro';
 import MicrositeHeader from '../../components/MicrositeHeader.astro';
 import MicrositeFooter from '../../components/MicrositeFooter.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import PortfolioCard from '../../components/PortfolioCard.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import Animations from '../../components/Animations.astro';
 import TrustStrip from '../../components/TrustStrip.astro';
+import Animations from '../../components/Animations.astro';
 import { portfolioProjects } from '../../data/portfolio';
 import { caseStudies } from '../../data/case-studies';
+import { clientLogos } from '../../data/clients';
+
+const featured = portfolioProjects.filter((p) => p.featured);
+const portfolio = portfolioProjects.filter((p) => !p.featured);
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -23,7 +26,7 @@ const breadcrumbSchema = {
 
 <Layout
   title="Our Work | Orangesoft Custom"
-  description="Explore our portfolio of custom websites, web applications, and digital platforms built for corporate clients across Malaysia and Southeast Asia."
+  description="Portfolio of custom websites, web applications, and digital platforms built for corporate clients across Malaysia and Southeast Asia."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -33,57 +36,119 @@ const breadcrumbSchema = {
   <MicrositeHeader active="work" />
   <Breadcrumb items={[{ label: 'Home', href: '/custom' }, { label: 'Work' }]} />
 
-  <!-- Hero -->
   <section class="hero">
-    <div class="section-inner">
+    <div class="inner">
       <h1 class="hero-title">Our Work</h1>
       <p class="hero-lead">
-        A selection of custom websites and web applications we have built for businesses across Malaysia and Southeast Asia. Each project is engineered from scratch to meet unique business requirements.
+        600+ projects delivered over 19 years. Here is a selection — from in-depth case studies to a broad view of the organisations we have worked with.
       </p>
     </div>
   </section>
 
   <TrustStrip />
 
-  <!-- Portfolio Grid -->
+  <!-- ════ TIER 1: CASE STUDIES ════ -->
   <section class="section">
-    <div class="section-inner">
-      <div class="work-grid" data-animate="stagger">
-        {portfolioProjects.map((project, i) => (
-          <div class:list={['work-item', i === 0 ? 'work-item--full' : '']}>
-            <PortfolioCard project={project} variant={i === 0 ? 'full' : 'half'} />
-          </div>
-        ))}
+    <div class="inner">
+      <div class="tier-header">
+        <div>
+          <h2 class="tier-title">Case Studies</h2>
+          <p class="tier-desc">In-depth stories with the challenge, our approach, and measurable results.</p>
+        </div>
+        <a href="/custom/case-studies" class="tier-link">View all case studies &rarr;</a>
       </div>
-    </div>
-  </section>
-
-  <!-- Case Studies Teaser -->
-  <section class="section section-alt">
-    <div class="section-inner">
-      <h2 class="cs-heading">Case Studies</h2>
-      <p class="cs-subtitle">In-depth stories behind selected projects.</p>
       <div class="cs-grid" data-animate="stagger">
         {caseStudies.map((cs) => (
           <a href={`/custom/case-studies/${cs.slug}`} class="cs-card">
-            <span class="cs-label">{cs.projectTitle}</span>
-            <h3 class="cs-name">{cs.clientName}</h3>
-            <p class="cs-metric">{cs.metrics[0].value}{cs.metrics[0].suffix} {cs.metrics[0].label}</p>
-            <span class="cs-link">Read case study &rarr;</span>
+            <div class="cs-card-top">
+              <span class="cs-label">Case Study</span>
+              <h3 class="cs-name">{cs.clientName}</h3>
+              <p class="cs-project">{cs.projectTitle}</p>
+            </div>
+            <div class="cs-metrics">
+              {cs.metrics.slice(0, 2).map((m) => (
+                <div class="cs-metric">
+                  <span class="cs-metric-val">{m.value}{m.suffix}</span>
+                  <span class="cs-metric-label">{m.label}</span>
+                </div>
+              ))}
+            </div>
+            <blockquote class="cs-quote">
+              &ldquo;{cs.testimonial.quote.slice(0, 120)}&hellip;&rdquo;
+            </blockquote>
+            <span class="cs-cta">Read full story &rarr;</span>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <CtaBand heading="Have a project in mind?" buttonText="Get a Free Website Audit" buttonHref="/custom/contact" />
+  <!-- ════ TIER 2: PORTFOLIO ════ -->
+  <section class="section section-alt">
+    <div class="inner">
+      <div class="tier-header">
+        <div>
+          <h2 class="tier-title">Portfolio</h2>
+          <p class="tier-desc">A broader selection of projects across industries and project types.</p>
+        </div>
+      </div>
+
+      <div class="portfolio-featured" data-animate="stagger">
+        {featured.map((p) => (
+          <a href={p.caseStudySlug ? `/custom/case-studies/${p.caseStudySlug}` : '#'} class="pf-card">
+            <div class="pf-image">
+              <div class="pf-placeholder"><span>{p.clientName.charAt(0)}</span></div>
+            </div>
+            <div class="pf-content">
+              <span class="pf-type">{p.projectType} &middot; {p.year}</span>
+              <h3 class="pf-name">{p.clientName}</h3>
+              <p class="pf-headline">{p.headline}</p>
+              <div class="pf-tags">
+                {p.technologies.map((t) => <span class="pf-tag">{t}</span>)}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="portfolio-grid" data-animate="stagger">
+        {portfolio.map((p) => (
+          <div class="pg-card">
+            <span class="pg-type">{p.projectType}</span>
+            <h3 class="pg-name">{p.clientName}</h3>
+            <p class="pg-headline">{p.headline}</p>
+            <div class="pg-tags">
+              {p.technologies.slice(0, 2).map((t) => <span class="pg-tag">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ TIER 3: CLIENT LOGOS ════ -->
+  <section class="section">
+    <div class="inner">
+      <h2 class="tier-title">Brands We Have Worked With</h2>
+      <p class="tier-desc">A selection of the organisations that have trusted Orangesoft with their digital projects.</p>
+      <div class="logo-wall" data-animate="fade-up">
+        {clientLogos.map((logo) => (
+          <div class="logo-cell" title={logo.name}>
+            <span class="logo-name">{logo.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Have a project in mind?" buttonText="Start a Conversation" buttonHref="/custom/contact" />
   <MicrositeFooter />
   <Animations />
 </Layout>
 
 <style>
   .section { padding: 5rem 1.5rem; }
-  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .inner { max-width: 1200px; margin: 0 auto; }
   .section-alt { background: white; }
 
   .hero { padding: 3rem 1.5rem 2rem; }
@@ -97,25 +162,82 @@ const breadcrumbSchema = {
     opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
   }
 
-  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .work-item--full { grid-column: 1 / -1; }
+  .tier-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; gap: 1rem; flex-wrap: wrap; }
+  .tier-title { font-size: 2rem; font-weight: 600; color: var(--color-foreground); letter-spacing: -0.02em; }
+  .tier-desc { font-size: 1rem; color: var(--color-muted); margin-top: 0.375rem; }
+  .tier-link { font-size: 0.8125rem; font-weight: 600; color: var(--color-brand); text-decoration: none; white-space: nowrap; transition: opacity 0.3s ease; }
+  .tier-link:hover { opacity: 0.7; }
 
-  .cs-heading { font-size: 2rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-  .cs-subtitle { font-size: 1rem; color: var(--color-muted); margin-bottom: 2.5rem; }
-
+  /* Case Study Cards */
   .cs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-
   .cs-card {
-    display: flex; flex-direction: column; padding: 1.75rem; border: 1px solid var(--color-divider);
-    border-radius: 0.5rem; text-decoration: none;
+    display: flex; flex-direction: column; padding: 2rem; border: 1px solid var(--color-divider);
+    border-radius: 0.75rem; text-decoration: none;
     transition: border-color 0.3s ease, transform 0.3s ease;
   }
-  .cs-card:hover { border-color: var(--color-brand); transform: translateY(-2px); }
+  .cs-card:hover { border-color: var(--color-brand); transform: translateY(-3px); }
+  .cs-card-top { margin-bottom: 1.5rem; }
+  .cs-label { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-brand); display: block; margin-bottom: 0.5rem; }
+  .cs-name { font-size: 1.25rem; font-weight: 600; color: var(--color-foreground); letter-spacing: -0.01em; }
+  .cs-project { font-size: 0.8125rem; color: var(--color-muted); margin-top: 0.25rem; }
+  .cs-metrics { display: flex; gap: 2rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-divider); }
+  .cs-metric-val { display: block; font-size: 1.5rem; font-weight: 700; color: var(--color-brand); letter-spacing: -0.02em; }
+  .cs-metric-label { font-size: 0.625rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); }
+  .cs-quote { font-size: 0.8125rem; line-height: 1.6; color: var(--color-muted); font-style: italic; flex: 1; margin-bottom: 1.25rem; }
+  .cs-cta { font-size: 0.75rem; font-weight: 600; color: var(--color-brand); }
 
-  .cs-label { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand); margin-bottom: 0.5rem; }
-  .cs-name { font-size: 1.125rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.375rem; }
-  .cs-metric { font-size: 0.8125rem; color: var(--color-muted); margin-bottom: 1rem; flex: 1; }
-  .cs-link { font-size: 0.75rem; font-weight: 600; color: var(--color-brand); }
+  /* Portfolio Featured */
+  .portfolio-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+  .pf-card {
+    display: block; border-radius: 0.5rem; overflow: hidden; border: 1px solid var(--color-divider);
+    text-decoration: none; transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .pf-card:hover { border-color: var(--color-brand); transform: translateY(-3px); }
+  .pf-image { aspect-ratio: 16 / 9; overflow: hidden; }
+  .pf-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, var(--color-brand-light) 0%, #FDE8D8 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pf-placeholder span { font-size: 3rem; font-weight: 700; color: var(--color-brand); opacity: 0.2; }
+  .pf-content { padding: 1.25rem; }
+  .pf-type { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand); display: block; margin-bottom: 0.375rem; }
+  .pf-name { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.25rem; }
+  .pf-headline { font-size: 0.8125rem; color: var(--color-muted); margin-bottom: 0.75rem; }
+  .pf-tags { display: flex; gap: 0.375rem; flex-wrap: wrap; }
+  .pf-tag { font-size: 0.5625rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); background: var(--color-surface); padding: 0.2rem 0.5rem; border-radius: 0.25rem; }
+
+  /* Portfolio Compact Grid */
+  .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .pg-card {
+    padding: 1.25rem; border: 1px solid var(--color-divider); border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+  .pg-card:hover { border-color: var(--color-brand); }
+  .pg-type { font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand); display: block; margin-bottom: 0.375rem; }
+  .pg-name { font-size: 0.9375rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.25rem; }
+  .pg-headline { font-size: 0.75rem; line-height: 1.5; color: var(--color-muted); margin-bottom: 0.625rem; }
+  .pg-tags { display: flex; gap: 0.25rem; }
+  .pg-tag { font-size: 0.5625rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); background: var(--color-surface); padding: 0.15rem 0.375rem; border-radius: 0.25rem; }
+
+  /* Client Logo Wall */
+  .logo-wall {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    border: 1px solid var(--color-divider); border-radius: 0.5rem; overflow: hidden;
+    margin-top: 2rem;
+  }
+  .logo-cell {
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem 1rem; background: white;
+    transition: background-color 0.3s ease;
+  }
+  .logo-cell:hover { background: var(--color-brand-light); }
+  .logo-name {
+    font-size: 0.75rem; font-weight: 600; color: var(--color-foreground);
+    opacity: 0.4; letter-spacing: 0.02em; text-align: center;
+    transition: opacity 0.3s ease;
+  }
+  .logo-cell:hover .logo-name { opacity: 0.8; }
 
   @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; } }
@@ -123,7 +245,16 @@ const breadcrumbSchema = {
   @media (max-width: 768px) {
     .section { padding: 3rem 1.5rem; }
     .hero-title { font-size: 2rem; }
-    .work-grid, .cs-grid { grid-template-columns: 1fr; }
-    .work-item--full { grid-column: auto; }
+    .cs-grid { grid-template-columns: 1fr; }
+    .portfolio-featured { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    .logo-wall { grid-template-columns: repeat(2, 1fr); }
+    .tier-header { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .cs-grid { grid-template-columns: repeat(2, 1fr); }
+    .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+    .logo-wall { grid-template-columns: repeat(3, 1fr); }
   }
 </style>
