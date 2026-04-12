@@ -19,11 +19,77 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://orangesoft.com.my/custom/services' },
   ],
 };
+
+const services = [
+  {
+    number: '01',
+    title: 'Discovery & Strategy',
+    tagline: 'Clarity before commitment',
+    description: 'We immerse ourselves in your business, audience, and competitive landscape before a single pixel is designed. The result is a strategic foundation that ensures every decision downstream is grounded in evidence.',
+    deliverables: ['Research & Audits', 'Strategic Planning', 'Competitive Analysis', 'Project Roadmap'],
+    href: '/custom/services/discovery',
+    duration: '1\u20133 weeks',
+  },
+  {
+    number: '02',
+    title: 'Custom Design',
+    tagline: 'Where strategy meets craft',
+    description: 'From wireframes to high-fidelity prototypes, every interface is crafted to serve your brand and your users. We design systems that scale, not just pages that look good on launch day.',
+    deliverables: ['UX Research', 'Wireframes', 'Visual Design', 'Prototyping'],
+    href: '/custom/services/design',
+    duration: '3\u20136 weeks',
+  },
+  {
+    number: '03',
+    title: 'Custom Development',
+    tagline: 'Engineering that scales',
+    description: 'Clean, maintainable code built on modern frameworks. Frontend, backend, APIs, and third-party integrations engineered to perform under load and evolve with your business.',
+    deliverables: ['Frontend Engineering', 'Backend Systems', 'API Development', 'Integrations'],
+    href: '/custom/services/development',
+    duration: '4\u201312 weeks',
+  },
+  {
+    number: '04',
+    title: 'Migration & Deployment',
+    tagline: 'Launch with confidence',
+    description: 'Data migration, team training, and zero-downtime deployment executed with precision. We rehearse every launch so the real thing is uneventful \u2014 exactly the way it should be.',
+    deliverables: ['Data Migration', 'Team Training', 'QA & Testing', 'Go-Live'],
+    href: '/custom/services/deployment',
+    duration: '1\u20132 weeks',
+  },
+  {
+    number: '05',
+    title: 'Maintenance & Support',
+    tagline: 'Peace of mind',
+    description: 'Security patches, performance monitoring, and proactive updates keep your platform healthy long after launch. We handle the infrastructure so your team can focus on growth.',
+    deliverables: ['Security Monitoring', 'Performance Tuning', 'Regular Updates', 'Priority Support'],
+    href: '/custom/services/maintenance',
+    duration: 'Ongoing',
+  },
+  {
+    number: '06',
+    title: 'Growth & Optimisation',
+    tagline: 'Compound your ROI',
+    description: 'SEO, conversion rate optimisation, and analytics-driven improvements turn your platform into a compounding asset. Data reveals opportunities; we execute on them.',
+    deliverables: ['SEO Strategy', 'CRO & A/B Testing', 'Analytics', 'Growth Roadmap'],
+    href: '/custom/services/growth',
+    duration: 'Ongoing',
+  },
+];
+
+const lifecycleSteps = [
+  { number: '01', name: 'Discovery', duration: '1\u20133 weeks', href: '/custom/services/discovery' },
+  { number: '02', name: 'Design', duration: '3\u20136 weeks', href: '/custom/services/design' },
+  { number: '03', name: 'Development', duration: '4\u201312 weeks', href: '/custom/services/development' },
+  { number: '04', name: 'Deployment', duration: '1\u20132 weeks', href: '/custom/services/deployment' },
+  { number: '05', name: 'Maintenance', duration: 'Ongoing', href: '/custom/services/maintenance' },
+  { number: '06', name: 'Growth', duration: 'Ongoing', href: '/custom/services/growth' },
+];
 ---
 
 <Layout
   title="Our Services | Orangesoft Custom"
-  description="Custom design and custom development services for organisations that demand more than templates. UX research, visual design, frontend and backend engineering from a Malaysian web agency with 19+ years of experience."
+  description="Six services covering the full project lifecycle \u2014 from discovery and strategy through design, development, deployment, maintenance, and growth. One team, every phase."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -36,9 +102,9 @@ const breadcrumbSchema = {
   <!-- Hero -->
   <section class="hero">
     <div class="section-inner">
-      <h1 class="hero-title">Two Services.<br />One Seamless Result.</h1>
+      <h1 class="hero-title">Six Services.<br />One Complete Journey.</h1>
       <p class="hero-lead">
-        Every project we deliver starts with thoughtful design and ends with robust engineering. We offer two distinct services that work independently or together, depending on what your organisation needs.
+        We cover every phase from first conversation to ongoing growth, so you never need to coordinate between multiple vendors. One team, one relationship, one point of accountability across your entire project lifecycle.
       </p>
     </div>
   </section>
@@ -49,131 +115,75 @@ const breadcrumbSchema = {
   <section class="section section-alt">
     <div class="section-inner">
       <div class="services-grid" data-animate="stagger">
-
-        <!-- Custom Design -->
-        <a href="/custom/services/design" class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 19l7-7 3 3-7 7-3-3z" />
-              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
-              <path d="M2 2l7.586 7.586" />
-              <circle cx="11" cy="11" r="2" />
-            </svg>
-          </div>
-          <span class="service-label">Service 01</span>
-          <h2 class="service-title">Custom Design</h2>
-          <p class="service-desc">
-            UX research, wireframing, visual design, design systems, and interactive prototyping. We craft every pixel to serve your brand and your users.
-          </p>
-          <div class="service-details">
-            <div class="service-for">
-              <h3>For</h3>
-              <p>Brands that need a premium digital presence that stands apart from template-based competitors.</p>
-            </div>
-            <div class="service-outcome">
-              <h3>Outcome</h3>
-              <p>Cohesive brand experience across every touchpoint, improved conversion rates, and design systems that scale with your organisation.</p>
-            </div>
-          </div>
-          <ul class="service-includes">
-            <li>UX Research</li>
-            <li>Wireframing</li>
-            <li>Visual Design</li>
-            <li>Design Systems</li>
-            <li>Prototyping</li>
-          </ul>
-          <span class="service-link">
-            Learn more about our design service
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </a>
-
-        <!-- Custom Development -->
-        <a href="/custom/services/development" class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg>
-          </div>
-          <span class="service-label">Service 02</span>
-          <h2 class="service-title">Custom Development</h2>
-          <p class="service-desc">
-            Frontend engineering with NuxtJS, backend systems in Laravel, API development, third-party integrations, and database architecture. Code built to perform and built to last.
-          </p>
-          <div class="service-details">
-            <div class="service-for">
-              <h3>For</h3>
-              <p>Businesses with unique technical requirements that off-the-shelf platforms and page builders cannot satisfy.</p>
-            </div>
-            <div class="service-outcome">
-              <h3>Outcome</h3>
-              <p>High-performance applications, scalable architecture, and clean maintainable code your team can confidently extend.</p>
-            </div>
-          </div>
-          <ul class="service-includes">
-            <li>Frontend (NuxtJS)</li>
-            <li>Backend (Laravel)</li>
-            <li>API Development</li>
-            <li>Integrations</li>
-            <li>Database Architecture</li>
-          </ul>
-          <span class="service-link">
-            Learn more about our development service
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </span>
-        </a>
-
+        {services.map((service) => (
+          <a href={service.href} class="service-card">
+            <span class="service-number">{service.number}</span>
+            <h2 class="service-title">{service.title}</h2>
+            <p class="service-tagline">{service.tagline}</p>
+            <p class="service-desc">{service.description}</p>
+            <ul class="service-tags">
+              {service.deliverables.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+            <span class="service-link">
+              Learn more
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Not Sure -->
+  <!-- The Full Lifecycle -->
   <section class="section">
     <div class="section-inner" data-animate="fade-up">
-      <div class="decide">
-        <span class="decide-label">Not sure which you need?</span>
-        <h2 class="decide-title">Most Clients Need Both</h2>
-        <p class="decide-lead">
-          Design without development is a static mockup. Development without design is a functional product nobody wants to use. The strongest digital experiences happen when both disciplines work in concert from day one.
+      <div class="lifecycle-narrative">
+        <SectionHeading
+          title="The Full Lifecycle"
+          subtitle="Most clients engage us across multiple phases, but each service can be purchased independently."
+          align="center"
+        />
+        <p class="lifecycle-text">
+          The strongest results come from continuity. When the same team that researched your audience also designs the interface, writes the code, deploys the platform, and optimises it for growth, nothing gets lost in translation. Context compounds at every phase.
         </p>
-        <p class="decide-lead">
-          Most of our engagements combine both services into a single, integrated project. We begin with research and design to define the right solution, then our engineering team brings it to life with pixel-perfect accuracy. You get one team, one timeline, and one point of accountability.
+        <p class="lifecycle-text">
+          That said, we understand that not every organisation needs every phase. Perhaps you already have designs from another agency and need expert development. Perhaps you have a live platform that needs ongoing maintenance and growth optimisation. We are happy to engage at whichever stage makes sense for you.
         </p>
-        <p class="decide-lead">
-          That said, if you already have designs from another agency or an in-house team and just need expert development, or if you need a design system refresh without a full rebuild, we are happy to take on either service independently.
+        <p class="lifecycle-highlight">
+          Start with discovery and stay through growth, or hire us for just the phase you need.
         </p>
-        <a href="/custom/contact" class="decide-cta">
-          Let's discuss your project
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- How We Work -->
+  <!-- Lifecycle Flow -->
   <section class="section section-alt">
     <div class="section-inner">
       <SectionHeading
-        title="How Every Project Starts"
-        subtitle="Regardless of which service you choose, every engagement begins with the same structured discovery process."
+        title="The Journey at a Glance"
+        subtitle="Six phases, one seamless flow. Each step builds on the last."
+        align="center"
       />
-      <div class="steps-grid" data-animate="stagger">
-        <div class="step">
-          <span class="step-num">01</span>
-          <h3 class="step-title">Discovery Call</h3>
-          <p class="step-desc">A 30-minute conversation to understand your goals, constraints, and timeline. No commitment required.</p>
-        </div>
-        <div class="step">
-          <span class="step-num">02</span>
-          <h3 class="step-title">Proposal & Scope</h3>
-          <p class="step-desc">A detailed proposal with clear deliverables, milestones, and fixed pricing. No surprises.</p>
-        </div>
-        <div class="step">
-          <span class="step-num">03</span>
-          <h3 class="step-title">Kickoff & Sprint Planning</h3>
-          <p class="step-desc">We align on priorities, set up communication channels, and begin the first sprint within the week.</p>
-        </div>
+      <div class="lifecycle-flow" data-animate="stagger">
+        {lifecycleSteps.map((step, i) => (
+          <a href={step.href} class="flow-step">
+            <span class="flow-number">{step.number}</span>
+            <span class="flow-name">{step.name}</span>
+            <span class="flow-duration">{step.duration}</span>
+            {i < lifecycleSteps.length - 1 && (
+              <span class="flow-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            )}
+          </a>
+        ))}
+      </div>
+      <div class="flow-timeline-note" data-animate="fade-up">
+        <p><strong>Typical corporate website:</strong> 12\u201316 weeks end-to-end</p>
+        <p><strong>Complex web application:</strong> 20\u201328 weeks end-to-end</p>
+        <p><strong>Ongoing maintenance & growth:</strong> continuous engagement</p>
       </div>
     </div>
   </section>
@@ -205,14 +215,14 @@ const breadcrumbSchema = {
   /* Service Cards Grid */
   .services-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 
   .service-card {
     display: flex;
     flex-direction: column;
-    padding: 2.5rem;
+    padding: 2rem;
     border: 1px solid var(--color-divider);
     border-radius: 0.75rem;
     background: var(--color-surface);
@@ -225,86 +235,50 @@ const breadcrumbSchema = {
     box-shadow: 0 8px 32px rgba(232, 114, 12, 0.08);
   }
 
-  .service-icon {
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-brand-light);
-    border-radius: 0.625rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .service-icon svg {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: var(--color-brand);
-  }
-
-  .service-label {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
+  .service-number {
+    font-size: 0.75rem;
+    font-weight: 300;
     letter-spacing: 0.1em;
     color: var(--color-brand);
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 
   .service-title {
-    font-size: 1.75rem;
+    font-size: 1.375rem;
     font-weight: 600;
     color: var(--color-foreground);
     letter-spacing: -0.02em;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .service-tagline {
+    font-size: 0.8125rem;
+    font-style: italic;
+    color: var(--color-brand);
+    margin-bottom: 1rem;
   }
 
   .service-desc {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     line-height: 1.7;
     color: var(--color-muted);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
 
-  .service-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-    margin-bottom: 1.5rem;
-    padding: 1.25rem;
-    background: white;
-    border-radius: 0.5rem;
-  }
-
-  .service-details h3 {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-foreground);
-    margin-bottom: 0.5rem;
-  }
-
-  .service-details p {
-    font-size: 0.8125rem;
-    line-height: 1.6;
-    color: var(--color-muted);
-  }
-
-  .service-includes {
+  .service-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.375rem;
     list-style: none;
     padding: 0;
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 
-  .service-includes li {
-    font-size: 0.75rem;
+  .service-tags li {
+    font-size: 0.6875rem;
     font-weight: 500;
     color: var(--color-foreground);
-    padding: 0.375rem 0.875rem;
+    padding: 0.3125rem 0.75rem;
     background: white;
     border: 1px solid var(--color-divider);
     border-radius: 2rem;
@@ -314,7 +288,7 @@ const breadcrumbSchema = {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 600;
     color: var(--color-brand);
     margin-top: auto;
@@ -326,101 +300,129 @@ const breadcrumbSchema = {
   }
 
   .service-link svg {
-    width: 1rem;
-    height: 1rem;
+    width: 0.875rem;
+    height: 0.875rem;
   }
 
-  /* Decide Section */
-  .decide {
+  /* Lifecycle Narrative */
+  .lifecycle-narrative {
     max-width: 720px;
     margin: 0 auto;
     text-align: center;
   }
 
-  .decide-label {
-    display: inline-block;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-brand);
-    margin-bottom: 1rem;
-  }
-
-  .decide-title {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--color-foreground);
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
-  }
-
-  .decide-lead {
+  .lifecycle-text {
     font-size: 1rem;
     line-height: 1.8;
     color: var(--color-muted);
     margin-bottom: 1rem;
   }
 
-  .decide-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-brand);
-    text-decoration: none;
-    transition: gap 0.3s ease;
-  }
-
-  .decide-cta:hover {
-    gap: 0.75rem;
-  }
-
-  .decide-cta svg {
-    width: 1rem;
-    height: 1rem;
-  }
-
-  /* Steps */
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-
-  .step {
-    padding: 1.75rem;
-    border: 1px solid var(--color-divider);
-    border-radius: 0.5rem;
-    transition: border-color 0.3s ease;
-  }
-
-  .step:hover {
-    border-color: var(--color-brand);
-  }
-
-  .step-num {
-    font-size: 0.6875rem;
-    font-weight: 300;
-    color: var(--color-brand);
-    letter-spacing: 0.1em;
-    display: block;
-    margin-bottom: 0.75rem;
-  }
-
-  .step-title {
+  .lifecycle-highlight {
     font-size: 1.0625rem;
     font-weight: 600;
     color: var(--color-foreground);
-    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-brand-light);
+    border-radius: 0.5rem;
+    border-left: 3px solid var(--color-brand);
+    text-align: left;
   }
 
-  .step-desc {
+  /* Lifecycle Flow */
+  .lifecycle-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .flow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    padding: 1.25rem 1rem;
+    border-radius: 0.5rem;
+    transition: background 0.2s ease;
+    position: relative;
+  }
+
+  .flow-step:hover {
+    background: var(--color-brand-light);
+  }
+
+  .flow-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background: var(--color-brand);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.625rem;
+  }
+
+  .flow-name {
     font-size: 0.8125rem;
-    line-height: 1.7;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.25rem;
+  }
+
+  .flow-duration {
+    font-size: 0.6875rem;
+    color: var(--color-brand);
+    font-weight: 500;
+  }
+
+  .flow-arrow {
+    position: absolute;
+    right: -0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-divider);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  .flow-arrow svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .flow-timeline-note {
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-divider);
+  }
+
+  .flow-timeline-note p {
+    font-size: 0.875rem;
+    line-height: 1.6;
     color: var(--color-muted);
+    margin-bottom: 0.375rem;
+  }
+
+  .flow-timeline-note p:last-child {
+    margin-bottom: 0;
+  }
+
+  .flow-timeline-note strong {
+    color: var(--color-foreground);
+    font-weight: 600;
   }
 
   @keyframes slideUp {
@@ -432,13 +434,55 @@ const breadcrumbSchema = {
     .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
   }
 
+  @media (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 768px) {
     .section { padding: 3rem 1.5rem; }
     .hero-title { font-size: 2rem; }
     .services-grid { grid-template-columns: 1fr; }
     .service-card { padding: 1.75rem; }
-    .service-details { grid-template-columns: 1fr; }
-    .decide-title { font-size: 1.5rem; }
-    .steps-grid { grid-template-columns: 1fr; }
+
+    .lifecycle-flow {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .flow-step {
+      flex-direction: row;
+      gap: 1rem;
+      padding: 0.875rem 1rem;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .flow-number {
+      margin-bottom: 0;
+      width: 2.25rem;
+      height: 2.25rem;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .flow-name {
+      margin-bottom: 0;
+      flex: 1;
+      text-align: left;
+    }
+
+    .flow-duration {
+      text-align: right;
+    }
+
+    .flow-arrow {
+      right: auto;
+      left: 1.875rem;
+      top: auto;
+      bottom: -0.5rem;
+      transform: rotate(90deg);
+    }
   }
 </style>

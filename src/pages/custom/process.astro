@@ -8,7 +8,6 @@ import CtaBand from '../../components/CtaBand.astro';
 import Animations from '../../components/Animations.astro';
 import TrustStrip from '../../components/TrustStrip.astro';
 import PricingTeaser from '../../components/PricingTeaser.astro';
-import { processPhases } from '../../data/process-detail';
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -19,11 +18,62 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 3, name: 'Process', item: 'https://orangesoft.com.my/custom/process' },
   ],
 };
+
+const stages = [
+  {
+    number: '01',
+    name: 'Discovery & Strategy',
+    tagline: 'Clarity before commitment',
+    duration: '1\u20133 weeks',
+    description: 'We start by understanding your business, audience, and competitive landscape. Research and audits inform a strategic foundation that ensures every downstream decision is evidence-based. Nothing gets designed or built until we know exactly what problem we are solving.',
+    href: '/custom/services/discovery',
+  },
+  {
+    number: '02',
+    name: 'Custom Design',
+    tagline: 'Where strategy meets craft',
+    duration: '3\u20136 weeks',
+    description: 'Wireframes, visual design, and interactive prototypes bring the strategy to life. Every interface is crafted to serve your users and your brand, validated through stakeholder review rounds before a single line of code is written.',
+    href: '/custom/services/design',
+  },
+  {
+    number: '03',
+    name: 'Custom Development',
+    tagline: 'Engineering that scales',
+    duration: '4\u201312 weeks',
+    description: 'Approved designs become a working platform through iterative sprints with weekly demos. Frontend, backend, APIs, and integrations are engineered for performance and maintainability, with progress visible at every step.',
+    href: '/custom/services/development',
+  },
+  {
+    number: '04',
+    name: 'Migration & Deployment',
+    tagline: 'Launch with confidence',
+    duration: '1\u20132 weeks',
+    description: 'Thorough testing, data migration, team training, and a rehearsed deployment process make launch day uneventful. Zero-downtime deployment with full rollback capability means your business is never at risk.',
+    href: '/custom/services/deployment',
+  },
+  {
+    number: '05',
+    name: 'Maintenance & Support',
+    tagline: 'Peace of mind',
+    duration: 'Ongoing',
+    description: 'Security patches, performance monitoring, and proactive updates keep your platform healthy. We handle the infrastructure and routine maintenance so your team can focus on running the business.',
+    href: '/custom/services/maintenance',
+  },
+  {
+    number: '06',
+    name: 'Growth & Optimisation',
+    tagline: 'Compound your ROI',
+    duration: 'Ongoing',
+    description: 'SEO, conversion rate optimisation, analytics, and data-driven improvements turn your platform into a compounding asset. Quarterly strategy sessions ensure your digital investment keeps pace with your business goals.',
+    href: '/custom/services/growth',
+  },
+];
 ---
 
 <Layout
-  title="Our Process | Orangesoft Custom"
-  description="7 structured phases from research to post-launch marketing. Clear milestones, defined deliverables, and transparent communication at every step of your project."
+  title="Project Lifecycle | Orangesoft Custom"
+  description="Every project follows a proven six-stage path from discovery through growth. See how the journey unfolds, with typical timelines and the flexibility to start at any phase."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -40,107 +90,112 @@ const breadcrumbSchema = {
   <!-- Hero -->
   <section class="hero">
     <div class="section-inner">
-      <h1 class="hero-title">Our Process</h1>
+      <h1 class="hero-title">Project Lifecycle</h1>
       <p class="hero-lead">
-        Seven phases from research to results. Every project follows this proven methodology — adapted to your timeline, refined over hundreds of engagements, designed to eliminate surprises.
+        Every project follows a proven path. Here is how the journey unfolds — from first conversation to ongoing growth.
       </p>
-      <div class="hero-phases">
-        {processPhases.map((phase, i) => (
-          <a href={`#phase-${phase.number}`} class="hero-phase-link">
-            <span class="hero-phase-num">{String(phase.number).padStart(2, '0')}</span>
-            <span class="hero-phase-name">{phase.name}</span>
-          </a>
-        ))}
-      </div>
     </div>
   </section>
 
   <TrustStrip />
 
-  <!-- Phase Deep Dives -->
-  {processPhases.map((phase, i) => (
-    <section class:list={['section', { 'section-alt': i % 2 !== 0 }]} id={`phase-${phase.number}`}>
-      <div class="section-inner">
-        <div class="phase" data-animate="fade-up">
-          <div class="phase-header">
-            <span class="phase-badge">{String(phase.number).padStart(2, '0')}</span>
-            <div class="phase-header-text">
-              <h2 class="phase-name">{phase.name}</h2>
-              <p class="phase-tagline">{phase.tagline}</p>
-            </div>
-            <span class="phase-duration">{phase.duration}</span>
-          </div>
-
-          <p class="phase-description">{phase.description}</p>
-
-          <div class="phase-grid">
-            <div class="phase-col">
-              <h3 class="phase-col-title">Activities</h3>
-              <ul class="phase-list">
-                {phase.activities.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div class="phase-col">
-              <h3 class="phase-col-title">Deliverables</h3>
-              <ul class="phase-list phase-list--deliverables">
-                {phase.deliverables.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div class="phase-client">
-            <h3 class="phase-client-title">Your Role</h3>
-            <p class="phase-client-text">{phase.clientRole}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  ))}
-
-  <!-- Timeline Summary -->
+  <!-- Visual Lifecycle Journey -->
   <section class="section section-alt">
     <div class="section-inner">
-      <div class="timeline-summary" data-animate="fade-up">
-        <h2 class="ts-title">Typical Project Timeline</h2>
-        <p class="ts-intro">
-          Most custom projects run 12 to 24 weeks from kickoff to launch, depending on complexity. Here is how that time typically breaks down.
-        </p>
-        <div class="timeline-bar">
-          {processPhases.map((phase) => (
-            <div class="timeline-segment" data-phase={phase.number}>
-              <span class="ts-label">{phase.name}</span>
-              <span class="ts-dur">{phase.duration}</span>
+      <div class="timeline" data-animate="stagger">
+        {stages.map((stage, i) => (
+          <div class="timeline-stage">
+            <div class="timeline-track">
+              <span class="timeline-dot">{stage.number}</span>
+              {i < stages.length - 1 && <span class="timeline-line" />}
             </div>
-          ))}
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <a href={stage.href} class="timeline-name">{stage.name}</a>
+                  <p class="timeline-tagline">{stage.tagline}</p>
+                </div>
+                <span class="timeline-duration">{stage.duration}</span>
+              </div>
+              <p class="timeline-desc">{stage.description}</p>
+              <a href={stage.href} class="timeline-link">
+                Learn more
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Typical Project Timeline -->
+  <section class="section">
+    <div class="section-inner" data-animate="fade-up">
+      <div class="project-timeline">
+        <h2 class="pt-title">Typical Project Timeline</h2>
+        <p class="pt-lead">
+          Every project is unique, but experience gives us reliable benchmarks.
+        </p>
+        <div class="pt-grid">
+          <div class="pt-card">
+            <span class="pt-label">Corporate Website</span>
+            <span class="pt-range">12\u201316 weeks</span>
+            <p class="pt-note">Discovery through deployment for a multi-page corporate site with CMS integration and responsive design.</p>
+          </div>
+          <div class="pt-card">
+            <span class="pt-label">Web Application</span>
+            <span class="pt-range">20\u201328 weeks</span>
+            <p class="pt-note">Full lifecycle for a complex application with custom backend logic, user authentication, and third-party integrations.</p>
+          </div>
+          <div class="pt-card">
+            <span class="pt-label">Ongoing Engagement</span>
+            <span class="pt-range">Continuous</span>
+            <p class="pt-note">Maintenance, support, and growth optimisation as a long-term partnership, typically on monthly retainer.</p>
+          </div>
         </div>
-        <p class="ts-note">
-          Timelines are adapted to each project. Smaller marketing sites may complete in 8 to 10 weeks. Complex web applications with custom integrations may take 6 months or more. We define the timeline during the Planning phase and hold ourselves accountable to it.
+        <p class="pt-caveat">
+          But every project is unique. Smaller marketing sites may complete in 8 to 10 weeks. Enterprise platforms with complex integrations may require 6 months or more. We define the timeline during discovery and hold ourselves accountable to it.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Why Process Matters -->
-  <section class="section">
+  <!-- Enter at Any Phase -->
+  <section class="section section-alt">
     <div class="section-inner" data-animate="fade-up">
-      <div class="process-philosophy">
-        <h2 class="pp-title">Why Process Matters</h2>
-        <p class="pp-text">
-          A good process does not slow projects down — it eliminates the rework that slows projects down. Every phase exists because we learned, through experience, that skipping it leads to problems later. Research prevents building the wrong thing. Planning prevents scope creep. Design validation prevents expensive development pivots.
+      <div class="enter-any">
+        <h2 class="ea-title">Enter at Any Phase</h2>
+        <p class="ea-lead">
+          You do not have to start at phase one. We meet you where you are.
         </p>
-        <p class="pp-text">
-          The result is not just a better product — it is a more predictable experience. You will know what is happening, when it is happening, and what you need to do at every stage. No black boxes, no surprises, no uncomfortable silences between milestone meetings.
+        <div class="ea-examples">
+          <div class="ea-example">
+            <span class="ea-scenario">Already have designs?</span>
+            <span class="ea-action">Start at <a href="/custom/services/development">Development</a></span>
+          </div>
+          <div class="ea-example">
+            <span class="ea-scenario">Already launched?</span>
+            <span class="ea-action">Start at <a href="/custom/services/maintenance">Maintenance</a> or <a href="/custom/services/growth">Growth</a></span>
+          </div>
+          <div class="ea-example">
+            <span class="ea-scenario">Need a strategic reset?</span>
+            <span class="ea-action">Start at <a href="/custom/services/discovery">Discovery</a></span>
+          </div>
+          <div class="ea-example">
+            <span class="ea-scenario">Migrating from another platform?</span>
+            <span class="ea-action">Start at <a href="/custom/services/deployment">Deployment</a></span>
+          </div>
+        </div>
+        <p class="ea-closing">
+          Each service is designed to stand on its own. Engage us for the full journey, or for just the phase you need. The quality and rigour are the same either way.
         </p>
       </div>
     </div>
   </section>
 
   <PricingTeaser />
-  <CtaBand heading="Ready to start with Phase 1?" buttonText="Begin Your Project" buttonHref="/custom/contact" />
+  <CtaBand heading="Ready to start your journey?" buttonText="Begin Your Project" buttonHref="/custom/contact" />
   <MicrositeFooter />
   <Animations />
 </Layout>
@@ -150,6 +205,7 @@ const breadcrumbSchema = {
   .section-inner { max-width: 1200px; margin: 0 auto; }
   .section-alt { background: white; }
 
+  /* Hero */
   .hero { padding: 3rem 1.5rem 2rem; }
   .hero-title {
     font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
@@ -161,191 +217,299 @@ const breadcrumbSchema = {
     opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
   }
 
-  /* Hero Phase Navigation */
-  .hero-phases {
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
-    margin-top: 2rem;
-    opacity: 0; animation: slideUp 0.7s ease 1.3s forwards;
-  }
-  .hero-phase-link {
-    display: flex; align-items: center; gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid var(--color-divider);
-    border-radius: 2rem;
-    text-decoration: none;
-    font-size: 0.75rem;
-    transition: border-color 0.2s ease, background 0.2s ease;
-  }
-  .hero-phase-link:hover {
-    border-color: var(--color-brand);
-    background: var(--color-brand-light);
-  }
-  .hero-phase-num {
-    font-weight: 300; color: var(--color-brand); letter-spacing: 0.05em;
-  }
-  .hero-phase-name {
-    font-weight: 500; color: var(--color-foreground);
+  /* Timeline */
+  .timeline {
+    max-width: 800px;
+    margin: 0 auto;
   }
 
-  /* Phase */
-  .phase-header {
-    display: flex; align-items: flex-start; gap: 1.25rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+  .timeline-stage {
+    display: flex;
+    gap: 2rem;
+    position: relative;
   }
-  .phase-badge {
-    display: flex; align-items: center; justify-content: center;
-    width: 3.5rem; height: 3.5rem;
-    border-radius: 0.5rem;
+
+  .timeline-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 3.5rem;
+  }
+
+  .timeline-dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
     background: var(--color-brand);
     color: white;
-    font-size: 1.125rem; font-weight: 700;
-    letter-spacing: -0.02em;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     flex-shrink: 0;
+    z-index: 1;
   }
-  .phase-header-text { flex: 1; min-width: 200px; }
-  .phase-name {
-    font-size: 2rem; font-weight: 700; letter-spacing: -0.03em;
-    color: var(--color-foreground); margin-bottom: 0.25rem;
+
+  .timeline-line {
+    width: 2px;
+    flex: 1;
+    background: var(--color-divider);
+    min-height: 2rem;
   }
-  .phase-tagline {
-    font-size: 1.0625rem; line-height: 1.5; color: var(--color-muted);
+
+  .timeline-content {
+    flex: 1;
+    padding-bottom: 3rem;
   }
-  .phase-duration {
-    display: inline-flex; align-items: center;
-    padding: 0.375rem 1rem;
+
+  .timeline-stage:last-child .timeline-content {
+    padding-bottom: 0;
+  }
+
+  .timeline-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .timeline-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .timeline-name:hover {
+    color: var(--color-brand);
+  }
+
+  .timeline-tagline {
+    font-size: 0.875rem;
+    font-style: italic;
+    color: var(--color-brand);
+    margin-top: 0.125rem;
+  }
+
+  .timeline-duration {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3125rem 0.875rem;
     background: var(--color-brand-light);
     color: var(--color-brand);
-    font-size: 0.75rem; font-weight: 600;
+    font-size: 0.6875rem;
+    font-weight: 600;
     border-radius: 2rem;
     white-space: nowrap;
     flex-shrink: 0;
-    margin-top: 0.375rem;
+    margin-top: 0.25rem;
   }
 
-  .phase-description {
-    font-size: 1rem; line-height: 1.8; color: var(--color-muted);
-    max-width: 720px; margin-bottom: 2.5rem;
+  .timeline-desc {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
   }
 
-  .phase-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+  .timeline-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-brand);
+    text-decoration: none;
+    transition: gap 0.3s ease;
+  }
+
+  .timeline-link:hover {
+    gap: 0.75rem;
+  }
+
+  .timeline-link svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  /* Typical Project Timeline */
+  .project-timeline {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pt-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .pt-lead {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-muted);
     margin-bottom: 2.5rem;
   }
 
-  .phase-col-title {
-    font-size: 0.875rem; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.05em; color: var(--color-foreground);
-    margin-bottom: 1rem;
-  }
-
-  .phase-list {
-    list-style: none; padding: 0; margin: 0;
-  }
-  .phase-list li {
-    position: relative;
-    padding: 0.5rem 0 0.5rem 1.25rem;
-    font-size: 0.875rem; line-height: 1.6; color: var(--color-muted);
-    border-bottom: 1px solid var(--color-divider);
-  }
-  .phase-list li:last-child { border-bottom: none; }
-  .phase-list li::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0.875rem;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--color-brand);
-  }
-  .phase-list--deliverables li::before {
-    border-radius: 1px;
-    width: 8px; height: 8px;
-    background: none;
-    border: 2px solid var(--color-brand);
-    top: 0.8rem;
-  }
-
-  /* Client Role */
-  .phase-client {
-    padding: 1.5rem;
-    background: var(--color-brand-light);
-    border-radius: 0.5rem;
-    border-left: 3px solid var(--color-brand);
-  }
-  .phase-client-title {
-    font-size: 0.8125rem; font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.05em; color: var(--color-brand);
-    margin-bottom: 0.5rem;
-  }
-  .phase-client-text {
-    font-size: 0.875rem; line-height: 1.7; color: var(--color-foreground);
-  }
-
-  /* Timeline Summary */
-  .timeline-summary { max-width: 900px; margin: 0 auto; }
-  .ts-title {
-    font-size: 2rem; font-weight: 600; color: var(--color-foreground);
-    letter-spacing: -0.02em; margin-bottom: 0.75rem;
-    text-align: center;
-  }
-  .ts-intro {
-    font-size: 1rem; line-height: 1.7; color: var(--color-muted);
-    text-align: center; max-width: 560px; margin: 0 auto 2.5rem;
-  }
-
-  .timeline-bar {
-    display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.375rem;
+  .pt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
     margin-bottom: 2rem;
   }
-  .timeline-segment {
-    padding: 1rem 0.5rem;
-    background: var(--color-surface);
-    border-radius: 0.375rem;
-    text-align: center;
-    transition: background 0.2s ease;
+
+  .pt-card {
+    padding: 1.5rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    text-align: left;
+    transition: border-color 0.2s ease;
   }
-  .timeline-segment:hover { background: var(--color-brand-light); }
-  .ts-label {
+
+  .pt-card:hover {
+    border-color: var(--color-brand);
+  }
+
+  .pt-label {
     display: block;
-    font-size: 0.6875rem; font-weight: 600; color: var(--color-foreground);
-    margin-bottom: 0.25rem;
-  }
-  .ts-dur {
-    display: block;
-    font-size: 0.625rem; color: var(--color-brand); font-weight: 500;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    margin-bottom: 0.5rem;
   }
 
-  .ts-note {
-    font-size: 0.875rem; line-height: 1.7; color: var(--color-muted);
+  .pt-range {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-brand);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .pt-note {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  .pt-caveat {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* Enter at Any Phase */
+  .enter-any {
+    max-width: 720px;
+    margin: 0 auto;
     text-align: center;
   }
 
-  /* Philosophy */
-  .process-philosophy { max-width: 720px; margin: 0 auto; text-align: center; }
-  .pp-title {
-    font-size: 1.75rem; font-weight: 600; color: var(--color-foreground);
-    margin-bottom: 1.5rem; letter-spacing: -0.02em;
+  .ea-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
   }
-  .pp-text {
-    font-size: 1rem; line-height: 1.8; color: var(--color-muted); margin-bottom: 1.25rem;
-  }
-  .pp-text:last-child { margin-bottom: 0; }
 
-  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead, .hero-phases { animation: none !important; opacity: 1 !important; } }
+  .ea-lead {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .ea-examples {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .ea-example {
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .ea-example:hover {
+    border-color: var(--color-brand);
+  }
+
+  .ea-scenario {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.375rem;
+  }
+
+  .ea-action {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+  }
+
+  .ea-action a {
+    color: var(--color-brand);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .ea-action a:hover {
+    color: var(--color-brand-dark);
+  }
+
+  .ea-closing {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-muted);
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
+  }
 
   @media (max-width: 768px) {
     .section { padding: 3rem 1.5rem; }
     .hero-title { font-size: 2rem; }
-    .hero-phases { gap: 0.375rem; }
-    .hero-phase-link { padding: 0.375rem 0.75rem; font-size: 0.6875rem; }
-    .phase-header { flex-direction: column; gap: 0.75rem; }
-    .phase-badge { width: 2.75rem; height: 2.75rem; font-size: 0.9375rem; }
-    .phase-name { font-size: 1.5rem; }
-    .phase-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .timeline-bar { grid-template-columns: 1fr; gap: 0.25rem; }
-    .timeline-segment { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; }
-    .ts-title { font-size: 1.5rem; }
-    .pp-title { font-size: 1.5rem; }
+
+    .timeline-stage { gap: 1.25rem; }
+    .timeline-track { width: 2.75rem; }
+    .timeline-dot { width: 2.75rem; height: 2.75rem; font-size: 0.8125rem; }
+    .timeline-name { font-size: 1.25rem; }
+    .timeline-content { padding-bottom: 2rem; }
+    .timeline-header { flex-direction: column; gap: 0.5rem; }
+
+    .pt-title { font-size: 1.5rem; }
+    .pt-grid { grid-template-columns: 1fr; }
+
+    .ea-title { font-size: 1.5rem; }
+    .ea-examples { grid-template-columns: 1fr; }
   }
 </style>

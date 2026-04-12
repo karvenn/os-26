@@ -205,6 +205,22 @@ const breadcrumbSchema = {
     </div>
   </section>
 
+  <!-- Adjacent Services -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="adjacent">
+        <a href="/custom/services/discovery" class="adj-link adj-prev">
+          <span class="adj-label">&larr; Before this</span>
+          <span class="adj-name">Discovery & Strategy</span>
+        </a>
+        <a href="/custom/services/development" class="adj-link adj-next">
+          <span class="adj-label">After this &rarr;</span>
+          <span class="adj-name">Custom Development</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <RelatedWork />
   <PricingTeaser />
   <CtaBand heading="Ready to elevate your digital presence?" buttonText="Start a Design Project" buttonHref="/custom/contact" />
@@ -418,9 +434,18 @@ const breadcrumbSchema = {
     .hero-label, .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
   }
 
+  /* Adjacent services */
+  .adjacent { display: flex; justify-content: space-between; gap: 2rem; }
+  .adj-link { text-decoration: none; padding: 1.25rem 1.5rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; transition: border-color 0.3s ease; }
+  .adj-link:hover { border-color: var(--color-brand); }
+  .adj-next { text-align: right; margin-left: auto; }
+  .adj-label { display: block; font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted); margin-bottom: 0.25rem; }
+  .adj-name { font-size: 1rem; font-weight: 600; color: var(--color-foreground); }
+
   @media (max-width: 768px) {
     .section { padding: 3rem 1.5rem; }
     .hero-title { font-size: 2rem; }
+    .adjacent { flex-direction: column; }
     .deliverables-grid { grid-template-columns: 1fr; }
     .approach-grid { grid-template-columns: 1fr; }
     .audience-grid { grid-template-columns: 1fr; }
