@@ -6,6 +6,7 @@ import MicrositeFooter from '../../components/MicrositeFooter.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import Animations from '../../components/Animations.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
 import { platforms } from '../../data/platforms';
 
 const categoryLabels: Record<string, string> = {
@@ -37,6 +38,8 @@ const categoryLabels: Record<string, string> = {
       </p>
     </div>
   </section>
+
+  <TrustStrip />
 
   <!-- Platform Deep Dives -->
   {platforms.map((platform, i) => (

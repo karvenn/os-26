@@ -6,6 +6,8 @@ import MicrositeFooter from '../../components/MicrositeFooter.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import Animations from '../../components/Animations.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import PricingTeaser from '../../components/PricingTeaser.astro';
 import { processPhases } from '../../data/process-detail';
 ---
 
@@ -38,6 +40,8 @@ import { processPhases } from '../../data/process-detail';
       </div>
     </div>
   </section>
+
+  <TrustStrip />
 
   <!-- Phase Deep Dives -->
   {processPhases.map((phase, i) => (
@@ -121,6 +125,7 @@ import { processPhases } from '../../data/process-detail';
     </div>
   </section>
 
+  <PricingTeaser />
   <CtaBand heading="Ready to start with Phase 1?" buttonText="Begin Your Project" buttonHref="/custom/contact" />
   <MicrositeFooter />
   <Animations />

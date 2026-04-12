@@ -6,6 +6,7 @@ import MicrositeFooter from '../../../components/MicrositeFooter.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import CtaBand from '../../../components/CtaBand.astro';
 import Animations from '../../../components/Animations.astro';
+import TrustStrip from '../../../components/TrustStrip.astro';
 import { getCollection } from 'astro:content';
 
 const allPosts = await getCollection('insights');
@@ -38,6 +39,8 @@ function formatDate(date: Date): string {
       </p>
     </div>
   </section>
+
+  <TrustStrip />
 
   {featured && (
     <section class="section">
