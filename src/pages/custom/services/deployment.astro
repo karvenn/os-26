@@ -1,0 +1,447 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import EntranceOverlay from '../../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import FaqItem from '../../../components/FaqItem.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import Animations from '../../../components/Animations.astro';
+import TrustStrip from '../../../components/TrustStrip.astro';
+import RelatedWork from '../../../components/RelatedWork.astro';
+import PricingTeaser from '../../../components/PricingTeaser.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/custom' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://orangesoft.com.my/custom/services' },
+    { '@type': 'ListItem', position: 3, name: 'Migration & Deployment', item: 'https://orangesoft.com.my/custom/services/deployment' },
+  ],
+};
+---
+
+<Layout
+  title="Migration & Deployment | Orangesoft Custom"
+  description="Data migration, URL redirects, team training, and zero-downtime deployment. Seamless platform transitions from a Malaysian web agency with 19+ years of experience."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <EntranceOverlay />
+  <MicrositeHeader active="services" />
+  <Breadcrumb items={[
+    { label: 'Home', href: '/custom' },
+    { label: 'Services', href: '/custom/services' },
+    { label: 'Migration & Deployment' }
+  ]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <span class="hero-label">Migration & Deployment</span>
+      <h1 class="hero-title">Switch Platforms<br />Without Losing Sleep</h1>
+      <p class="hero-lead">
+        Data migration, URL redirects, team training, and zero-downtime deployment. Whether you are launching a new platform or replacing an existing one, we make the transition seamless for your team and invisible to your users.
+      </p>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <!-- What We Deliver -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="What We Deliver"
+        subtitle="A structured deployment process that eliminates risk and ensures a smooth transition for everyone involved."
+      />
+      <div class="deliverables-grid" data-animate="stagger">
+        <div class="deliverable">
+          <span class="deliverable-num">01</span>
+          <h3 class="deliverable-title">Migration Plan & Risk Assessment</h3>
+          <p class="deliverable-desc">A detailed migration strategy covering data mapping, dependency analysis, risk identification, and contingency plans. Every scenario is accounted for before the first byte of data moves.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">02</span>
+          <h3 class="deliverable-title">Data Transfer & Validation</h3>
+          <p class="deliverable-desc">Structured extraction, transformation, and loading of your content, user data, and application state. Automated validation scripts verify data integrity at every step of the transfer process.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">03</span>
+          <h3 class="deliverable-title">URL Redirect Mapping</h3>
+          <p class="deliverable-desc">Comprehensive redirect map covering every indexed URL on your existing site. We preserve your search engine authority, prevent broken links, and ensure visitors always land on the right page.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">04</span>
+          <h3 class="deliverable-title">Cross-Browser & Device Testing</h3>
+          <p class="deliverable-desc">Systematic testing across all major browsers, devices, and screen sizes. We verify functionality, performance, and visual consistency to ensure your users have a flawless experience regardless of how they access your site.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">05</span>
+          <h3 class="deliverable-title">Team Training & Handover</h3>
+          <p class="deliverable-desc">Role-based training sessions tailored to your team's technical level. Content editors, administrators, and developers each receive focused training on the areas they use daily, plus video walkthroughs and written documentation.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">06</span>
+          <h3 class="deliverable-title">Zero-Downtime Go-Live</h3>
+          <p class="deliverable-desc">Orchestrated deployment with DNS cutover, SSL provisioning, and real-time monitoring. Your users experience no interruption, no error pages, and no degraded performance during the transition.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
+  <section class="section">
+    <div class="section-inner">
+      <SectionHeading
+        title="Our Deployment Approach"
+        subtitle="Three principles that guide every migration and launch we manage."
+      />
+      <div class="approach-grid" data-animate="stagger">
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Rehearse Before Launch</h3>
+          <p class="approach-desc">Every deployment is rehearsed on a staging environment with real data. Dry runs expose issues in a safe environment, timing is calibrated, and the team knows exactly what to expect on launch day. No surprises.</p>
+        </div>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Protect Your SEO</h3>
+          <p class="approach-desc">Years of search engine authority are too valuable to lose in a migration. We create comprehensive redirect maps, preserve meta data, validate canonical URLs, and submit updated sitemaps so your rankings are protected throughout the transition.</p>
+        </div>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Train, Don't Dump</h3>
+          <p class="approach-desc">Documentation alone is not enough. We provide role-based training sessions for your content editors, administrators, and developers. Each person learns the system through their specific workflows, not a generic overview they will forget by next week.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="section section-alt">
+    <div class="section-inner" data-animate="fade-up">
+      <SectionHeading
+        title="Who This Is For"
+        subtitle="Our deployment service is the right fit if you recognise any of these situations."
+      />
+      <div class="audience-grid">
+        <div class="audience-card">
+          <h3 class="audience-title">Replacing a Legacy Website</h3>
+          <p class="audience-desc">Your current website is outdated, slow, or built on technology that is no longer supported. You need a clean migration to a modern platform that preserves your content, SEO authority, and user experience without disruption.</p>
+        </div>
+        <div class="audience-card">
+          <h3 class="audience-title">Migrating from WordPress or Another CMS</h3>
+          <p class="audience-desc">You have outgrown your current CMS and need to move to a custom solution. We handle the content extraction, data transformation, redirect mapping, and training so the transition feels effortless for your team.</p>
+        </div>
+        <div class="audience-card">
+          <h3 class="audience-title">Launching a New Custom Platform</h3>
+          <p class="audience-desc">Your new application is built and tested, and now it needs to go live without a hitch. We manage the deployment process end-to-end: infrastructure provisioning, DNS configuration, SSL, monitoring, and post-launch verification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Adjacent Services -->
+  <section class="section">
+    <div class="section-inner" data-animate="fade-up">
+      <SectionHeading
+        title="Where This Fits"
+        subtitle="Migration and deployment sits between development and ongoing support in our service lifecycle."
+      />
+      <div class="adjacent-grid">
+        <a href="/custom/services/development" class="adjacent-card adjacent-card--prev">
+          <span class="adjacent-phase">Previous Phase</span>
+          <h3 class="adjacent-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Custom Development
+          </h3>
+          <p class="adjacent-desc">Frontend engineering, backend systems, API development, and third-party integrations that bring your designs to life.</p>
+        </a>
+        <a href="/custom/services/maintenance" class="adjacent-card adjacent-card--next">
+          <span class="adjacent-phase">Next Phase</span>
+          <h3 class="adjacent-title">Maintenance & Support
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </h3>
+          <p class="adjacent-desc">Ongoing security updates, performance monitoring, content changes, and priority support to keep your platform healthy.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="Frequently Asked Questions"
+        subtitle="Common questions about our migration and deployment service."
+      />
+      <div class="faq-list" data-animate="fade-up">
+        <FaqItem
+          question="Will we lose our SEO rankings?"
+          answer="No. We create comprehensive URL redirect maps, preserve meta data, and submit updated sitemaps to search engines. Most clients see rankings recover within 2 to 4 weeks and improve long-term as the new platform delivers better performance, cleaner markup, and improved Core Web Vitals scores."
+        />
+        <FaqItem
+          question="How long does deployment take?"
+          answer="1 to 2 weeks for a standard launch including final testing, staging rehearsal, and go-live. Migrations from complex legacy systems may take 3 to 4 weeks including data transfer, validation, and multiple dry runs to ensure nothing is missed."
+        />
+        <FaqItem
+          question="Do you train our team?"
+          answer="Yes. Every deployment includes role-based training sessions, video walkthroughs, and written documentation tailored to your team's technical level. Content editors learn how to manage content, administrators learn system configuration, and developers receive technical documentation for ongoing maintenance."
+        />
+        <FaqItem
+          question="What if something goes wrong at launch?"
+          answer="Every deployment has a tested rollback plan. We can revert to the previous version within minutes if needed. We also monitor closely for 72 hours after go-live, watching server performance, error rates, and user behaviour to catch any issues before they affect your business."
+        />
+      </div>
+    </div>
+  </section>
+
+  <RelatedWork />
+  <PricingTeaser />
+  <CtaBand heading="Ready for a seamless transition?" buttonText="Plan Your Migration" buttonHref="/custom/contact" />
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  /* Hero */
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-label {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand);
+    margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1.25rem;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.3s forwards;
+  }
+
+  /* Deliverables */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .deliverable {
+    padding: 1.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .deliverable:hover {
+    border-color: var(--color-brand);
+  }
+
+  .deliverable-num {
+    font-size: 0.6875rem;
+    font-weight: 300;
+    color: var(--color-brand);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .deliverable-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .deliverable-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Approach */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .approach-card {
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .approach-card:hover {
+    border-color: var(--color-brand);
+  }
+
+  .approach-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-brand-light);
+    border-radius: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .approach-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-brand);
+  }
+
+  .approach-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .approach-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Audience */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .audience-card {
+    padding: 1.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .audience-card:hover {
+    border-color: var(--color-brand);
+  }
+
+  .audience-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .audience-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Adjacent Services */
+  .adjacent-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .adjacent-card {
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+    text-decoration: none;
+    display: block;
+  }
+
+  .adjacent-card:hover {
+    border-color: var(--color-brand);
+  }
+
+  .adjacent-phase {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand);
+    margin-bottom: 0.75rem;
+  }
+
+  .adjacent-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .adjacent-title svg {
+    width: 1rem;
+    height: 1rem;
+    color: var(--color-brand);
+  }
+
+  .adjacent-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* FAQ */
+  .faq-list {
+    max-width: 720px;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-label, .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .deliverables-grid { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .audience-grid { grid-template-columns: 1fr; }
+    .adjacent-grid { grid-template-columns: 1fr; }
+  }
+</style>

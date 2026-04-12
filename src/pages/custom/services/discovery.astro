@@ -1,0 +1,454 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import EntranceOverlay from '../../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import FaqItem from '../../../components/FaqItem.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import Animations from '../../../components/Animations.astro';
+import TrustStrip from '../../../components/TrustStrip.astro';
+import RelatedWork from '../../../components/RelatedWork.astro';
+import PricingTeaser from '../../../components/PricingTeaser.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/custom' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://orangesoft.com.my/custom/services' },
+    { '@type': 'ListItem', position: 3, name: 'Discovery & Strategy', item: 'https://orangesoft.com.my/custom/services/discovery' },
+  ],
+};
+---
+
+<Layout
+  title="Discovery & Strategy | Orangesoft Custom"
+  description="Research, audits, and strategic planning that define the right solution before any design or code work begins. Discovery engagements from a Malaysian web agency with 19+ years of experience."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <EntranceOverlay />
+  <MicrositeHeader active="services" />
+  <Breadcrumb items={[
+    { label: 'Home', href: '/custom' },
+    { label: 'Services', href: '/custom/services' },
+    { label: 'Discovery & Strategy' }
+  ]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <span class="hero-label">Discovery & Strategy</span>
+      <h1 class="hero-title">Clarity Before<br />Commitment</h1>
+      <p class="hero-lead">
+        Research, audits, and strategic planning that define the right solution before any design or code work begins. The decisions made in this phase save months of development time and prevent costly pivots.
+      </p>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <!-- What We Deliver -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="What We Deliver"
+        subtitle="A comprehensive discovery process that gives you a clear roadmap before any design or development begins."
+      />
+      <div class="deliverables-grid" data-animate="stagger">
+        <div class="deliverable">
+          <span class="deliverable-num">01</span>
+          <h3 class="deliverable-title">Stakeholder Interviews</h3>
+          <p class="deliverable-desc">Structured conversations with your leadership, team members, and key stakeholders to understand business goals, pain points, internal processes, and success criteria from every perspective that matters.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">02</span>
+          <h3 class="deliverable-title">Competitive Analysis</h3>
+          <p class="deliverable-desc">Deep evaluation of your competitors' digital presence, positioning, features, and user experience. We identify gaps and opportunities that inform a strategy designed to differentiate your brand in the market.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">03</span>
+          <h3 class="deliverable-title">User Research & Personas</h3>
+          <p class="deliverable-desc">Surveys, interviews, and behavioural analysis that reveal who your users truly are, what they need, and how they behave. We distil findings into actionable personas that guide every subsequent design decision.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">04</span>
+          <h3 class="deliverable-title">Technical Audit</h3>
+          <p class="deliverable-desc">Comprehensive assessment of your existing platform, infrastructure, integrations, and technical debt. We evaluate performance, security, scalability, and maintainability to identify risks and opportunities.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">05</span>
+          <h3 class="deliverable-title">Requirements Document</h3>
+          <p class="deliverable-desc">A detailed specification covering functional requirements, user stories, technical constraints, and acceptance criteria. This document becomes the single source of truth for your entire project team.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">06</span>
+          <h3 class="deliverable-title">Project Roadmap & Timeline</h3>
+          <p class="deliverable-desc">A phased delivery plan with milestones, dependencies, resource allocation, and realistic timelines. You know exactly what to expect, when to expect it, and how much it will cost before committing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
+  <section class="section">
+    <div class="section-inner">
+      <SectionHeading
+        title="Our Discovery Approach"
+        subtitle="Three principles that guide every discovery engagement we run."
+      />
+      <div class="approach-grid" data-animate="stagger">
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Ask Before We Assume</h3>
+          <p class="approach-desc">We begin every engagement with deep questioning. Stakeholder interviews, user research, and technical audits ensure we understand the full picture before recommending a direction. Assumptions are the most expensive mistakes in software projects.</p>
+        </div>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
+              <line x1="8" y1="2" x2="8" y2="18" />
+              <line x1="16" y1="6" x2="16" y2="22" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Map the Full Landscape</h3>
+          <p class="approach-desc">We analyse competitors, users, technology, and market dynamics to build a complete picture. Understanding the landscape means your strategy accounts for external realities, not just internal aspirations.</p>
+        </div>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Define Measurable Success</h3>
+          <p class="approach-desc">Every project needs clear success criteria agreed upfront. We work with your team to define KPIs, acceptance criteria, and measurable outcomes so everyone knows what "done" looks like before a single pixel is designed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="section section-alt">
+    <div class="section-inner" data-animate="fade-up">
+      <SectionHeading
+        title="Who This Is For"
+        subtitle="Our discovery service is the right fit if you recognise any of these situations."
+      />
+      <div class="audience-grid">
+        <div class="audience-card">
+          <h3 class="audience-title">Starting a New Project</h3>
+          <p class="audience-desc">You have an idea for a new website, web application, or digital platform but need clarity on scope, technology, timeline, and budget before committing to development. Discovery turns ambiguity into a concrete, actionable plan.</p>
+        </div>
+        <div class="audience-card">
+          <h3 class="audience-title">Evaluating Platform Options</h3>
+          <p class="audience-desc">You are weighing WordPress against custom development, comparing CMS platforms, or deciding between build and buy. We provide an impartial assessment based on your specific requirements, not our preferences.</p>
+        </div>
+        <div class="audience-card">
+          <h3 class="audience-title">Need a Technology Audit</h3>
+          <p class="audience-desc">Your existing platform feels slow, outdated, or difficult to maintain but you are unsure what needs fixing. A technical audit reveals the true state of your technology and provides a prioritised improvement roadmap.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Adjacent Services -->
+  <section class="section">
+    <div class="section-inner" data-animate="fade-up">
+      <SectionHeading
+        title="What Comes Next"
+        subtitle="Discovery is the first phase of our end-to-end service lifecycle."
+      />
+      <div class="adjacent-grid">
+        <div class="adjacent-card adjacent-card--current">
+          <span class="adjacent-phase">Phase 1 — You Are Here</span>
+          <h3 class="adjacent-title">Discovery & Strategy</h3>
+          <p class="adjacent-desc">Research, audits, and strategic planning that define the right solution before any design or code work begins.</p>
+        </div>
+        <a href="/custom/services/design" class="adjacent-card adjacent-card--next">
+          <span class="adjacent-phase">Next Phase</span>
+          <h3 class="adjacent-title">Custom Design
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </h3>
+          <p class="adjacent-desc">UX research, wireframing, visual design, design systems, and prototyping that bring your strategy to life.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="Frequently Asked Questions"
+        subtitle="Common questions about our discovery service."
+      />
+      <div class="faq-list" data-animate="fade-up">
+        <FaqItem
+          question="Can we hire you just for discovery?"
+          answer="Yes, about 30% of our discovery engagements are standalone. You receive a complete strategy document you can execute with any team. There is no obligation to continue with us for design or development, though many clients choose to because the transition is seamless."
+        />
+        <FaqItem
+          question="How long does discovery take?"
+          answer="2 to 4 weeks depending on complexity. For a typical corporate website, 2 weeks is sufficient. For a complex web application with multiple integrations, user roles, and third-party systems, expect 3 to 4 weeks. We provide a precise timeline during the initial scoping call."
+        />
+        <FaqItem
+          question="What if we already know what we want?"
+          answer="Great — discovery is faster but still valuable. We validate your assumptions, identify technical risks, and often surface requirements your team hasn't considered. Even experienced teams benefit from a structured discovery process that catches blind spots early rather than mid-development."
+        />
+        <FaqItem
+          question="What does a discovery engagement cost?"
+          answer="Discovery engagements typically range from MYR 8,000 to MYR 25,000 depending on scope. The investment is credited against the full project if you proceed with us for design and development. Given that discovery routinely prevents tens of thousands in rework, it is one of the highest-ROI investments you can make."
+        />
+      </div>
+    </div>
+  </section>
+
+  <RelatedWork />
+  <PricingTeaser />
+  <CtaBand heading="Ready to define your next project?" buttonText="Start a Discovery Engagement" buttonHref="/custom/contact" />
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  /* Hero */
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-label {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand);
+    margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1.25rem;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.3s forwards;
+  }
+
+  /* Deliverables */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .deliverable {
+    padding: 1.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .deliverable:hover {
+    border-color: var(--color-brand);
+  }
+
+  .deliverable-num {
+    font-size: 0.6875rem;
+    font-weight: 300;
+    color: var(--color-brand);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .deliverable-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .deliverable-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Approach */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .approach-card {
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .approach-card:hover {
+    border-color: var(--color-brand);
+  }
+
+  .approach-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-brand-light);
+    border-radius: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .approach-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-brand);
+  }
+
+  .approach-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .approach-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Audience */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .audience-card {
+    padding: 1.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .audience-card:hover {
+    border-color: var(--color-brand);
+  }
+
+  .audience-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .audience-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Adjacent Services */
+  .adjacent-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .adjacent-card {
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .adjacent-card--current {
+    background: var(--color-brand-light);
+    border-color: var(--color-brand);
+  }
+
+  .adjacent-card--next,
+  .adjacent-card--prev {
+    text-decoration: none;
+    display: block;
+  }
+
+  .adjacent-card--next:hover,
+  .adjacent-card--prev:hover {
+    border-color: var(--color-brand);
+  }
+
+  .adjacent-phase {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand);
+    margin-bottom: 0.75rem;
+  }
+
+  .adjacent-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .adjacent-title svg {
+    width: 1rem;
+    height: 1rem;
+    color: var(--color-brand);
+  }
+
+  .adjacent-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* FAQ */
+  .faq-list {
+    max-width: 720px;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-label, .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .deliverables-grid { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .audience-grid { grid-template-columns: 1fr; }
+    .adjacent-grid { grid-template-columns: 1fr; }
+  }
+</style>

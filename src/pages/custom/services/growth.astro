@@ -1,0 +1,445 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import EntranceOverlay from '../../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import FaqItem from '../../../components/FaqItem.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import Animations from '../../../components/Animations.astro';
+import TrustStrip from '../../../components/TrustStrip.astro';
+import RelatedWork from '../../../components/RelatedWork.astro';
+import PricingTeaser from '../../../components/PricingTeaser.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/custom' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://orangesoft.com.my/custom/services' },
+    { '@type': 'ListItem', position: 3, name: 'Growth & Optimisation', item: 'https://orangesoft.com.my/custom/services/growth' },
+  ],
+};
+---
+
+<Layout
+  title="Growth & Optimisation | Orangesoft Custom"
+  description="SEO refinement, conversion rate optimisation, A/B testing, analytics insights, and strategic guidance. Turn your platform into a growth engine with a Malaysian web agency."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <EntranceOverlay />
+  <MicrositeHeader active="services" />
+  <Breadcrumb items={[
+    { label: 'Home', href: '/custom' },
+    { label: 'Services', href: '/custom/services' },
+    { label: 'Growth & Optimisation' }
+  ]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <span class="hero-label">Growth & Optimisation</span>
+      <h1 class="hero-title">Launch Is Just<br />the Beginning</h1>
+      <p class="hero-lead">
+        SEO refinement, conversion rate optimisation, A/B testing, analytics insights, and strategic guidance. We turn your platform from a static asset into a growth engine that improves month over month.
+      </p>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <!-- What We Deliver -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="What We Deliver"
+        subtitle="A data-driven growth service that compounds results over time."
+      />
+      <div class="deliverables-grid" data-animate="stagger">
+        <div class="deliverable">
+          <span class="deliverable-num">01</span>
+          <h3 class="deliverable-title">SEO Audit & Improvements</h3>
+          <p class="deliverable-desc">Technical SEO audits, keyword strategy, content optimisation, and structured data implementation. We identify and fix issues that prevent search engines from ranking your content, then build on strengths to capture new traffic.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">02</span>
+          <h3 class="deliverable-title">Conversion Rate Optimisation</h3>
+          <p class="deliverable-desc">Systematic analysis of user behaviour, funnel drop-off points, and conversion barriers. We identify where users abandon their journey and implement targeted improvements that turn more visitors into leads and customers.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">03</span>
+          <h3 class="deliverable-title">A/B Test Design & Analysis</h3>
+          <p class="deliverable-desc">Hypothesis-driven experiments that test specific changes against measurable outcomes. We design the tests, implement the variants, analyse the results, and recommend the winners based on statistical significance, not gut feeling.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">04</span>
+          <h3 class="deliverable-title">Monthly Analytics Reports</h3>
+          <p class="deliverable-desc">Clear, actionable reports covering traffic trends, keyword rankings, conversion rates, user behaviour, and Core Web Vitals. Every metric is contextualised with insights and recommendations, not just raw numbers.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">05</span>
+          <h3 class="deliverable-title">Content Strategy Recommendations</h3>
+          <p class="deliverable-desc">Data-informed content recommendations based on search demand, competitive gaps, and audience behaviour. We identify the topics, formats, and publishing cadence that will drive the most qualified traffic to your platform.</p>
+        </div>
+        <div class="deliverable">
+          <span class="deliverable-num">06</span>
+          <h3 class="deliverable-title">Quarterly Strategy Sessions</h3>
+          <p class="deliverable-desc">Scheduled deep-dive sessions to review performance against targets, adjust strategy based on results, and plan the next quarter's priorities. Growth is iterative, and these sessions keep your strategy aligned with your evolving business goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Approach -->
+  <section class="section">
+    <div class="section-inner">
+      <SectionHeading
+        title="Our Growth Approach"
+        subtitle="Three principles that guide every optimisation decision we make."
+      />
+      <div class="approach-grid" data-animate="stagger">
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Data Over Opinions</h3>
+          <p class="approach-desc">Every recommendation is backed by analytics, not assumptions. We measure before we change, test before we commit, and validate after we deploy. Opinions are cheap; data tells you what actually works for your specific audience.</p>
+        </div>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Small Experiments, Big Impact</h3>
+          <p class="approach-desc">Rather than large, risky redesigns, we run rapid A/B testing cycles that isolate variables and measure impact precisely. Small, frequent experiments compound into transformative results while minimising risk at every step.</p>
+        </div>
+        <div class="approach-card">
+          <div class="approach-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+              <polyline points="17 6 23 6 23 12" />
+            </svg>
+          </div>
+          <h3 class="approach-title">Compound Growth</h3>
+          <p class="approach-desc">SEO improvements drive more traffic. CRO improvements convert more of that traffic. Each month's gains build on the previous month's foundation. This compounding effect is why we recommend a minimum 6-month engagement to see meaningful results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who This Is For -->
+  <section class="section section-alt">
+    <div class="section-inner" data-animate="fade-up">
+      <SectionHeading
+        title="Who This Is For"
+        subtitle="Our growth service is the right fit if you recognise any of these situations."
+      />
+      <div class="audience-grid">
+        <div class="audience-card">
+          <h3 class="audience-title">Launched Recently and Want to Maximise ROI</h3>
+          <p class="audience-desc">Your new platform is live and performing well, but you know there is more potential to unlock. Growth services help you capitalise on the investment you have already made and accelerate your return on it.</p>
+        </div>
+        <div class="audience-card">
+          <h3 class="audience-title">Seeing Traffic but Not Enough Conversions</h3>
+          <p class="audience-desc">Your analytics show healthy visitor numbers, but leads, sign-ups, or sales are not keeping pace. Conversion rate optimisation identifies where users drop off and implements targeted improvements to close the gap.</p>
+        </div>
+        <div class="audience-card">
+          <h3 class="audience-title">Need Ongoing Strategic Digital Guidance</h3>
+          <p class="audience-desc">Your team handles day-to-day operations but needs an experienced digital partner to guide strategy, interpret data, and prioritise the initiatives that will have the greatest impact on your business goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Adjacent Services -->
+  <section class="section">
+    <div class="section-inner" data-animate="fade-up">
+      <SectionHeading
+        title="Where This Fits"
+        subtitle="Growth and optimisation is the final phase of our service lifecycle — and the beginning of your next iteration."
+      />
+      <div class="adjacent-grid">
+        <a href="/custom/services/maintenance" class="adjacent-card adjacent-card--prev">
+          <span class="adjacent-phase">Previous Phase</span>
+          <h3 class="adjacent-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Maintenance & Support
+          </h3>
+          <p class="adjacent-desc">Ongoing security updates, performance monitoring, content changes, and priority support to keep your platform healthy.</p>
+        </a>
+        <a href="/custom/services/discovery" class="adjacent-card adjacent-card--next">
+          <span class="adjacent-phase">Start a New Project</span>
+          <h3 class="adjacent-title">Discovery & Strategy
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </h3>
+          <p class="adjacent-desc">Ready for a new initiative? Circle back to discovery to define the strategy for your next project or product.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="Frequently Asked Questions"
+        subtitle="Common questions about our growth service."
+      />
+      <div class="faq-list" data-animate="fade-up">
+        <FaqItem
+          question="When should we start growth services?"
+          answer="Ideally 30 days after launch, once you have baseline data to work from. Some clients start immediately with SEO optimisation while post-launch support is still active. The sooner you begin, the sooner improvements start compounding."
+        />
+        <FaqItem
+          question="What metrics do you track?"
+          answer="Organic traffic, keyword rankings, Core Web Vitals, conversion rates, bounce rates, engagement metrics, and custom KPIs specific to your business goals. We agree on the metrics that matter most during onboarding and report against them consistently every month."
+        />
+        <FaqItem
+          question="How do you measure success?"
+          answer="We set measurable targets during onboarding and report against them monthly. Typical goals include a specific percentage increase in organic traffic, improvement in conversion rate, or a target number of new leads per month. Every recommendation and experiment is tied back to these agreed outcomes."
+        />
+        <FaqItem
+          question="What does a typical engagement cost?"
+          answer="Growth packages range from MYR 3,000 to MYR 8,000 per month depending on scope and complexity. We recommend a minimum 6-month engagement to see meaningful compounding results. The investment pays for itself many times over as organic traffic and conversion improvements accumulate."
+        />
+      </div>
+    </div>
+  </section>
+
+  <RelatedWork />
+  <PricingTeaser />
+  <CtaBand heading="Ready to turn your platform into a growth engine?" buttonText="Start Growing" buttonHref="/custom/contact" />
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  /* Hero */
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-label {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand);
+    margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1.25rem;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.3s forwards;
+  }
+
+  /* Deliverables */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .deliverable {
+    padding: 1.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .deliverable:hover {
+    border-color: var(--color-brand);
+  }
+
+  .deliverable-num {
+    font-size: 0.6875rem;
+    font-weight: 300;
+    color: var(--color-brand);
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .deliverable-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .deliverable-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Approach */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .approach-card {
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .approach-card:hover {
+    border-color: var(--color-brand);
+  }
+
+  .approach-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-brand-light);
+    border-radius: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .approach-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-brand);
+  }
+
+  .approach-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .approach-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Audience */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .audience-card {
+    padding: 1.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .audience-card:hover {
+    border-color: var(--color-brand);
+  }
+
+  .audience-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+  }
+
+  .audience-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Adjacent Services */
+  .adjacent-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .adjacent-card {
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+    text-decoration: none;
+    display: block;
+  }
+
+  .adjacent-card:hover {
+    border-color: var(--color-brand);
+  }
+
+  .adjacent-phase {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand);
+    margin-bottom: 0.75rem;
+  }
+
+  .adjacent-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.625rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .adjacent-title svg {
+    width: 1rem;
+    height: 1rem;
+    color: var(--color-brand);
+  }
+
+  .adjacent-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* FAQ */
+  .faq-list {
+    max-width: 720px;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-label, .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .deliverables-grid { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .audience-grid { grid-template-columns: 1fr; }
+    .adjacent-grid { grid-template-columns: 1fr; }
+  }
+</style>

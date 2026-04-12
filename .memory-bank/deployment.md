@@ -12,13 +12,19 @@
 - Output directory: dist/
 - Config: netlify.toml
 
-## Pages (26 total)
+## Pages (30 total)
 - / (root index)
 - /custom/ (microsite index)
 - /custom/about/
 - /custom/contact/
 - /custom/work/
 - /custom/services/
+- /custom/services/design/
+- /custom/services/development/
+- /custom/services/discovery/
+- /custom/services/deployment/
+- /custom/services/maintenance/
+- /custom/services/growth/
 - /custom/solutions/
 - /custom/pricing/
 - /custom/faq/
