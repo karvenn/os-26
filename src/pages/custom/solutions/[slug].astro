@@ -10,6 +10,7 @@ import CtaBand from '../../../components/CtaBand.astro';
 import ContactForm from '../../../components/ContactForm.astro';
 import CaseStudyCard from '../../../components/CaseStudyCard.astro';
 import Animations from '../../../components/Animations.astro';
+import PricingTeaser from '../../../components/PricingTeaser.astro';
 import { solutions, type Solution } from '../../../data/solutions';
 import { caseStudies } from '../../../data/case-studies';
 
@@ -143,6 +144,8 @@ const faqSchema = solution.faq.length > 0 ? {
       </div>
     </section>
   )}
+
+  <PricingTeaser />
 
   <!-- ════ CTA BAND ════ -->
   <CtaBand heading="Ready to explore this solution?" buttonText="Discuss Your Requirements" buttonHref="#contact" />

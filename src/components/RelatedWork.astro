@@ -1,0 +1,82 @@
+---
+/**
+ * Compact portfolio teaser — 2-3 featured projects + link to full portfolio.
+ * Adds visual proof of work to pages that lack it.
+ */
+import PortfolioCard from './PortfolioCard.astro';
+import { portfolioProjects } from '../data/portfolio';
+
+interface Props {
+  limit?: number;
+}
+
+const { limit = 2 } = Astro.props;
+const projects = portfolioProjects.filter((p) => p.featured).slice(0, limit);
+---
+
+<section class="related-work">
+  <div class="rw-inner">
+    <div class="rw-header">
+      <h2 class="rw-title">See It in Practice</h2>
+      <a href="/custom/work" class="rw-link">View all work &rarr;</a>
+    </div>
+    <div class="rw-grid">
+      {projects.map((project) => (
+        <PortfolioCard project={project} variant="half" />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .related-work {
+    padding: 4rem 1.5rem;
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .rw-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .rw-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .rw-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: -0.01em;
+  }
+
+  .rw-link {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-brand);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .rw-link:hover {
+    opacity: 0.7;
+  }
+
+  .rw-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .rw-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

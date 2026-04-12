@@ -1,0 +1,71 @@
+---
+/**
+ * Compact trust signal strip for pages that need social proof.
+ * Lighter than the full TrustBar — one line of logos + stats.
+ */
+import { clientLogos, trustStats } from '../data/clients';
+const topClients = clientLogos.slice(0, 4);
+---
+
+<div class="trust-strip">
+  <div class="trust-strip__inner">
+    <span class="trust-strip__text">Trusted by</span>
+    <span class="trust-strip__clients">
+      {topClients.map((c, i) => (
+        <>{i > 0 && <span class="trust-strip__sep">&middot;</span>}{c.name}</>
+      ))}
+    </span>
+    <span class="trust-strip__sep">&middot;</span>
+    <span class="trust-strip__stats">
+      {trustStats[0].value}{trustStats[0].suffix} projects
+      <span class="trust-strip__sep">&middot;</span>
+      {trustStats[1].value}{trustStats[1].suffix} years
+    </span>
+  </div>
+</div>
+
+<style>
+  .trust-strip {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
+    background: white;
+  }
+
+  .trust-strip__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.6875rem;
+    letter-spacing: 0.02em;
+    color: var(--color-muted);
+  }
+
+  .trust-strip__text {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+  }
+
+  .trust-strip__clients {
+    font-weight: 500;
+    color: var(--color-foreground);
+    opacity: 0.6;
+  }
+
+  .trust-strip__sep {
+    color: var(--color-divider);
+    margin: 0 0.125rem;
+  }
+
+  .trust-strip__stats {
+    font-weight: 500;
+    color: var(--color-foreground);
+    opacity: 0.6;
+  }
+</style>

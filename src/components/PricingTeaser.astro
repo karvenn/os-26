@@ -1,0 +1,114 @@
+---
+/**
+ * Compact pricing/timeline signal strip.
+ * Gives visitors a cost expectation and links to the full pricing page.
+ */
+---
+
+<div class="pricing-teaser">
+  <div class="pt-inner">
+    <div class="pt-signals">
+      <div class="pt-signal">
+        <span class="pt-label">Projects from</span>
+        <span class="pt-value">MYR 30,000</span>
+      </div>
+      <div class="pt-divider"></div>
+      <div class="pt-signal">
+        <span class="pt-label">Typical timeline</span>
+        <span class="pt-value">8 &ndash; 12 weeks</span>
+      </div>
+      <div class="pt-divider"></div>
+      <div class="pt-signal">
+        <span class="pt-label">Always included</span>
+        <span class="pt-value">30 days support</span>
+      </div>
+    </div>
+    <a href="/custom/pricing" class="pt-link">View full pricing &rarr;</a>
+  </div>
+</div>
+
+<style>
+  .pricing-teaser {
+    padding: 2rem 1.5rem;
+    background: var(--color-brand-light);
+  }
+
+  .pt-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .pt-signals {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .pt-signal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .pt-label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+  }
+
+  .pt-value {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  .pt-divider {
+    width: 1px;
+    height: 2rem;
+    background: var(--color-divider);
+  }
+
+  .pt-link {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-brand);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+  }
+
+  .pt-link:hover {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .pt-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .pt-signals {
+      justify-content: center;
+    }
+
+    .pt-divider {
+      display: none;
+    }
+
+    .pt-signals {
+      gap: 1.5rem;
+    }
+
+    .pt-signal {
+      align-items: center;
+    }
+  }
+</style>
