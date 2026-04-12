@@ -7,13 +7,28 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import Animations from '../../components/Animations.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import PricingTeaser from '../../components/PricingTeaser.astro';
 import { solutions } from '../../data/solutions';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/custom' },
+    { '@type': 'ListItem', position: 2, name: 'Solutions', item: 'https://orangesoft.com.my/custom/solutions' },
+  ],
+};
 ---
 
 <Layout
   title="Proven Solutions | Orangesoft Custom"
   description="Pre-built platforms we customise for corporate clients: contest management, eCommerce, CRM, survey dashboards, booking systems, and kiosk sales kits."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <EntranceOverlay />
   <MicrositeHeader active="solutions" />
   <Breadcrumb items={[{ label: 'Home', href: '/custom' }, { label: 'Solutions' }]} />
@@ -26,6 +41,8 @@ import { solutions } from '../../data/solutions';
       </p>
     </div>
   </section>
+
+  <TrustStrip />
 
   <section class="section section-alt">
     <div class="section-inner">
@@ -53,6 +70,7 @@ import { solutions } from '../../data/solutions';
     </div>
   </section>
 
+  <PricingTeaser />
   <CtaBand heading="Do not see what you need?" buttonText="Talk to Us About Custom Development" buttonHref="/custom/contact" />
   <MicrositeFooter />
   <Animations />

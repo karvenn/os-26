@@ -8,12 +8,29 @@ import SectionHeading from '../../../components/SectionHeading.astro';
 import FaqItem from '../../../components/FaqItem.astro';
 import CtaBand from '../../../components/CtaBand.astro';
 import Animations from '../../../components/Animations.astro';
+import TrustStrip from '../../../components/TrustStrip.astro';
+import RelatedWork from '../../../components/RelatedWork.astro';
+import PricingTeaser from '../../../components/PricingTeaser.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/custom' },
+    { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://orangesoft.com.my/custom/services' },
+    { '@type': 'ListItem', position: 3, name: 'Custom Design', item: 'https://orangesoft.com.my/custom/services/design' },
+  ],
+};
 ---
 
 <Layout
   title="Custom Design | Orangesoft Custom"
   description="UX research, wireframing, visual design, design systems, and prototyping for organisations that demand a premium digital presence. Conversion-focused design from a Malaysian web agency."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <EntranceOverlay />
   <MicrositeHeader active="services" />
   <Breadcrumb items={[
@@ -32,6 +49,8 @@ import Animations from '../../../components/Animations.astro';
       </p>
     </div>
   </section>
+
+  <TrustStrip />
 
   <!-- What We Deliver -->
   <section class="section section-alt">
@@ -186,6 +205,8 @@ import Animations from '../../../components/Animations.astro';
     </div>
   </section>
 
+  <RelatedWork />
+  <PricingTeaser />
   <CtaBand heading="Ready to elevate your digital presence?" buttonText="Start a Design Project" buttonHref="/custom/contact" />
   <MicrositeFooter />
   <Animations />

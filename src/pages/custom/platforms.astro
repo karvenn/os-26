@@ -15,12 +15,26 @@ const categoryLabels: Record<string, string> = {
   application: 'Application Platform',
   code: 'Source Control',
 };
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/custom' },
+    { '@type': 'ListItem', position: 2, name: 'How We Work', item: 'https://orangesoft.com.my/custom/how-we-work' },
+    { '@type': 'ListItem', position: 3, name: 'Platforms', item: 'https://orangesoft.com.my/custom/platforms' },
+  ],
+};
 ---
 
 <Layout
   title="Platforms & Infrastructure | Orangesoft Custom"
   description="Vercel, Cloudways, Laravel Cloud, Netlify, and GitHub — the hosting and deployment platforms we use to deliver fast, reliable, and secure web solutions."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <EntranceOverlay />
   <MicrositeHeader active="how-we-work" />
   <Breadcrumb items={[

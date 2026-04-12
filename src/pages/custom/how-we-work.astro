@@ -8,12 +8,25 @@ import CtaBand from '../../components/CtaBand.astro';
 import Animations from '../../components/Animations.astro';
 import TrustStrip from '../../components/TrustStrip.astro';
 import RelatedWork from '../../components/RelatedWork.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/custom' },
+    { '@type': 'ListItem', position: 2, name: 'How We Work', item: 'https://orangesoft.com.my/custom/how-we-work' },
+  ],
+};
 ---
 
 <Layout
   title="How We Work | Orangesoft Custom"
   description="Our methodology, technology stack, hosting platforms, and 7-phase process — built on 19 years of delivering custom web solutions for corporate clients."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
   <EntranceOverlay />
   <MicrositeHeader active="how-we-work" />
   <Breadcrumb items={[{ label: 'Home', href: '/custom' }, { label: 'How We Work' }]} />
