@@ -1,25 +1,119 @@
-<footer class="ms-footer">
-  <div class="ms-footer-inner">
-    <a href="/custom" class="ms-footer-logo">Orangesoft<span class="dot">.</span></a>
-    <nav class="ms-footer-nav">
-      <a href="/custom/industries">Industries</a>
-      <a href="/custom/pricing">Pricing</a>
-      <a href="/custom/faq">FAQ</a>
-      <a href="/">Other Services</a>
-    </nav>
-    <p class="ms-footer-copy">&copy; 2026 Orangesoft. All rights reserved.</p>
+<footer class="mf">
+  <div class="mf-inner">
+    <div class="mf-grid">
+      <div class="mf-col">
+        <h3 class="mf-heading">Services</h3>
+        <a href="/custom/services">All Services</a>
+        <a href="/custom/services/discovery">Discovery & Strategy</a>
+        <a href="/custom/services/design">Custom Design</a>
+        <a href="/custom/services/development">Custom Development</a>
+        <a href="/custom/services/deployment">Migration & Deployment</a>
+        <a href="/custom/services/maintenance">Maintenance & Support</a>
+        <a href="/custom/services/growth">Growth & Optimisation</a>
+      </div>
+      <div class="mf-col">
+        <h3 class="mf-heading">Solutions</h3>
+        <a href="/custom/solutions">All Solutions</a>
+        <a href="/custom/solutions/website">Custom Website</a>
+        <a href="/custom/solutions/cms">Custom CMS</a>
+        <a href="/custom/solutions/crm">Custom CRM</a>
+        <a href="/custom/solutions/ecommerce">Custom eCommerce</a>
+        <a href="/custom/solutions/contest-management">Contest Management</a>
+        <a href="/custom/solutions/survey-dashboard">Survey & Reporting</a>
+        <a href="/custom/solutions/booking-system">Booking System</a>
+        <a href="/custom/solutions/kiosk-sales-kit">Kiosk Sales Kit</a>
+      </div>
+      <div class="mf-col">
+        <h3 class="mf-heading">Industries</h3>
+        <a href="/custom/industries">All Industries</a>
+        <a href="/custom/industries/property">Property & Real Estate</a>
+        <a href="/custom/industries/financial-services">Financial Services</a>
+        <a href="/custom/industries/manufacturing">Manufacturing</a>
+        <a href="/custom/industries/healthcare">Healthcare</a>
+        <a href="/custom/industries/education">Education</a>
+        <a href="/custom/industries/government">Government</a>
+        <a href="/custom/industries/retail-ecommerce">Retail & E-Commerce</a>
+        <a href="/custom/industries/hospitality">Hospitality & Tourism</a>
+      </div>
+      <div class="mf-col">
+        <h3 class="mf-heading">Resources</h3>
+        <a href="/custom/pricing">Pricing</a>
+        <a href="/custom/faq">FAQ</a>
+        <a href="/custom/insights">Insights</a>
+        <a href="/custom/how-we-work">How We Work</a>
+        <a href="/custom/technologies">Technologies</a>
+        <a href="/custom/platforms">Platforms</a>
+        <a href="/custom/process">Project Lifecycle</a>
+        <a href="/custom/work">Portfolio</a>
+        <a href="/custom/case-studies">Case Studies</a>
+      </div>
+      <div class="mf-col">
+        <h3 class="mf-heading">Company</h3>
+        <a href="/custom/about">About</a>
+        <a href="/custom/contact">Contact</a>
+        <a href="/" class="mf-other">Other Orangesoft Services</a>
+      </div>
+    </div>
+
+    <div class="mf-bottom">
+      <a href="/custom" class="mf-logo">Orangesoft<span class="mf-dot">.</span></a>
+      <p class="mf-copy">&copy; 2026 Orangesoft. All rights reserved.</p>
+    </div>
   </div>
 </footer>
 
 <style>
-  .ms-footer {
-    padding: 3rem 1.5rem;
+  .mf {
+    padding: 4rem 1.5rem 2rem;
     border-top: 1px solid var(--color-divider);
+    background: white;
   }
 
-  .ms-footer-inner {
+  .mf-inner {
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  .mf-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .mf-heading {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-foreground);
+    margin-bottom: 1rem;
+  }
+
+  .mf-col a {
+    display: block;
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    transition: color 0.2s ease;
+  }
+
+  .mf-col a:hover {
+    color: var(--color-brand);
+  }
+
+  .mf-other {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem !important;
+    border-top: 1px solid var(--color-divider);
+    font-weight: 500;
+    color: var(--color-brand) !important;
+  }
+
+  .mf-bottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,43 +121,35 @@
     gap: 1rem;
   }
 
-  .ms-footer-logo {
+  .mf-logo {
     font-size: 1rem;
     font-weight: 600;
     color: var(--color-foreground);
     text-decoration: none;
   }
 
-  .dot {
-    color: var(--color-brand);
-  }
+  .mf-dot { color: var(--color-brand); }
 
-  .ms-footer-nav {
-    display: flex;
-    gap: 1.5rem;
-  }
-
-  .ms-footer-nav a {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--color-muted);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .ms-footer-nav a:hover {
-    color: var(--color-brand);
-  }
-
-  .ms-footer-copy {
+  .mf-copy {
     font-size: 0.75rem;
     color: var(--color-muted);
   }
 
   @media (max-width: 768px) {
-    .ms-footer-inner {
+    .mf-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .mf-bottom {
       flex-direction: column;
       text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mf-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
