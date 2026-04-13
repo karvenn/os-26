@@ -4,10 +4,9 @@ import EntranceOverlay from '../../components/EntranceOverlay.astro';
 import SupportHeader from '../../components/SupportHeader.astro';
 import SupportFooter from '../../components/SupportFooter.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import SectionHeading from '../../components/SectionHeading.astro';
-import CtaBand from '../../components/CtaBand.astro';
 import TrustStrip from '../../components/TrustStrip.astro';
-import PricingTeaser from '../../components/PricingTeaser.astro';
+import FaqItem from '../../components/FaqItem.astro';
+import CtaBand from '../../components/CtaBand.astro';
 import Animations from '../../components/Animations.astro';
 import { supportServices } from '../../data/support-services';
 
@@ -19,13 +18,11 @@ const breadcrumbSchema = {
     { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://orangesoft.com.my/support/services' },
   ],
 };
-
-const serviceNumbers = ['01', '02', '03', '04', '05', '06'];
 ---
 
 <Layout
   title="Managed Services | Orangesoft Support"
-  description="Six managed services covering every aspect of website maintenance — monitoring, security, content, hosting, emergency support, and performance optimisation."
+  description="Six managed website services: monitoring, security, content management, hosting, emergency support, and performance optimisation. One monthly fee."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
@@ -35,308 +32,96 @@ const serviceNumbers = ['01', '02', '03', '04', '05', '06'];
   <SupportHeader active="services" />
   <Breadcrumb items={[{ label: 'Home', href: '/support' }, { label: 'Services' }]} />
 
-  <!-- Hero -->
   <section class="hero">
-    <div class="section-inner">
-      <h1 class="hero-title">Six Services.<br />Total Peace of Mind.</h1>
+    <div class="inner">
+      <h1 class="hero-title">Everything Your Website Needs.<br />Nothing It Does Not.</h1>
       <p class="hero-lead">
-        We manage every aspect of your website so your team can focus on running the business. From uptime monitoring to emergency response, one team handles it all.
+        Six managed services covering monitoring, security, content, hosting, emergencies, and performance. Pick a package or let us recommend based on your platform.
       </p>
     </div>
   </section>
 
   <TrustStrip />
 
-  <!-- Service Cards -->
-  <section class="section section-alt">
-    <div class="section-inner">
-      <div class="services-grid" data-animate="stagger">
-        {supportServices.map((service, i) => (
-          <a href={`/support/services/${service.slug}`} class="service-card">
-            <span class="service-number">{serviceNumbers[i]}</span>
-            <h2 class="service-title">{service.name}</h2>
-            <p class="service-tagline">{service.tagline}</p>
-            <p class="service-desc">{service.description}</p>
-            <ul class="service-tags">
-              {service.includes.slice(0, 4).map((item) => (
-                <li>{item.length > 40 ? item.slice(0, 37) + '...' : item}</li>
-              ))}
-            </ul>
-            <span class="service-link">
-              Learn more
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </span>
-          </a>
-        ))}
+  {supportServices.map((svc, i) => (
+    <section class:list={['section', { 'section-alt': i % 2 === 0 }]} id={svc.slug}>
+      <div class="inner" data-animate="fade-up">
+        <div class="svc-header">
+          <span class="svc-num">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h2 class="svc-name">{svc.name}</h2>
+            <p class="svc-tagline">{svc.tagline}</p>
+          </div>
+        </div>
+        <p class="svc-desc">{svc.description}</p>
+        <div class="svc-includes">
+          <h3 class="inc-title">What is included</h3>
+          <ul class="inc-list">
+            {svc.includes.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+        {svc.faq.length > 0 && (
+          <div class="svc-faq">
+            {svc.faq.map((f) => <FaqItem question={f.question} answer={f.answer} />)}
+          </div>
+        )}
       </div>
-    </div>
-  </section>
+    </section>
+  ))}
 
-  <!-- Why Managed Support -->
   <section class="section">
-    <div class="section-inner" data-animate="fade-up">
-      <div class="narrative">
-        <SectionHeading
-          title="Why Managed Support?"
-          subtitle="Your website is a business-critical asset. Treat it like one."
-          align="center"
-        />
-        <p class="narrative-text">
-          Most websites deteriorate after launch. Security patches go unapplied, performance degrades, content grows stale, and by the time something breaks, your team is scrambling for a developer who remembers how it was built.
-        </p>
-        <p class="narrative-text">
-          Managed support eliminates that risk. A dedicated team monitors your platform around the clock, applies updates before they become vulnerabilities, and responds to issues before your customers notice them.
-        </p>
-        <p class="narrative-highlight">
-          One team, one relationship, one monthly retainer. No surprises, no procurement cycles, no scrambling.
-        </p>
+    <div class="inner" data-animate="fade-up">
+      <div class="platforms">
+        <h2 class="plat-title">Platforms We Support</h2>
+        <div class="plat-tags">
+          <span>NuxtJS</span><span>Laravel</span><span>WordPress</span><span>Kentico</span>
+          <span>Magento</span><span>Drupal</span><span>Strapi</span><span>Static Sites</span>
+        </div>
+        <p class="plat-note">Do not see your platform? <a href="/support/contact">Ask us</a> — we likely support it.</p>
       </div>
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section class="section section-alt">
-    <div class="section-inner">
-      <SectionHeading
-        title="How It Works"
-        subtitle="Three simple steps to worry-free website management."
-        align="center"
-      />
-      <div class="steps-flow" data-animate="stagger">
-        <div class="step-item">
-          <span class="step-number">01</span>
-          <h3 class="step-name">Audit</h3>
-          <p class="step-desc">We assess your platform, identify risks, and document everything.</p>
-        </div>
-        <span class="step-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </span>
-        <div class="step-item">
-          <span class="step-number">02</span>
-          <h3 class="step-name">Setup</h3>
-          <p class="step-desc">Monitoring, backups, and processes configured to your needs.</p>
-        </div>
-        <span class="step-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </span>
-        <div class="step-item">
-          <span class="step-number">03</span>
-          <h3 class="step-name">Ongoing</h3>
-          <p class="step-desc">Continuous care, monthly reports, and a team that knows your platform.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <PricingTeaser />
-  <CtaBand heading="Ready to hand off your website maintenance?" buttonText="Get a Support Quote" buttonHref="/support/contact" />
+  <CtaBand heading="Ready to hand off your website maintenance?" buttonText="Get Your Maintenance Quote" buttonHref="/support/contact" />
   <SupportFooter />
   <Animations />
 </Layout>
 
 <style>
   .section { padding: 5rem 1.5rem; }
-  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .inner { max-width: 900px; margin: 0 auto; }
   .section-alt { background: white; }
 
-  /* Hero */
   .hero { padding: 3rem 1.5rem 2rem; }
-  .hero-title {
-    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
-    color: var(--color-foreground); margin-bottom: 1rem;
-    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
-  }
-  .hero-lead {
-    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
-    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
-  }
+  .hero-title { font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--color-foreground); margin-bottom: 1rem; opacity: 0; animation: slideUp 0.7s ease 1s forwards; }
+  .hero-lead { font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px; opacity: 0; animation: slideUp 0.7s ease 1.15s forwards; }
 
-  /* Service Cards Grid */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-  }
+  .svc-header { display: flex; gap: 1.25rem; align-items: flex-start; margin-bottom: 1.25rem; }
+  .svc-num { font-size: 0.6875rem; font-weight: 300; color: var(--color-brand); letter-spacing: 0.1em; padding-top: 0.375rem; }
+  .svc-name { font-size: 1.5rem; font-weight: 600; color: var(--color-foreground); letter-spacing: -0.02em; }
+  .svc-tagline { font-size: 0.875rem; color: var(--color-brand); margin-top: 0.25rem; }
+  .svc-desc { font-size: 1rem; line-height: 1.8; color: var(--color-muted); margin-bottom: 2rem; }
 
-  .service-card {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    border: 1px solid var(--color-divider);
-    border-radius: 0.75rem;
-    background: var(--color-surface);
-    text-decoration: none;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
+  .inc-title { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-foreground); margin-bottom: 0.75rem; }
+  .inc-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; margin-bottom: 2rem; }
+  .inc-list li { position: relative; padding-left: 1.25rem; font-size: 0.875rem; line-height: 1.6; color: var(--color-muted); }
+  .inc-list li::before { content: ''; position: absolute; left: 0; top: 0.5rem; width: 0.375rem; height: 0.375rem; border-radius: 50%; background: var(--color-brand); }
 
-  .service-card:hover {
-    border-color: var(--color-brand);
-    box-shadow: 0 8px 32px rgba(232, 114, 12, 0.08);
-  }
+  .svc-faq { max-width: 700px; }
 
-  .service-number {
-    font-size: 0.75rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    color: var(--color-brand);
-    margin-bottom: 1rem;
-  }
+  .platforms { text-align: center; max-width: 640px; margin: 0 auto; }
+  .plat-title { font-size: 1.5rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+  .plat-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; }
+  .plat-tags span { padding: 0.5rem 1rem; border: 1px solid var(--color-divider); border-radius: 2rem; font-size: 0.8125rem; font-weight: 500; color: var(--color-foreground); }
+  .plat-note { font-size: 0.875rem; color: var(--color-muted); }
+  .plat-note a { color: var(--color-brand); text-decoration: none; font-weight: 500; }
 
-  .service-title {
-    font-size: 1.375rem;
-    font-weight: 600;
-    color: var(--color-foreground);
-    letter-spacing: -0.02em;
-    margin-bottom: 0.375rem;
-  }
-
-  .service-tagline {
-    font-size: 0.8125rem;
-    font-style: italic;
-    color: var(--color-brand);
-    margin-bottom: 1rem;
-  }
-
-  .service-desc {
-    font-size: 0.875rem;
-    line-height: 1.7;
-    color: var(--color-muted);
-    margin-bottom: 1.25rem;
-  }
-
-  .service-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.375rem;
-    list-style: none;
-    padding: 0;
-    margin-bottom: 1.5rem;
-  }
-
-  .service-tags li {
-    font-size: 0.6875rem;
-    font-weight: 500;
-    color: var(--color-foreground);
-    padding: 0.3125rem 0.75rem;
-    background: white;
-    border: 1px solid var(--color-divider);
-    border-radius: 2rem;
-  }
-
-  .service-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--color-brand);
-    margin-top: auto;
-    transition: gap 0.3s ease;
-  }
-
-  .service-card:hover .service-link { gap: 0.75rem; }
-
-  .service-link svg { width: 0.875rem; height: 0.875rem; }
-
-  /* Narrative */
-  .narrative {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .narrative-text {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--color-muted);
-    margin-bottom: 1rem;
-  }
-
-  .narrative-highlight {
-    font-size: 1.0625rem;
-    font-weight: 600;
-    color: var(--color-foreground);
-    margin-top: 1.5rem;
-    padding: 1.25rem 1.5rem;
-    background: var(--color-brand-light);
-    border-radius: 0.5rem;
-    border-left: 3px solid var(--color-brand);
-    text-align: left;
-  }
-
-  /* Steps Flow */
-  .steps-flow {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .step-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1.5rem;
-    max-width: 240px;
-  }
-
-  .step-number {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 50%;
-    background: var(--color-brand);
-    color: white;
-    font-size: 0.875rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-
-  .step-name {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-foreground);
-    margin-bottom: 0.5rem;
-  }
-
-  .step-desc {
-    font-size: 0.8125rem;
-    line-height: 1.6;
-    color: var(--color-muted);
-  }
-
-  .step-arrow {
-    display: flex;
-    align-items: center;
-    color: var(--color-divider);
-    padding-top: 2rem;
-  }
-
-  .step-arrow svg { width: 1.25rem; height: 1.25rem; }
-
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
-  }
-
-  @media (max-width: 1024px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-  }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; } }
 
   @media (max-width: 768px) {
     .section { padding: 3rem 1.5rem; }
     .hero-title { font-size: 2rem; }
-    .services-grid { grid-template-columns: 1fr; }
-    .service-card { padding: 1.75rem; }
-    .steps-flow { flex-direction: column; align-items: center; }
-    .step-arrow { transform: rotate(90deg); padding-top: 0; }
+    .inc-list { grid-template-columns: 1fr; }
   }
 </style>
