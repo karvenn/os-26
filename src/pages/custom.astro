@@ -84,22 +84,49 @@ const serviceSchema = {
   <section class="section">
     <div class="section-inner">
       <SectionHeading
-        title="Two Services. One Seamless Result."
-        subtitle="Every project starts with thoughtful design and ends with robust engineering."
+        title="Six Services. One Complete Journey."
+        subtitle="From first conversation to ongoing growth — we cover every phase so you never need to coordinate between vendors."
       />
       <div class="services-teaser" data-animate="stagger">
+        <a href="/custom/services/discovery" class="svc-card">
+          <span class="svc-label">01</span>
+          <h3 class="svc-title">Discovery & Strategy</h3>
+          <p class="svc-desc">Research, audits, and strategic planning before any design or code work begins.</p>
+          <span class="svc-link">Learn more &rarr;</span>
+        </a>
         <a href="/custom/services/design" class="svc-card">
-          <span class="svc-label">Service 01</span>
+          <span class="svc-label">02</span>
           <h3 class="svc-title">Custom Design</h3>
           <p class="svc-desc">UX research, wireframing, visual design, design systems, and interactive prototyping.</p>
           <span class="svc-link">Learn more &rarr;</span>
         </a>
         <a href="/custom/services/development" class="svc-card">
-          <span class="svc-label">Service 02</span>
+          <span class="svc-label">03</span>
           <h3 class="svc-title">Custom Development</h3>
-          <p class="svc-desc">Frontend engineering, backend systems, API development, integrations, and database architecture.</p>
+          <p class="svc-desc">Frontend engineering, backend systems, API development, and integrations.</p>
           <span class="svc-link">Learn more &rarr;</span>
         </a>
+        <a href="/custom/services/deployment" class="svc-card">
+          <span class="svc-label">04</span>
+          <h3 class="svc-title">Migration & Deployment</h3>
+          <p class="svc-desc">Data migration, team training, and zero-downtime launches.</p>
+          <span class="svc-link">Learn more &rarr;</span>
+        </a>
+        <a href="/custom/services/maintenance" class="svc-card">
+          <span class="svc-label">05</span>
+          <h3 class="svc-title">Maintenance & Support</h3>
+          <p class="svc-desc">Security updates, performance monitoring, and priority support.</p>
+          <span class="svc-link">Learn more &rarr;</span>
+        </a>
+        <a href="/custom/services/growth" class="svc-card">
+          <span class="svc-label">06</span>
+          <h3 class="svc-title">Growth & Optimisation</h3>
+          <p class="svc-desc">SEO, conversion optimisation, analytics, and ongoing strategic guidance.</p>
+          <span class="svc-link">Learn more &rarr;</span>
+        </a>
+      </div>
+      <div class="section-link" data-animate="fade-up">
+        <a href="/custom/services" class="view-all">Explore all services &rarr;</a>
       </div>
     </div>
   </section>
@@ -264,7 +291,7 @@ const serviceSchema = {
 
   /* ── Services Teaser ── */
 
-  .services-teaser { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .services-teaser { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 
   .svc-card {
     display: flex; flex-direction: column; padding: 2rem;
