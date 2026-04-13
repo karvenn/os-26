@@ -2,7 +2,6 @@ export interface IndustryProject {
   clientName: string;
   type: string;
   headline: string;
-  caseStudySlug?: string;
 }
 
 export interface Industry {
@@ -36,7 +35,7 @@ export const industries: Industry[] = [
     relevantServices: ['Custom Design', 'Custom Development', 'Growth & Optimisation'],
     relevantSolutions: ['Custom Website', 'Custom CMS'],
     projects: [
-      { clientName: 'Meridian Properties', type: 'Corporate Website', headline: '2.4x increase in qualified leads', caseStudySlug: 'meridian-properties' },
+      { clientName: 'Meridian Properties', type: 'Corporate Website', headline: '2.4x increase in qualified leads' },
     ],
     faq: [
       { question: 'Can each development have its own microsite?', answer: 'Yes. We build multi-project platforms where each development gets its own branded microsite, managed from a single CMS dashboard. New developments can launch in days, not weeks.' },
@@ -60,7 +59,7 @@ export const industries: Industry[] = [
     relevantServices: ['Discovery & Strategy', 'Custom Development', 'Maintenance & Support'],
     relevantSolutions: ['Custom CRM', 'Custom Website'],
     projects: [
-      { clientName: 'Pinnacle Financial', type: 'Customer Portal', headline: '68% reduction in support tickets', caseStudySlug: 'pinnacle-financial' },
+      { clientName: 'Pinnacle Financial', type: 'Customer Portal', headline: '68% reduction in support tickets' },
       { clientName: 'Capital Partners Advisory', type: 'Corporate Website', headline: 'Investor portal with secure document access' },
     ],
     faq: [
@@ -85,7 +84,7 @@ export const industries: Industry[] = [
     relevantServices: ['Discovery & Strategy', 'Custom Development', 'Migration & Deployment'],
     relevantSolutions: ['Custom CRM'],
     projects: [
-      { clientName: 'Atlas Manufacturing', type: 'Supply Chain Platform', headline: '3.1x processing efficiency improvement', caseStudySlug: 'atlas-manufacturing' },
+      { clientName: 'Atlas Manufacturing', type: 'Supply Chain Platform', headline: '3.1x processing efficiency improvement' },
       { clientName: 'Nusantara Logistics', type: 'Fleet Management', headline: 'Real-time tracking across 200+ routes' },
     ],
     faq: [
@@ -183,7 +182,6 @@ export const industries: Industry[] = [
     relevantServices: ['Custom Design', 'Custom Development', 'Growth & Optimisation'],
     relevantSolutions: ['Custom eCommerce'],
     projects: [
-      { clientName: 'Horizon Digital', type: 'E-Commerce Platform', headline: '0.8s page load, 4.2% conversion rate', caseStudySlug: 'horizon-digital' },
       { clientName: 'Artisan Collective', type: 'Multi-Vendor Marketplace', headline: '320+ vendors in first quarter' },
     ],
     faq: [

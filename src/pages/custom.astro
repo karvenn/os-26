@@ -12,11 +12,10 @@ import StickyBar from '../components/StickyBar.astro';
 import Animations from '../components/Animations.astro';
 
 import { portfolioProjects } from '../data/portfolio';
-import { caseStudies } from '../data/case-studies';
 import { solutions } from '../data/solutions';
 
 const featuredProjects = portfolioProjects.filter((p) => p.featured).slice(0, 3);
-const featuredCaseStudy = caseStudies[0];
+const featuredProject = portfolioProjects.find((p) => p.featured && p.testimonial);
 const highlightedSolutions = solutions.slice(0, 4);
 
 const breadcrumbSchema = {
@@ -173,30 +172,38 @@ const serviceSchema = {
   </section>
 
   <!-- ════ SOCIAL PROOF ════ -->
-  <section class="section section-alt">
-    <div class="section-inner" data-animate="fade-up">
-      <div class="proof">
-        <span class="proof-label">Client Success Story</span>
-        <h2 class="proof-name">{featuredCaseStudy.clientName}</h2>
-        <p class="proof-project">{featuredCaseStudy.projectTitle}</p>
-        <div class="proof-metrics">
-          {featuredCaseStudy.metrics.slice(0, 3).map((m) => (
-            <div class="proof-metric">
-              <span class="proof-val" data-target={m.value} data-decimals={m.decimals || 0} data-suffix={m.suffix}>0{m.suffix}</span>
-              <span class="proof-metric-label">{m.label}</span>
+  {featuredProject && (
+    <section class="section section-alt">
+      <div class="section-inner" data-animate="fade-up">
+        <div class="proof">
+          <span class="proof-label">Client Spotlight</span>
+          <h2 class="proof-name">{featuredProject.clientName}</h2>
+          <p class="proof-project">{featuredProject.projectType} &middot; {featuredProject.year}</p>
+          {featuredProject.metrics && (
+            <div class="proof-metrics">
+              {featuredProject.metrics.map((m) => (
+                <div class="proof-metric">
+                  <span class="proof-val" data-target={m.value} data-decimals={m.decimals || 0} data-suffix={m.suffix}>0{m.suffix}</span>
+                  <span class="proof-metric-label">{m.label}</span>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
+          {featuredProject.testimonial && (
+            <>
+              <blockquote class="proof-quote">
+                &ldquo;{featuredProject.testimonial.quote}&rdquo;
+              </blockquote>
+              <p class="proof-author">
+                <strong>{featuredProject.testimonial.authorName}</strong>, {featuredProject.testimonial.authorTitle}
+              </p>
+            </>
+          )}
+          <a href="/custom/work" class="view-all">See all work &rarr;</a>
         </div>
-        <blockquote class="proof-quote">
-          &ldquo;{featuredCaseStudy.testimonial.quote}&rdquo;
-        </blockquote>
-        <p class="proof-author">
-          <strong>{featuredCaseStudy.testimonial.authorName}</strong>, {featuredCaseStudy.testimonial.authorTitle}
-        </p>
-        <a href="/custom/case-studies" class="view-all">More case studies &rarr;</a>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
   <!-- ════ CTA BAND ════ -->
   <CtaBand

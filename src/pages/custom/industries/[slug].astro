@@ -156,20 +156,11 @@ const faqSchema = industry.faq.length > 0 ? {
         <div class="project-list" data-animate="stagger">
           {industry.projects.map((p) => (
             <div class="project-card">
-              {p.caseStudySlug ? (
-                <a href={`/custom/case-studies/${p.caseStudySlug}`} class="project-link">
-                  <span class="project-type">{p.type}</span>
-                  <h3 class="project-name">{p.clientName}</h3>
-                  <p class="project-headline">{p.headline}</p>
-                  <span class="project-cta">Read case study &rarr;</span>
-                </a>
-              ) : (
-                <div class="project-link">
-                  <span class="project-type">{p.type}</span>
-                  <h3 class="project-name">{p.clientName}</h3>
-                  <p class="project-headline">{p.headline}</p>
-                </div>
-              )}
+              <div class="project-link">
+                <span class="project-type">{p.type}</span>
+                <h3 class="project-name">{p.clientName}</h3>
+                <p class="project-headline">{p.headline}</p>
+              </div>
             </div>
           ))}
         </div>

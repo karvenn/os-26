@@ -8,11 +8,9 @@ import SectionHeading from '../../../components/SectionHeading.astro';
 import FaqItem from '../../../components/FaqItem.astro';
 import CtaBand from '../../../components/CtaBand.astro';
 import ContactForm from '../../../components/ContactForm.astro';
-import CaseStudyCard from '../../../components/CaseStudyCard.astro';
 import Animations from '../../../components/Animations.astro';
 import PricingTeaser from '../../../components/PricingTeaser.astro';
 import { solutions, type Solution } from '../../../data/solutions';
-import { caseStudies } from '../../../data/case-studies';
 
 export function getStaticPaths() {
   return solutions.map((s) => ({
@@ -26,9 +24,6 @@ interface Props {
 }
 
 const { solution } = Astro.props;
-const relatedCS = solution.relatedCaseStudy
-  ? caseStudies.find((cs) => cs.slug === solution.relatedCaseStudy)
-  : null;
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -132,18 +127,6 @@ const faqSchema = solution.faq.length > 0 ? {
       </div>
     </div>
   </section>
-
-  <!-- ════ RELATED CASE STUDY ════ -->
-  {relatedCS && (
-    <section class="section">
-      <div class="section-inner">
-        <SectionHeading title="See It in Action" />
-        <div data-animate="fade-up">
-          <CaseStudyCard caseStudy={relatedCS} />
-        </div>
-      </div>
-    </section>
-  )}
 
   <PricingTeaser />
 

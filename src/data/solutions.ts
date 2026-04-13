@@ -28,7 +28,6 @@ export interface Solution {
   customizationSteps: CustomizationStep[];
   faq: SolutionFaq[];
   technologies: string[];
-  relatedCaseStudy: string | null;
 }
 
 export const solutions: Solution[] = [
@@ -76,7 +75,6 @@ export const solutions: Solution[] = [
       { question: 'Is the site mobile-optimised?', answer: 'Every site we build is mobile-first. We design for mobile devices first, then progressively enhance for tablet and desktop.' },
     ],
     technologies: ['NuxtJS', 'Strapi', 'Tailwind CSS', 'Vercel'],
-    relatedCaseStudy: 'meridian-properties',
   },
   {
     slug: 'cms',
@@ -122,7 +120,6 @@ export const solutions: Solution[] = [
       { question: 'Do you use Strapi exclusively?', answer: 'Strapi is our default choice because of its flexibility and open-source model. For specific requirements, we also work with Sanity, Contentful, or fully custom solutions.' },
     ],
     technologies: ['Strapi', 'Node.js', 'PostgreSQL', 'AWS S3'],
-    relatedCaseStudy: null,
   },
   {
     slug: 'contest-management',
@@ -172,7 +169,6 @@ export const solutions: Solution[] = [
       { question: 'How is participant data handled?', answer: 'All data is encrypted at rest and in transit, stored on Malaysian or Singapore-based servers, and handled in full compliance with PDPA requirements.' },
     ],
     technologies: ['NuxtJS', 'Laravel', 'Redis', 'AWS'],
-    relatedCaseStudy: null,
   },
   {
     slug: 'ecommerce',
@@ -222,7 +218,6 @@ export const solutions: Solution[] = [
       { question: 'How do you handle site performance during sales?', answer: 'Our architecture includes CDN distribution, database optimisation, and auto-scaling infrastructure. We load-test before every major sale event to ensure reliable performance.' },
     ],
     technologies: ['NuxtJS', 'Laravel', 'Strapi', 'Stripe'],
-    relatedCaseStudy: 'horizon-digital',
   },
   {
     slug: 'crm',
@@ -272,7 +267,6 @@ export const solutions: Solution[] = [
       { question: 'Is the CRM accessible on mobile?', answer: 'Absolutely. The interface is fully responsive and works on any device. We can also develop a dedicated mobile app if your team needs offline access or push notifications.' },
     ],
     technologies: ['Laravel', 'NuxtJS', 'PostgreSQL', 'Redis'],
-    relatedCaseStudy: 'pinnacle-financial',
   },
   {
     slug: 'survey-dashboard',
@@ -322,7 +316,6 @@ export const solutions: Solution[] = [
       { question: 'Can it handle large-scale data collection?', answer: 'Our platform is built for scale. We have supported surveys with 50,000+ responses and dashboards displaying millions of data points without performance issues.' },
     ],
     technologies: ['NuxtJS', 'Laravel', 'PostgreSQL', 'Chart.js'],
-    relatedCaseStudy: null,
   },
   {
     slug: 'booking-system',
@@ -372,7 +365,6 @@ export const solutions: Solution[] = [
       { question: 'Is it suitable for high-volume businesses?', answer: 'Yes. Our system handles hundreds of daily bookings across multiple locations and staff members without performance issues.' },
     ],
     technologies: ['NuxtJS', 'Laravel', 'Redis', 'Twilio'],
-    relatedCaseStudy: null,
   },
   {
     slug: 'kiosk-sales-kit',
@@ -422,6 +414,5 @@ export const solutions: Solution[] = [
       { question: 'How do we update product information?', answer: 'Through a simple web-based content management system. Upload new products, update pricing, add media \u2014 changes propagate to all devices on next sync.' },
     ],
     technologies: ['NuxtJS', 'Laravel', 'IndexedDB', 'PWA'],
-    relatedCaseStudy: null,
   },
 ];

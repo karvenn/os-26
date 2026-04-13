@@ -1,3 +1,17 @@
+export interface PortfolioMetric {
+  value: number;
+  decimals?: number;
+  suffix: string;
+  label: string;
+}
+
+export interface PortfolioTestimonial {
+  quote: string;
+  authorName: string;
+  authorTitle: string;
+  company: string;
+}
+
 export interface PortfolioProject {
   slug: string;
   clientName: string;
@@ -6,8 +20,9 @@ export interface PortfolioProject {
   description: string;
   technologies: string[];
   year: string;
-  caseStudySlug?: string;
   featured: boolean;
+  metrics?: PortfolioMetric[];
+  testimonial?: PortfolioTestimonial;
 }
 
 export const portfolioProjects: PortfolioProject[] = [
@@ -20,8 +35,17 @@ export const portfolioProjects: PortfolioProject[] = [
       "A complete digital transformation for one of Southeast Asia's leading property developers, replacing a legacy site with a high-performance, content-rich platform.",
     technologies: ['NuxtJS', 'Strapi', 'Tailwind CSS'],
     year: '2025',
-    caseStudySlug: 'meridian-properties',
     featured: true,
+    metrics: [
+      { value: 2.4, decimals: 1, suffix: 'x', label: 'Lead Increase' },
+      { value: 0.8, decimals: 1, suffix: 's', label: 'Load Time' },
+    ],
+    testimonial: {
+      quote: "Orangesoft didn't just build us a website — they gave us a competitive advantage.",
+      authorName: 'Sarah Chen',
+      authorTitle: 'Head of Marketing',
+      company: 'Meridian Properties',
+    },
   },
   {
     slug: 'pinnacle-financial',
@@ -32,8 +56,17 @@ export const portfolioProjects: PortfolioProject[] = [
       'A self-service customer portal that streamlined account management, document submissions, and real-time reporting for over 50,000 active users.',
     technologies: ['Laravel', 'Vue.js', 'PostgreSQL'],
     year: '2024',
-    caseStudySlug: 'pinnacle-financial',
     featured: true,
+    metrics: [
+      { value: 68, suffix: '%', label: 'Fewer Support Tickets' },
+      { value: 50, suffix: 'K+', label: 'Active Users' },
+    ],
+    testimonial: {
+      quote: 'Support costs are down, satisfaction is up, and our team can focus on high-value interactions.',
+      authorName: 'Ahmad Razak',
+      authorTitle: 'Chief Digital Officer',
+      company: 'Pinnacle Financial',
+    },
   },
   {
     slug: 'atlas-manufacturing',
@@ -44,8 +77,17 @@ export const portfolioProjects: PortfolioProject[] = [
       'A supply chain management platform that digitised inventory tracking, vendor communications, and procurement workflows across 12 regional offices.',
     technologies: ['Laravel', 'Strapi', 'REST APIs'],
     year: '2024',
-    caseStudySlug: 'atlas-manufacturing',
     featured: true,
+    metrics: [
+      { value: 3.1, decimals: 1, suffix: 'x', label: 'Processing Efficiency' },
+      { value: 12, suffix: '', label: 'Offices Connected' },
+    ],
+    testimonial: {
+      quote: 'For the first time, we have real-time visibility across our entire supply chain.',
+      authorName: 'Lim Wei Hong',
+      authorTitle: 'VP of Operations',
+      company: 'Atlas Manufacturing',
+    },
   },
   {
     slug: 'horizon-digital',
@@ -56,8 +98,11 @@ export const portfolioProjects: PortfolioProject[] = [
       'A headless commerce experience that scaled to handle peak traffic during regional sales events without performance degradation.',
     technologies: ['NuxtJS', 'Strapi', 'Stripe'],
     year: '2025',
-    caseStudySlug: 'horizon-digital',
     featured: true,
+    metrics: [
+      { value: 0.8, decimals: 1, suffix: 's', label: 'Page Load' },
+      { value: 4.2, decimals: 1, suffix: '%', label: 'Conversion Rate' },
+    ],
   },
   {
     slug: 'vista-university',

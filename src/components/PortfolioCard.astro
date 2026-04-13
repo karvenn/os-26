@@ -9,9 +9,8 @@ interface Props {
 const { project, variant = 'half' } = Astro.props;
 ---
 
-<a
+<div
   class:list={['pcard', `pcard--${variant}`]}
-  href={project.caseStudySlug ? `/custom/case-studies/${project.caseStudySlug}` : '#'}
 >
   <div class="pcard-image">
     <div class="pcard-placeholder">
@@ -28,7 +27,7 @@ const { project, variant = 'half' } = Astro.props;
       ))}
     </div>
   </div>
-</a>
+</div>
 
 <style>
   .pcard {
