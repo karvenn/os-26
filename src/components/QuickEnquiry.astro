@@ -1,0 +1,87 @@
+---
+/**
+ * Lightweight 2-field enquiry form for visitors not ready for the full form.
+ * Captures email + question for follow-up.
+ */
+---
+
+<div class="qe">
+  <h3 class="qe-title">Just have a quick question?</h3>
+  <form name="quick-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="qe-form">
+    <input type="hidden" name="bot-field" />
+    <input type="hidden" name="form-name" value="quick-enquiry" />
+    <input type="email" name="email" required placeholder="Your work email" class="qe-input" />
+    <input type="text" name="question" required placeholder="What would you like to know?" class="qe-input qe-input--wide" />
+    <button type="submit" class="qe-btn">Send</button>
+  </form>
+  <p class="qe-note">We reply within 24 hours. No spam, no sales calls.</p>
+</div>
+
+<style>
+  .qe {
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .qe-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1.25rem;
+  }
+
+  .qe-form {
+    display: flex;
+    gap: 0.5rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .qe-input {
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0.375rem;
+    color: white;
+    font-size: 0.8125rem;
+    font-family: inherit;
+    min-width: 0;
+    flex: 1;
+    transition: border-color 0.3s ease;
+  }
+
+  .qe-input--wide { flex: 2; }
+
+  .qe-input::placeholder { color: rgba(255, 255, 255, 0.3); }
+  .qe-input:focus { outline: none; border-color: var(--color-brand); }
+
+  .qe-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--color-brand);
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+  }
+
+  .qe-btn:hover { background: var(--color-brand-dark, #C45E0A); }
+
+  .qe-note {
+    margin-top: 0.75rem;
+    font-size: 0.6875rem;
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .qe-form { flex-direction: column; }
+  }
+</style>

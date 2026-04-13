@@ -56,8 +56,21 @@ const breadcrumbSchema = {
 
   <TrustStrip />
 
-  <!-- Pricing Tiers -->
+  <!-- Quick Path -->
   <section class="section section-alt">
+    <div class="section-inner" data-animate="fade-up">
+      <h2 class="qp-title">What type of project are you planning?</h2>
+      <div class="qp-grid">
+        <a href="#tier-corporate" class="qp-card">Corporate Website</a>
+        <a href="#tier-content" class="qp-card">Content Platform</a>
+        <a href="#tier-webapp" class="qp-card">Web Application</a>
+        <a href="#tier-ecommerce" class="qp-card">E-Commerce</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Tiers -->
+  <section class="section">
     <div class="section-inner">
       <SectionHeading
         title="Investment Ranges"
@@ -191,6 +204,17 @@ const breadcrumbSchema = {
     font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
     opacity: 0; animation: slideUp 0.7s ease 1.2s forwards;
   }
+
+  /* Quick Path */
+  .qp-title { font-size: 1.5rem; font-weight: 600; color: var(--color-foreground); text-align: center; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+  .qp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .qp-card {
+    display: flex; align-items: center; justify-content: center; padding: 1.25rem;
+    border: 1px solid var(--color-divider); border-radius: 0.5rem; text-decoration: none;
+    font-size: 0.9375rem; font-weight: 600; color: var(--color-foreground);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+  .qp-card:hover { border-color: var(--color-brand); background: var(--color-brand-light); }
 
   /* Tiers */
   .tier-list { display: flex; flex-direction: column; gap: 1.5rem; }

@@ -14,7 +14,8 @@ const { project, variant = 'half' } = Astro.props;
 >
   <div class="pcard-image">
     <div class="pcard-placeholder">
-      <span>{project.clientName.charAt(0)}</span>
+      <span class="pcard-placeholder-label">{project.projectType}</span>
+      <span class="pcard-placeholder-icon">{project.clientName.charAt(0)}</span>
     </div>
   </div>
   <div class="pcard-content">
@@ -63,14 +64,28 @@ const { project, variant = 'half' } = Astro.props;
     justify-content: center;
   }
 
-  .pcard-placeholder span {
+  .pcard-placeholder {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pcard-placeholder-label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-brand);
+    opacity: 0.4;
+  }
+
+  .pcard-placeholder-icon {
     font-size: 3rem;
     font-weight: 700;
     color: var(--color-brand);
-    opacity: 0.25;
+    opacity: 0.15;
   }
 
-  .pcard--full .pcard-placeholder span {
+  .pcard--full .pcard-placeholder-icon {
     font-size: 4rem;
   }
 
