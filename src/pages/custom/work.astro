@@ -57,67 +57,50 @@ const breadcrumbSchema = {
       </div>
       <div class="portfolio-featured" data-animate="stagger">
         {featured.map((p) => (
-          <details class="pf-card">
-            <summary class="pf-summary">
-              <div class="pf-image">
-                <div class="pf-placeholder">
-                  <span class="pf-placeholder-label">{p.projectType}</span>
-                  <span class="pf-placeholder-icon">{p.clientName.charAt(0)}</span>
-                </div>
+          <a href={`/custom/work/${p.slug}`} class="pf-card">
+            <div class="pf-image">
+              <div class="pf-placeholder">
+                <span class="pf-placeholder-label">{p.projectType}</span>
+                <span class="pf-placeholder-icon">{p.clientName.charAt(0)}</span>
               </div>
-              <div class="pf-content">
-                <span class="pf-type">{p.projectType} &middot; {p.year}</span>
-                <h3 class="pf-name">{p.clientName}</h3>
-                <p class="pf-headline">{p.headline}</p>
-                <div class="pf-tags">
-                  {p.technologies.map((t) => <span class="pf-tag">{t}</span>)}
-                </div>
-                <span class="pf-expand">View project details &darr;</span>
-              </div>
-            </summary>
-            <div class="pf-detail">
-              <p class="pf-description">{p.description}</p>
+            </div>
+            <div class="pf-content">
+              <span class="pf-type">{p.projectType} &middot; {p.year}</span>
+              <h3 class="pf-name">{p.clientName}</h3>
+              <p class="pf-headline">{p.headline}</p>
               {p.metrics && (
-                <div class="pf-detail-metrics">
-                  {p.metrics.map((m) => (
-                    <div class="pf-detail-metric">
-                      <span class="pf-detail-val">{m.value}{m.suffix}</span>
-                      <span class="pf-detail-label">{m.label}</span>
-                    </div>
+                <div class="pf-metrics">
+                  {p.metrics.slice(0, 2).map((m) => (
+                    <span class="pf-metric">{m.value}{m.suffix} {m.label}</span>
                   ))}
                 </div>
               )}
-              {p.testimonial && (
-                <blockquote class="pf-testimonial">
-                  <p>&ldquo;{p.testimonial.quote}&rdquo;</p>
-                  <footer>
-                    <strong>{p.testimonial.authorName}</strong>, {p.testimonial.authorTitle}
-                  </footer>
-                </blockquote>
-              )}
-              <a href="/custom/contact" class="pf-detail-cta">Discuss a similar project &rarr;</a>
+              <div class="pf-tags">
+                {p.technologies.map((t) => <span class="pf-tag">{t}</span>)}
+              </div>
+              <span class="pf-cta">View full project &rarr;</span>
             </div>
-          </details>
+          </a>
         ))}
       </div>
 
       <div class="tier-header" style="margin-top: 3rem;">
         <div>
           <h2 class="tier-title">More Projects</h2>
-          <p class="tier-desc">Hover or tap to see project details.</p>
+          <p class="tier-desc">Click any project to see the overview.</p>
         </div>
       </div>
       <div class="portfolio-grid" data-animate="stagger">
         {portfolio.map((p) => (
-          <div class="pg-card" tabindex="0">
+          <a href={`/custom/work/${p.slug}`} class="pg-card">
             <span class="pg-type">{p.projectType}</span>
             <h3 class="pg-name">{p.clientName}</h3>
             <p class="pg-headline">{p.headline}</p>
-            <p class="pg-desc">{p.description}</p>
             <div class="pg-tags">
               {p.technologies.slice(0, 2).map((t) => <span class="pg-tag">{t}</span>)}
             </div>
-          </div>
+            <span class="pg-cta">View project &rarr;</span>
+          </a>
         ))}
       </div>
     </div>
@@ -165,65 +148,45 @@ const breadcrumbSchema = {
   .tier-link { font-size: 0.8125rem; font-weight: 600; color: var(--color-brand); text-decoration: none; white-space: nowrap; transition: opacity 0.3s ease; }
   .tier-link:hover { opacity: 0.7; }
 
-  /* Portfolio Featured — expandable cards */
+  /* Portfolio Featured — link cards */
   .portfolio-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
   .pf-card {
-    border-radius: 0.75rem; overflow: hidden; border: 1px solid var(--color-divider);
-    transition: border-color 0.3s ease;
+    display: block; border-radius: 0.75rem; overflow: hidden; border: 1px solid var(--color-divider);
+    text-decoration: none; transition: border-color 0.3s ease, transform 0.3s ease;
   }
-  .pf-card:hover, .pf-card[open] { border-color: var(--color-brand); }
-  .pf-summary { list-style: none; cursor: pointer; display: block; }
-  .pf-summary::-webkit-details-marker { display: none; }
-  .pf-expand { display: block; font-size: 0.6875rem; font-weight: 600; color: var(--color-brand); margin-top: 0.75rem; transition: opacity 0.3s ease; }
-  .pf-card[open] .pf-expand { display: none; }
-  .pf-detail { padding: 0 1.5rem 1.5rem; border-top: 1px solid var(--color-divider); }
-  .pf-description { font-size: 0.9375rem; line-height: 1.7; color: var(--color-muted); padding-top: 1.5rem; margin-bottom: 1.5rem; }
-  .pf-detail-metrics { display: flex; gap: 2rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-divider); }
-  .pf-detail-metric { text-align: center; }
-  .pf-detail-val { display: block; font-size: 1.5rem; font-weight: 700; color: var(--color-brand); letter-spacing: -0.02em; }
-  .pf-detail-label { font-size: 0.625rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); }
-  .pf-testimonial { margin-bottom: 1.5rem; }
-  .pf-testimonial p { font-size: 0.9375rem; line-height: 1.7; color: var(--color-foreground); font-style: italic; margin-bottom: 0.75rem; }
-  .pf-testimonial footer { font-size: 0.8125rem; color: var(--color-muted); }
-  .pf-testimonial strong { color: var(--color-foreground); }
-  .pf-detail-cta { display: inline-flex; font-size: 0.8125rem; font-weight: 600; color: var(--color-brand); text-decoration: none; transition: opacity 0.3s ease; }
-  .pf-detail-cta:hover { opacity: 0.7; }
+  .pf-card:hover { border-color: var(--color-brand); transform: translateY(-3px); }
   .pf-image { aspect-ratio: 16 / 9; overflow: hidden; }
   .pf-placeholder {
     width: 100%; height: 100%;
     background: linear-gradient(135deg, var(--color-brand-light) 0%, #FDE8D8 100%);
-    display: flex; align-items: center; justify-content: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
   }
-  .pf-placeholder span { font-size: 3rem; font-weight: 700; color: var(--color-brand); opacity: 0.2; }
+  .pf-placeholder-label { font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand); opacity: 0.4; }
+  .pf-placeholder-icon { font-size: 3rem; font-weight: 700; color: var(--color-brand); opacity: 0.15; }
   .pf-content { padding: 1.25rem; }
   .pf-type { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand); display: block; margin-bottom: 0.375rem; }
   .pf-name { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.25rem; }
   .pf-headline { font-size: 0.8125rem; color: var(--color-muted); margin-bottom: 0.75rem; }
-  .pf-tags { display: flex; gap: 0.375rem; flex-wrap: wrap; }
-  .tier-subtitle { font-size: 1rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 1.25rem; margin-top: 2.5rem; }
+  .pf-metrics { display: flex; gap: 1rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+  .pf-metric { font-size: 0.6875rem; font-weight: 600; color: var(--color-brand); }
+  .pf-tags { display: flex; gap: 0.375rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
   .pf-tag { font-size: 0.5625rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); background: var(--color-surface); padding: 0.2rem 0.5rem; border-radius: 0.25rem; }
+  .pf-cta { font-size: 0.75rem; font-weight: 600; color: var(--color-brand); }
 
-  /* Portfolio Compact Grid — hover to reveal */
+  /* Portfolio Compact Grid — link cards */
   .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
   .pg-card {
-    padding: 1.25rem; border: 1px solid var(--color-divider); border-radius: 0.5rem;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-    cursor: default;
+    display: flex; flex-direction: column; padding: 1.25rem; border: 1px solid var(--color-divider);
+    border-radius: 0.5rem; text-decoration: none;
+    transition: border-color 0.3s ease, transform 0.3s ease;
   }
-  .pg-card:hover, .pg-card:focus { border-color: var(--color-brand); background: var(--color-brand-light); }
-  .pg-desc {
-    font-size: 0.75rem; line-height: 1.5; color: var(--color-muted); margin-bottom: 0.625rem;
-    max-height: 0; overflow: hidden; opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
-  }
-  .pg-card:hover .pg-desc, .pg-card:focus .pg-desc {
-    max-height: 100px; opacity: 1; margin-bottom: 0.625rem;
-  }
+  .pg-card:hover { border-color: var(--color-brand); transform: translateY(-2px); }
   .pg-type { font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-brand); display: block; margin-bottom: 0.375rem; }
   .pg-name { font-size: 0.9375rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.25rem; }
-  .pg-headline { font-size: 0.75rem; line-height: 1.5; color: var(--color-muted); margin-bottom: 0.625rem; }
-  .pg-tags { display: flex; gap: 0.25rem; }
+  .pg-headline { font-size: 0.75rem; line-height: 1.5; color: var(--color-muted); margin-bottom: 0.625rem; flex: 1; }
+  .pg-tags { display: flex; gap: 0.25rem; margin-bottom: 0.625rem; }
   .pg-tag { font-size: 0.5625rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); background: var(--color-surface); padding: 0.15rem 0.375rem; border-radius: 0.25rem; }
+  .pg-cta { font-size: 0.6875rem; font-weight: 600; color: var(--color-brand); }
 
   /* Client Logo Wall */
   .logo-wall {
