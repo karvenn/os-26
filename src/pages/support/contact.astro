@@ -1,0 +1,272 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import SupportHeader from '../../components/SupportHeader.astro';
+import SupportFooter from '../../components/SupportFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import Animations from '../../components/Animations.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/support' },
+    { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://orangesoft.com.my/support/contact' },
+  ],
+};
+---
+
+<Layout
+  title="Contact Us | Orangesoft Support"
+  description="Get in touch with Orangesoft's managed support team. We respond to every enquiry within 24 hours with a clear proposal and transparent pricing."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <EntranceOverlay />
+  <SupportHeader active="contact" />
+  <Breadcrumb items={[{ label: 'Home', href: '/support' }, { label: 'Contact' }]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <h1 class="hero-title">Get a Support Quote<br />Within 24 Hours</h1>
+      <p class="hero-lead">
+        Tell us about your website and what you need. You will receive a clear proposal with the recommended package, pricing, and onboarding timeline within one business day.
+      </p>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <!-- Contact Form -->
+  <section class="section section-dark">
+    <div class="section-inner" data-animate="fade-up">
+      <ContactForm />
+    </div>
+  </section>
+
+  <!-- Response Promise -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="promise-grid" data-animate="stagger">
+        <div class="promise-card">
+          <div class="promise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="promise-title">24-Hour Response</h3>
+          <p class="promise-text">Every enquiry receives a personal response within 24 business hours. Most same-day. No auto-replies, no ticket queues.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3 class="promise-title">Clear Proposal</h3>
+          <p class="promise-text">Your proposal includes the recommended package tier, monthly cost, onboarding steps, and a timeline. No ambiguity, no hidden costs.</p>
+        </div>
+        <div class="promise-card">
+          <div class="promise-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="promise-title">No Obligation</h3>
+          <p class="promise-text">Initial consultations are always free. We will provide an honest assessment of your platform and recommend only what you genuinely need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Expect -->
+  <section class="section section-alt">
+    <div class="section-inner" data-animate="fade-up">
+      <div class="expect-block">
+        <h2 class="expect-title">What Happens After You Reach Out</h2>
+        <div class="expect-steps">
+          <div class="expect-step">
+            <span class="expect-number">1</span>
+            <div>
+              <h3>We review your enquiry</h3>
+              <p>A member of our support team reads your message and reviews your website within a few hours.</p>
+            </div>
+          </div>
+          <div class="expect-step">
+            <span class="expect-number">2</span>
+            <div>
+              <h3>Discovery call</h3>
+              <p>We schedule a free 30-minute call to understand your platform, current pain points, and goals.</p>
+            </div>
+          </div>
+          <div class="expect-step">
+            <span class="expect-number">3</span>
+            <div>
+              <h3>Proposal delivery</h3>
+              <p>You receive a written proposal with the recommended package, monthly cost, and onboarding timeline.</p>
+            </div>
+          </div>
+          <div class="expect-step">
+            <span class="expect-number">4</span>
+            <div>
+              <h3>Onboarding begins</h3>
+              <p>Once approved, we audit your platform, set up monitoring, and begin managed support within 1 to 2 weeks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Office Info -->
+  <section class="section">
+    <div class="section-inner" data-animate="fade-up">
+      <div class="office">
+        <h2 class="office-heading">Our Office</h2>
+        <p class="office-location">Kuala Lumpur, Malaysia</p>
+        <p class="office-note">
+          Serving clients across Malaysia, Singapore, and Southeast Asia. Enterprise clients receive 24/7 support including weekends and public holidays.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <SupportFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+  .section-dark { background: var(--color-surface-dark, #1C1917); }
+
+  /* Hero */
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 560px;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+
+  /* Promise Grid */
+  .promise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .promise-card {
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.75rem;
+  }
+
+  .promise-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--color-brand);
+  }
+
+  .promise-icon svg { width: 100%; height: 100%; }
+
+  .promise-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.5rem;
+  }
+
+  .promise-text {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* What to Expect */
+  .expect-block {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .expect-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .expect-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .expect-step {
+    display: flex;
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .expect-step:last-child { border-bottom: none; }
+
+  .expect-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: var(--color-brand);
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .expect-step h3 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.25rem;
+  }
+
+  .expect-step p {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+
+  /* Office */
+  .office {
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .office-heading { font-size: 1.5rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; }
+  .office-location { font-size: 1rem; font-weight: 500; color: var(--color-brand); margin-bottom: 1rem; }
+  .office-note { font-size: 0.875rem; line-height: 1.7; color: var(--color-muted); }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .promise-grid { grid-template-columns: 1fr; }
+  }
+</style>

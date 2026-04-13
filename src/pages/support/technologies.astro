@@ -1,0 +1,415 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import SupportHeader from '../../components/SupportHeader.astro';
+import SupportFooter from '../../components/SupportFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import Animations from '../../components/Animations.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/support' },
+    { '@type': 'ListItem', position: 2, name: 'How We Work', item: 'https://orangesoft.com.my/support/how-we-work' },
+    { '@type': 'ListItem', position: 3, name: 'Technologies', item: 'https://orangesoft.com.my/support/technologies' },
+  ],
+};
+
+const platforms = [
+  {
+    name: 'WordPress',
+    category: 'CMS',
+    description: 'The most widely used CMS in the world. We manage WordPress sites of all sizes, from simple corporate sites to complex multi-site installations with dozens of plugins and custom themes.',
+    capabilities: [
+      'Core, theme, and plugin updates',
+      'Security hardening and malware removal',
+      'Performance optimisation (caching, CDN, image compression)',
+      'WooCommerce maintenance',
+      'Custom theme and plugin maintenance',
+      'Migration between hosts',
+    ],
+  },
+  {
+    name: 'Kentico',
+    category: 'Enterprise CMS',
+    description: 'Enterprise-grade CMS used by large organisations for complex content management needs. We handle Kentico Xperience and Kentico Kontent (now Kontent.ai) installations.',
+    capabilities: [
+      'Kentico version upgrades and hotfixes',
+      'Custom module and widget maintenance',
+      'Database optimisation and cleanup',
+      'Integration maintenance (CRM, ERP, marketing automation)',
+      'Multi-site and multi-language management',
+      'Performance tuning for high-traffic installations',
+    ],
+  },
+  {
+    name: 'Shopify',
+    category: 'E-Commerce',
+    description: 'The leading e-commerce platform for small to mid-size retailers. We manage Shopify and Shopify Plus stores including theme customisation, app management, and performance optimisation.',
+    capabilities: [
+      'Theme updates and customisation',
+      'App audit and management',
+      'Checkout and payment flow maintenance',
+      'Product data and catalogue management',
+      'Performance and conversion optimisation',
+      'Third-party integration maintenance',
+    ],
+  },
+  {
+    name: 'Custom Builds',
+    category: 'Bespoke',
+    description: 'Websites and web applications built with frameworks like Laravel, Next.js, Nuxt, Astro, or any other modern stack. We maintain custom codebases regardless of who originally built them.',
+    capabilities: [
+      'Framework and dependency updates',
+      'Security patching and vulnerability remediation',
+      'API integration maintenance',
+      'Database management and optimisation',
+      'CI/CD pipeline management',
+      'Server and infrastructure management',
+    ],
+  },
+  {
+    name: 'Headless CMS',
+    category: 'Modern Architecture',
+    description: 'Decoupled architectures using headless CMS platforms like Strapi, Sanity, Contentful, or Kontent.ai with frontend frameworks. We manage both the CMS backend and the frontend deployment.',
+    capabilities: [
+      'CMS platform updates and configuration',
+      'Frontend framework maintenance (Next.js, Nuxt, Astro)',
+      'API and webhook management',
+      'CDN and edge deployment management',
+      'Content model and schema maintenance',
+      'Build pipeline and deployment management',
+    ],
+  },
+  {
+    name: 'Static Sites',
+    category: 'JAMstack',
+    description: 'Sites built with static site generators deployed to CDN edge networks. Fast, secure, and reliable, but still requiring dependency updates, build maintenance, and content management.',
+    capabilities: [
+      'Build system and dependency updates',
+      'Deployment pipeline management (Netlify, Vercel, Cloudflare Pages)',
+      'Form and serverless function maintenance',
+      'DNS and SSL management',
+      'Performance monitoring and optimisation',
+      'Content updates via CMS or direct commits',
+    ],
+  },
+];
+
+const hosting = [
+  { name: 'AWS', type: 'Cloud' },
+  { name: 'Google Cloud', type: 'Cloud' },
+  { name: 'DigitalOcean', type: 'Cloud' },
+  { name: 'Cloudways', type: 'Managed' },
+  { name: 'Vercel', type: 'Edge' },
+  { name: 'Netlify', type: 'Edge' },
+  { name: 'Cloudflare Pages', type: 'Edge' },
+  { name: 'Shared Hosting', type: 'Traditional' },
+];
+---
+
+<Layout
+  title="Platforms We Support | Orangesoft Support"
+  description="We maintain websites built on any platform: WordPress, Kentico, Shopify, custom builds, headless CMS, and static sites. Any technology, one team."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <EntranceOverlay />
+  <SupportHeader active="how-we-work" />
+  <Breadcrumb items={[
+    { label: 'Home', href: '/support' },
+    { label: 'How We Work', href: '/support/how-we-work' },
+    { label: 'Technologies' },
+  ]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <h1 class="hero-title">Any Platform.<br />One Support Team.</h1>
+      <p class="hero-lead">
+        We maintain websites built on any technology stack. Whether your site runs on WordPress, Kentico, Shopify, or a custom framework, our team has the expertise to keep it healthy.
+      </p>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <!-- Platform Cards -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="Platforms We Manage"
+        subtitle="Deep expertise across every major web platform and architecture."
+      />
+      <div class="platforms-grid" data-animate="stagger">
+        {platforms.map((platform) => (
+          <div class="platform-card">
+            <div class="platform-header">
+              <h2 class="platform-name">{platform.name}</h2>
+              <span class="platform-category">{platform.category}</span>
+            </div>
+            <p class="platform-desc">{platform.description}</p>
+            <h3 class="platform-cap-heading">What we handle</h3>
+            <ul class="platform-caps">
+              {platform.capabilities.map((cap) => (
+                <li>
+                  <svg class="cap-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  {cap}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Hosting Providers -->
+  <section class="section">
+    <div class="section-inner" data-animate="fade-up">
+      <SectionHeading
+        title="Hosting Providers"
+        subtitle="We manage infrastructure on any major hosting provider."
+        align="center"
+      />
+      <div class="hosting-grid">
+        {hosting.map((host) => (
+          <div class="hosting-chip">
+            <span class="hosting-name">{host.name}</span>
+            <span class="hosting-type">{host.type}</span>
+          </div>
+        ))}
+      </div>
+      <p class="hosting-note">
+        Do not see your hosting provider? We work with any provider that offers SSH or panel access. <a href="/support/contact">Get in touch</a> to discuss your setup.
+      </p>
+    </div>
+  </section>
+
+  <!-- Platform Agnostic -->
+  <section class="section section-alt">
+    <div class="section-inner" data-animate="fade-up">
+      <div class="agnostic-block">
+        <SectionHeading
+          title="Platform Agnostic by Design"
+          subtitle="Why we do not specialise in a single CMS."
+          align="center"
+        />
+        <p class="agnostic-text">
+          Many support providers only work with one platform. We made a deliberate choice to be platform-agnostic because our clients use different technologies, and they should not need separate vendors for each one.
+        </p>
+        <p class="agnostic-text">
+          Our team maintains deep expertise across CMS platforms, e-commerce solutions, and custom frameworks. When you switch platforms or launch a new property on a different stack, your support team stays the same.
+        </p>
+        <p class="agnostic-highlight">
+          One relationship, regardless of how many platforms you run.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Need support for your platform?" buttonText="Get a Quote" buttonHref="/support/contact" />
+  <SupportFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  /* Hero */
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+
+  /* Platform Cards */
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .platform-card {
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+  }
+
+  .platform-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .platform-name {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: -0.01em;
+  }
+
+  .platform-category {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-brand);
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--color-brand);
+    border-radius: 2rem;
+    white-space: nowrap;
+  }
+
+  .platform-desc {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .platform-cap-heading {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .platform-caps {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .platform-caps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    font-size: 0.8125rem;
+    color: var(--color-foreground);
+    line-height: 1.5;
+  }
+
+  .cap-check {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    color: var(--color-brand);
+    margin-top: 0.125rem;
+  }
+
+  /* Hosting Grid */
+  .hosting-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hosting-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 1.25rem 1rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+
+  .hosting-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  .hosting-type {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--color-brand);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .hosting-note {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+  .hosting-note a {
+    color: var(--color-brand);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .hosting-note a:hover { text-decoration: underline; }
+
+  /* Agnostic Block */
+  .agnostic-block {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .agnostic-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+  }
+
+  .agnostic-highlight {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-brand-light);
+    border-radius: 0.5rem;
+    border-left: 3px solid var(--color-brand);
+    text-align: left;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
+  }
+
+  @media (max-width: 1024px) {
+    .platforms-grid { grid-template-columns: 1fr; }
+    .hosting-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .hosting-grid { grid-template-columns: repeat(2, 1fr); }
+    .platform-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  }
+</style>

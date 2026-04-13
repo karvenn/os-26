@@ -1,0 +1,376 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import SupportHeader from '../../components/SupportHeader.astro';
+import SupportFooter from '../../components/SupportFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import Animations from '../../components/Animations.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/support' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://orangesoft.com.my/support/about' },
+  ],
+};
+
+const team = [
+  {
+    name: 'Daniel Lim',
+    role: 'Support Manager',
+    bio: 'Coordinates all client accounts, sets SLA targets, and ensures every platform receives the attention it needs. Ten years in web operations across agencies and in-house teams.',
+    specialities: ['Account Management', 'SLA Frameworks', 'Client Communication', 'Process Design'],
+  },
+  {
+    name: 'Aisyah Rahman',
+    role: 'Systems Engineer',
+    bio: 'Handles server infrastructure, security patching, performance monitoring, and emergency response. Certified in AWS and Google Cloud with deep experience in Linux server administration.',
+    specialities: ['Server Administration', 'Security Hardening', 'Performance Tuning', 'Cloud Infrastructure'],
+  },
+  {
+    name: 'Marcus Tan',
+    role: 'Frontend Specialist',
+    bio: 'Manages frontend updates, browser compatibility, accessibility compliance, and Core Web Vitals optimisation. Fluent across WordPress, Kentico, Shopify, and custom frameworks.',
+    specialities: ['Frontend Development', 'CMS Platforms', 'Accessibility', 'Performance Optimisation'],
+  },
+  {
+    name: 'Sarah Chen',
+    role: 'Content Coordinator',
+    bio: 'Handles all content updates, page modifications, asset management, and scheduled publishing. Ensures every change is accurate, on-brand, and deployed on time.',
+    specialities: ['Content Management', 'Quality Assurance', 'Asset Coordination', 'Publishing Workflows'],
+  },
+];
+
+const values = [
+  {
+    title: 'Proactive, Not Reactive',
+    description: 'We do not wait for things to break. Scheduled maintenance, continuous monitoring, and regular audits mean issues are resolved before they become problems.',
+  },
+  {
+    title: 'Transparent Communication',
+    description: 'Monthly reports, documented changes, and honest assessments. You always know what we did, why we did it, and what we recommend next.',
+  },
+  {
+    title: 'Platform Agnostic',
+    description: 'We maintain websites on any platform. WordPress, Kentico, Shopify, custom builds, headless CMS setups. The technology does not matter; the care does.',
+  },
+  {
+    title: 'Continuity of Knowledge',
+    description: 'A dedicated team that knows your platform inside out. No rotating contractors, no lost context. The people who maintain your site today are the same people who will maintain it next year.',
+  },
+];
+---
+
+<Layout
+  title="About Our Team | Orangesoft Support"
+  description="Meet the Orangesoft support team: four dedicated specialists managing websites across Malaysia and Southeast Asia. Proactive care, transparent communication."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <EntranceOverlay />
+  <SupportHeader active="about" />
+  <Breadcrumb items={[{ label: 'Home', href: '/support' }, { label: 'About' }]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <h1 class="hero-title">A Dedicated Team<br />for Your Platform</h1>
+      <p class="hero-lead">
+        Four specialists who know your website as well as you do. We do not rotate support tickets through anonymous queues. Your platform has a team, and that team has names.
+      </p>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <!-- Team -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <SectionHeading
+        title="The Support Team"
+        subtitle="The people behind your monthly health reports and 1-hour response times."
+      />
+      <div class="team-grid" data-animate="stagger">
+        {team.map((member) => (
+          <div class="team-card">
+            <div class="team-avatar">
+              <span class="avatar-initials">{member.name.split(' ').map(n => n[0]).join('')}</span>
+            </div>
+            <h2 class="team-name">{member.name}</h2>
+            <p class="team-role">{member.role}</p>
+            <p class="team-bio">{member.bio}</p>
+            <ul class="team-specialities">
+              {member.specialities.map((spec) => (
+                <li>{spec}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section">
+    <div class="section-inner" data-animate="fade-up">
+      <SectionHeading
+        title="How We Work"
+        subtitle="The principles that guide every decision we make."
+        align="center"
+      />
+      <div class="values-grid">
+        {values.map((value) => (
+          <div class="value-card">
+            <h3 class="value-title">{value.title}</h3>
+            <p class="value-desc">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="stats-grid" data-animate="stagger">
+        <div class="stat">
+          <span class="stat-value" data-target="40" data-suffix="+">0</span>
+          <span class="stat-label">Websites Managed</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" data-target="99.9" data-decimals="1" data-suffix="%">0</span>
+          <span class="stat-label">Average Uptime</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" data-target="8" data-suffix="+">0</span>
+          <span class="stat-label">Years of Support</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" data-target="15" data-suffix="min">0</span>
+          <span class="stat-label">Avg. Issue Resolution</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Based In -->
+  <section class="section">
+    <div class="section-inner" data-animate="fade-up">
+      <div class="based-block">
+        <h2 class="based-title">Based in Kuala Lumpur</h2>
+        <p class="based-text">
+          Our team operates from Kuala Lumpur, Malaysia, serving clients across Malaysia, Singapore, and Southeast Asia. We work in the GMT+8 timezone with extended monitoring coverage for clients who need it.
+        </p>
+        <p class="based-text">
+          Enterprise clients receive 24/7 support including weekends and public holidays, coordinated across our team to ensure there is always someone on call who knows your platform.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Want to meet the team?" buttonText="Get in Touch" buttonHref="/support/contact" />
+  <SupportFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  /* Hero */
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+
+  /* Team Grid */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .team-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+  }
+
+  .team-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--color-brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .avatar-initials {
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.02em;
+  }
+
+  .team-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.25rem;
+  }
+
+  .team-role {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-brand);
+    margin-bottom: 1rem;
+  }
+
+  .team-bio {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .team-specialities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    list-style: none;
+    padding: 0;
+    margin-top: auto;
+  }
+
+  .team-specialities li {
+    font-size: 0.625rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    padding: 0.25rem 0.625rem;
+    background: white;
+    border: 1px solid var(--color-divider);
+    border-radius: 2rem;
+  }
+
+  /* Values */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .value-card {
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.75rem;
+  }
+
+  .value-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.5rem;
+  }
+
+  .value-desc {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Stats */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .stat {
+    padding: 2rem 1rem;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+  }
+
+  /* Based Block */
+  .based-block {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .based-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .based-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+  }
+
+  .based-text:last-child { margin-bottom: 0; }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
+  }
+
+  @media (max-width: 1024px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .team-grid { grid-template-columns: 1fr; }
+    .values-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

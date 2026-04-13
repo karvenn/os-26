@@ -1,0 +1,359 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import SupportHeader from '../../components/SupportHeader.astro';
+import SupportFooter from '../../components/SupportFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import Animations from '../../components/Animations.astro';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/support' },
+    { '@type': 'ListItem', position: 2, name: 'Clients', item: 'https://orangesoft.com.my/support/work' },
+  ],
+};
+
+const clients = [
+  {
+    name: 'Meridian Property Group',
+    platform: 'WordPress',
+    industry: 'Property & Real Estate',
+    package: 'Professional',
+    description: 'Corporate website and property listing portal with CRM integration. Monthly content updates, performance monitoring, and hosting management.',
+  },
+  {
+    name: 'Pacific Capital Advisory',
+    platform: 'Custom (Next.js)',
+    industry: 'Financial Services',
+    package: 'Enterprise',
+    description: 'Client portal and public-facing website with regulatory compliance requirements. 24/7 monitoring, quarterly penetration testing, and dedicated account management.',
+  },
+  {
+    name: 'Precision Manufacturing Sdn Bhd',
+    platform: 'Kentico',
+    industry: 'Manufacturing',
+    package: 'Professional',
+    description: 'Multi-language corporate website with product catalogue and distributor portal. Regular CMS updates, security patching, and content management.',
+  },
+  {
+    name: 'MediCare Group',
+    platform: 'WordPress',
+    industry: 'Healthcare',
+    package: 'Enterprise',
+    description: 'Patient information portal and corporate website handling sensitive health data. PDPA compliance, enhanced security protocols, and priority emergency response.',
+  },
+  {
+    name: 'Stellar Education Foundation',
+    platform: 'Shopify + Custom',
+    industry: 'Education',
+    package: 'Essential',
+    description: 'E-commerce bookstore and institutional website. Uptime monitoring, regular updates, and content changes for course schedules and events.',
+  },
+  {
+    name: 'GreenTech Solutions',
+    platform: 'Custom (Laravel)',
+    industry: 'Technology',
+    package: 'Professional',
+    description: 'SaaS product marketing site and documentation portal. Performance optimisation, staging environment management, and quarterly strategic reviews.',
+  },
+  {
+    name: 'Heritage Hotels Malaysia',
+    platform: 'WordPress + Booking Engine',
+    industry: 'Hospitality',
+    package: 'Enterprise',
+    description: 'Hotel chain website with integrated booking engine and multi-property management. 24/7 support critical for revenue-generating booking functionality.',
+  },
+  {
+    name: 'Selangor State Library',
+    platform: 'Kentico',
+    industry: 'Government',
+    package: 'Essential',
+    description: 'Public information website with event calendar and digital catalogue. Security hardening, accessibility compliance, and regular content updates.',
+  },
+];
+
+const packageColors: Record<string, string> = {
+  Essential: 'var(--color-muted)',
+  Professional: 'var(--color-brand)',
+  Enterprise: 'var(--color-foreground)',
+};
+---
+
+<Layout
+  title="Clients We Maintain | Orangesoft Support"
+  description="Websites and platforms we manage across Malaysia — from corporate sites to enterprise portals, across WordPress, Kentico, Shopify, and custom builds."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <EntranceOverlay />
+  <SupportHeader active="work" />
+  <Breadcrumb items={[{ label: 'Home', href: '/support' }, { label: 'Clients' }]} />
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="section-inner">
+      <h1 class="hero-title">Clients We<br />Maintain</h1>
+      <p class="hero-lead">
+        From small corporate websites to enterprise portals processing thousands of transactions, we manage platforms across every industry and technology stack.
+      </p>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <!-- Client Cards -->
+  <section class="section section-alt">
+    <div class="section-inner">
+      <div class="clients-grid" data-animate="stagger">
+        {clients.map((client) => (
+          <div class="client-card">
+            <div class="client-header">
+              <h2 class="client-name">{client.name}</h2>
+              <span class="client-package" style={`color: ${packageColors[client.package]}`}>{client.package}</span>
+            </div>
+            <div class="client-meta">
+              <span class="meta-item">
+                <span class="meta-label">Platform</span>
+                <span class="meta-value">{client.platform}</span>
+              </span>
+              <span class="meta-item">
+                <span class="meta-label">Industry</span>
+                <span class="meta-value">{client.industry}</span>
+              </span>
+            </div>
+            <p class="client-desc">{client.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section">
+    <div class="section-inner">
+      <SectionHeading
+        title="By the Numbers"
+        subtitle="A snapshot of the platforms we manage."
+        align="center"
+      />
+      <div class="stats-grid" data-animate="stagger">
+        <div class="stat">
+          <span class="stat-value">8+</span>
+          <span class="stat-label">Industries Served</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">5+</span>
+          <span class="stat-label">CMS Platforms</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">3</span>
+          <span class="stat-label">Support Tiers</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">24/7</span>
+          <span class="stat-label">Enterprise Monitoring</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms -->
+  <section class="section section-alt">
+    <div class="section-inner" data-animate="fade-up">
+      <SectionHeading
+        title="Platforms We Manage"
+        subtitle="We maintain websites built on any technology stack."
+        align="center"
+      />
+      <div class="platforms-strip">
+        {['WordPress', 'Kentico', 'Shopify', 'Next.js', 'Laravel', 'Astro', 'Custom Builds'].map((platform) => (
+          <span class="platform-chip">{platform}</span>
+        ))}
+      </div>
+      <p class="platforms-note">
+        <a href="/support/technologies">View all supported platforms &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <CtaBand heading="Want us to maintain your platform?" buttonText="Get a Support Quote" buttonHref="/support/contact" />
+  <SupportFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  /* Hero */
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+
+  /* Client Cards */
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .client-card {
+    padding: 2rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+  }
+
+  .client-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .client-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    letter-spacing: -0.01em;
+  }
+
+  .client-package {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 2rem;
+  }
+
+  .client-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .meta-label {
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-muted);
+  }
+
+  .meta-value {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  .client-desc {
+    font-size: 0.8125rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  /* Stats */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .stat { padding: 1.5rem 1rem; }
+
+  .stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.375rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+  }
+
+  /* Platforms Strip */
+  .platforms-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .platform-chip {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    border: 1px solid var(--color-divider);
+    border-radius: 2rem;
+  }
+
+  .platforms-note {
+    text-align: center;
+  }
+
+  .platforms-note a {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-brand);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .platforms-note a:hover { opacity: 0.7; }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; }
+  }
+
+  @media (max-width: 1024px) {
+    .clients-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .client-header { flex-direction: column; gap: 0.5rem; }
+    .client-meta { flex-direction: column; gap: 0.75rem; }
+  }
+</style>
