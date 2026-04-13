@@ -45,7 +45,24 @@ const services = [
 ];
 ---
 
-<Layout>
+<Layout
+  title="Orangesoft — Web Design & Development Agency Malaysia | Since 2007"
+  description="Malaysian digital agency with 19+ years experience. Custom web development, WordPress, Kentico, website maintenance, and SEO for corporate clients across Southeast Asia. 600+ projects delivered."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Orangesoft',
+      url: 'https://orangesoft.com.my',
+      description: 'Malaysian digital agency specialising in web design, development, and digital marketing since 2007.',
+      foundingDate: '2007',
+      areaServed: { '@type': 'Country', name: 'Malaysia' },
+      numberOfEmployees: { '@type': 'QuantitativeValue', minValue: 10, maxValue: 50 },
+      knowsAbout: ['Web Design', 'Web Development', 'NuxtJS', 'Laravel', 'WordPress', 'Kentico', 'SEO'],
+    })} />
+  </Fragment>
+
   <div class="page">
     <header class="site-header">
       <a href="/" class="logo">
@@ -60,7 +77,7 @@ const services = [
 
     <main class="panels">
       {services.map((service) => (
-        <article class="panel" data-href={service.href}>
+        <a class="panel" href={service.href} data-href={service.href}>
           <span class="panel-number">{service.number}</span>
 
           <div class="panel-vertical">
@@ -73,25 +90,77 @@ const services = [
             <p class="panel-desc">{service.description}</p>
             <span class="panel-cta">
               Explore
-              <svg
-                class="cta-arrow"
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M4 10h12m0 0l-4-4m4 4l-4 4"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+              <svg class="cta-arrow" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </span>
           </div>
-        </article>
+        </a>
       ))}
     </main>
+
+    <!-- ════ SEO CONTENT (below fold) ════ -->
+    <section class="seo-content">
+      <div class="seo-inner">
+        <h1 class="seo-h1">Orangesoft — Web Design &amp; Development Agency in Malaysia</h1>
+
+        <div class="seo-intro">
+          <p>
+            Orangesoft is a Malaysian digital agency with over 19 years of experience building websites, web applications, and digital marketing solutions for corporate clients across Southeast Asia. Since 2007, we have delivered more than 600 projects for organisations including IOI Properties, Cagamas, CIMB, Telekom Malaysia, and Petronas Chemicals.
+          </p>
+          <p>
+            Our five specialised divisions allow us to offer focused expertise in custom web development, WordPress, Kentico, ongoing website support, and search engine optimisation. Whether you need a high-performance custom application built with NuxtJS and Laravel, a well-maintained WordPress site, or a comprehensive SEO strategy, there is an Orangesoft team dedicated to exactly that.
+          </p>
+          <p>
+            Based in Kuala Lumpur, we serve clients across Malaysia, Singapore, Thailand, Indonesia, and the wider Southeast Asian region. Every project is built on a foundation of transparent communication, proven methodology, and the belief that you should own everything we create — no vendor lock-in, no recurring license fees.
+          </p>
+        </div>
+
+        <div class="seo-divisions">
+          <h2 class="seo-h2">Our Divisions</h2>
+          <div class="seo-grid">
+            <div class="seo-division">
+              <h3><a href="/custom">Custom Websites &amp; Applications</a></h3>
+              <p>Bespoke digital solutions built with NuxtJS, Laravel, and Strapi. From corporate websites to complex web applications, CRMs, e-commerce platforms, and campaign management systems.</p>
+              <ul>
+                <li><a href="/custom/services">Services</a> — Discovery, design, development, deployment, maintenance, growth</li>
+                <li><a href="/custom/solutions">Solutions</a> — 8 pre-built platforms we customise for your business</li>
+                <li><a href="/custom/work">Portfolio</a> — 600+ projects across 8 industries</li>
+                <li><a href="/custom/pricing">Pricing</a> — Transparent investment ranges from MYR 30,000</li>
+                <li><a href="/custom/insights">Insights</a> — Guides on custom development, technology choices, and costs</li>
+              </ul>
+            </div>
+            <div class="seo-division">
+              <h3><a href="/wordpress">WordPress Websites</a></h3>
+              <p>Professional WordPress design and development for businesses that need flexible, cost-effective websites with extensive plugin ecosystems and familiar content management.</p>
+            </div>
+            <div class="seo-division">
+              <h3><a href="/kentico">Kentico Websites</a></h3>
+              <p>Enterprise-grade Kentico CMS implementations for organisations that require advanced digital experience platforms with built-in marketing automation and personalisation.</p>
+            </div>
+            <div class="seo-division">
+              <h3><a href="/support">Website Support &amp; Maintenance</a></h3>
+              <p>Proactive website care including security updates, performance monitoring, content changes, and priority support to keep your digital presence performing at its best.</p>
+            </div>
+            <div class="seo-division">
+              <h3><a href="/seo">Search Engine Optimisation</a></h3>
+              <p>Strategic SEO that improves your organic visibility through technical optimisation, content strategy, link building, and ongoing performance monitoring.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="seo-stats">
+          <div class="seo-stat"><strong>600+</strong> projects delivered</div>
+          <div class="seo-stat"><strong>19+</strong> years in business</div>
+          <div class="seo-stat"><strong>5</strong> specialised divisions</div>
+          <div class="seo-stat"><strong>4.9/5</strong> client satisfaction</div>
+        </div>
+
+        <div class="seo-cta">
+          <p>Ready to discuss your project? <a href="/contact">Get in touch</a> — we respond within 24 hours.</p>
+        </div>
+      </div>
+    </section>
 
     <footer class="site-footer">
       <nav class="footer-links">
@@ -362,6 +431,152 @@ const services = [
     opacity: 0.5;
   }
 
+  /* ── SEO Content Section ── */
+
+  .seo-content {
+    padding: 5rem 1.5rem;
+    background: white;
+    border-top: 1px solid var(--color-divider);
+  }
+
+  .seo-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .seo-h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+
+  .seo-intro {
+    max-width: 800px;
+    margin-bottom: 3rem;
+  }
+
+  .seo-intro p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+  }
+
+  .seo-h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .seo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .seo-division {
+    padding: 1.5rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.5rem;
+  }
+
+  .seo-division h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.5rem;
+  }
+
+  .seo-division h3 a {
+    color: var(--color-foreground);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .seo-division h3 a:hover {
+    color: var(--color-brand);
+  }
+
+  .seo-division p {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .seo-division ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .seo-division li {
+    font-size: 0.75rem;
+    line-height: 1.8;
+    color: var(--color-muted);
+  }
+
+  .seo-division li a {
+    color: var(--color-brand);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .seo-division li a:hover {
+    text-decoration: underline;
+  }
+
+  .seo-stats {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .seo-stat {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+
+  .seo-stat strong {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-foreground);
+    display: block;
+    margin-bottom: 0.125rem;
+  }
+
+  .seo-cta {
+    margin-top: 2rem;
+  }
+
+  .seo-cta p {
+    font-size: 1rem;
+    color: var(--color-muted);
+  }
+
+  .seo-cta a {
+    color: var(--color-brand);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .seo-cta a:hover {
+    text-decoration: underline;
+  }
+
+  /* Panel link reset (panels are now <a> tags) */
+  .panel {
+    text-decoration: none;
+    color: inherit;
+  }
+
   /* ── Keyframes ── */
 
   @keyframes panelReveal {
@@ -458,6 +673,11 @@ const services = [
       opacity: 0.7;
     }
 
+    .seo-content { padding: 3rem 1.5rem; }
+    .seo-h1 { font-size: 1.5rem; }
+    .seo-grid { grid-template-columns: 1fr; }
+    .seo-stats { flex-direction: column; gap: 1rem; }
+
     @keyframes panelRevealMobile {
       from {
         opacity: 0;
@@ -475,7 +695,8 @@ const services = [
   const panels = document.querySelectorAll<HTMLElement>('[data-href]');
 
   panels.forEach((panel) => {
-    panel.addEventListener('click', () => {
+    panel.addEventListener('click', (e) => {
+      e.preventDefault();
       const rect = panel.getBoundingClientRect();
       const href = panel.dataset.href;
       if (!href) return;
