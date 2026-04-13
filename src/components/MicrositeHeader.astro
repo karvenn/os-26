@@ -63,14 +63,6 @@ const dropdowns = [
       { label: 'Project Lifecycle', href: '/custom/process' },
     ],
   },
-  {
-    id: 'work',
-    label: 'Work',
-    href: '/custom/work',
-    items: [
-      { label: 'Portfolio', href: '/custom/work' },
-    ],
-  },
 ];
 ---
 
@@ -100,6 +92,7 @@ const dropdowns = [
         </div>
       ))}
 
+      <a href="/custom/work" class:list={['mh-link', { 'mh-link--active': active === 'work' }]}>Work</a>
       <a href="/custom/insights" class:list={['mh-link', { 'mh-link--active': active === 'insights' }]}>Insights</a>
       <a href="/custom/about" class:list={['mh-link', { 'mh-link--active': active === 'about' }]}>About</a>
       <a href="/custom/contact" class:list={['mh-link mh-cta', { 'mh-link--active': active === 'contact' }]}>Contact</a>
@@ -122,6 +115,7 @@ const dropdowns = [
         </div>
       </details>
     ))}
+    <a href="/custom/work" class="mh-mobile-direct">Work</a>
     <a href="/custom/insights" class="mh-mobile-direct">Insights</a>
     <a href="/custom/about" class="mh-mobile-direct">About</a>
     <a href="/custom/pricing" class="mh-mobile-direct">Pricing</a>
