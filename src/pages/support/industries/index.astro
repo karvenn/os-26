@@ -1,0 +1,127 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import EntranceOverlay from '../../../components/EntranceOverlay.astro';
+import SupportHeader from '../../../components/SupportHeader.astro';
+import SupportFooter from '../../../components/SupportFooter.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+import TrustStrip from '../../../components/TrustStrip.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import Animations from '../../../components/Animations.astro';
+import { industries } from '../../../data/industries';
+
+const supportTaglines: Record<string, string> = {
+  'property': 'Keep your property listings, virtual tours, and lead capture running flawlessly around the clock.',
+  'financial-services': 'Continuous security monitoring and compliance maintenance for regulated financial platforms.',
+  'manufacturing': 'Reliable uptime and proactive maintenance for mission-critical operational dashboards.',
+  'healthcare': 'Secure, accessible, and always-available patient portals and healthcare platforms.',
+  'education': 'Uninterrupted learning platforms and enrollment systems throughout the academic year.',
+  'government': 'High-availability maintenance for public-facing services that citizens depend on.',
+  'retail-ecommerce': 'Peak-performance maintenance so your store never loses a sale to downtime.',
+  'hospitality': 'Round-the-clock support keeping your booking engine and guest experience online.',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/support' },
+    { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://orangesoft.com.my/support/industries' },
+  ],
+};
+---
+
+<Layout
+  title="Industries We Support | Orangesoft Support & Maintenance"
+  description="Managed website support and maintenance tailored for property, financial services, manufacturing, healthcare, education, government, retail, and hospitality across Malaysia."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <EntranceOverlay />
+  <SupportHeader active="industries" />
+  <Breadcrumb items={[{ label: 'Home', href: '/support' }, { label: 'Industries' }]} />
+
+  <section class="hero">
+    <div class="inner">
+      <h1 class="hero-title">Maintenance Built<br />for Your Industry</h1>
+      <p class="hero-lead">
+        A property website has different uptime needs than a healthcare portal. A retail store spikes during campaigns while a government site must stay accessible 24/7. After 19 years maintaining 600+ projects, we tailor our support packages to the specific demands of your industry.
+      </p>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <section class="section">
+    <div class="inner">
+      <div class="industry-grid" data-animate="stagger">
+        {industries.map((ind, i) => (
+          <a href={`/support/industries/${ind.slug}`} class="ind-card">
+            <span class="ind-num">{String(i + 1).padStart(2, '0')}</span>
+            <h2 class="ind-name">{ind.name}</h2>
+            <p class="ind-tagline">{supportTaglines[ind.slug] || ind.tagline}</p>
+            <p class="ind-desc">{ind.description.slice(0, 140)}&hellip;</p>
+            <div class="ind-projects">
+              {ind.projects.slice(0, 2).map((p) => (
+                <span class="ind-project">{p.clientName}</span>
+              ))}
+            </div>
+            <span class="ind-cta">Learn more &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Do not see your industry?" buttonText="Talk to Us — We Support All Platforms" buttonHref="/support/contact" />
+  <SupportFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .inner { max-width: 1200px; margin: 0 auto; }
+
+  .hero { padding: 3rem 1.5rem 2rem; }
+  .hero-title {
+    font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+    color: var(--color-foreground); margin-bottom: 1rem;
+    opacity: 0; animation: slideUp 0.7s ease 1s forwards;
+  }
+  .hero-lead {
+    font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px;
+    opacity: 0; animation: slideUp 0.7s ease 1.15s forwards;
+  }
+
+  .industry-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+  .ind-card {
+    display: flex; flex-direction: column; padding: 2rem; border: 1px solid var(--color-divider);
+    border-radius: 0.75rem; text-decoration: none;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+  .ind-card:hover { border-color: var(--color-brand); transform: translateY(-2px); }
+
+  .ind-num { font-size: 0.6875rem; font-weight: 300; color: var(--color-brand); letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+  .ind-name { font-size: 1.25rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.25rem; letter-spacing: -0.01em; }
+  .ind-tagline { font-size: 0.875rem; color: var(--color-brand); margin-bottom: 0.75rem; }
+  .ind-desc { font-size: 0.8125rem; line-height: 1.6; color: var(--color-muted); margin-bottom: 1rem; flex: 1; }
+
+  .ind-projects { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .ind-project {
+    font-size: 0.625rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--color-muted); background: var(--color-surface); padding: 0.2rem 0.5rem; border-radius: 0.25rem;
+  }
+
+  .ind-cta { font-size: 0.75rem; font-weight: 600; color: var(--color-brand); }
+
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; } }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .industry-grid { grid-template-columns: 1fr; }
+  }
+</style>
