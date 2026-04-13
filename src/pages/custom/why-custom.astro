@@ -1,0 +1,207 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EntranceOverlay from '../../components/EntranceOverlay.astro';
+import MicrositeHeader from '../../components/MicrositeHeader.astro';
+import MicrositeFooter from '../../components/MicrositeFooter.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import TrustStrip from '../../components/TrustStrip.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Animations from '../../components/Animations.astro';
+import { differentiators, comparisons } from '../../data/differentiators';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://orangesoft.com.my/custom' },
+    { '@type': 'ListItem', position: 2, name: 'Why Custom?', item: 'https://orangesoft.com.my/custom/why-custom' },
+  ],
+};
+---
+
+<Layout
+  title="Why Custom Development? | Orangesoft"
+  description="Custom websites vs templates, freelancers, and big agencies. A transparent comparison to help you decide whether custom development is right for your business."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  </Fragment>
+
+  <EntranceOverlay />
+  <MicrositeHeader />
+  <Breadcrumb items={[{ label: 'Home', href: '/custom' }, { label: 'Why Custom?' }]} />
+
+  <section class="hero">
+    <div class="inner">
+      <h1 class="hero-title">Is Custom Development<br />Right for You?</h1>
+      <p class="hero-lead">
+        Not every business needs a custom-built website or application. Templates, page builders, and off-the-shelf platforms work well for many organisations. This page helps you decide honestly whether custom development is worth the investment for your specific situation.
+      </p>
+    </div>
+  </section>
+
+  <TrustStrip />
+
+  <!-- When custom makes sense -->
+  <section class="section section-alt">
+    <div class="inner">
+      <SectionHeading title="When Custom Development Makes Sense" />
+      <div class="reasons" data-animate="stagger">
+        <div class="reason">
+          <h3>Your website IS your product</h3>
+          <p>If your website or web application is a critical revenue channel — not just a brochure — every millisecond of load time and every conversion optimisation matters. Templates cannot compete with purpose-built performance.</p>
+        </div>
+        <div class="reason">
+          <h3>You have outgrown templates</h3>
+          <p>You have tried customising a WordPress theme or Shopify template and hit walls. The workarounds cost more than doing it right, and your development team spends more time fighting the platform than building features.</p>
+        </div>
+        <div class="reason">
+          <h3>You need unique business logic</h3>
+          <p>Your checkout flow, approval workflow, or data model does not fit into any off-the-shelf system. No plugin or extension can accommodate your specific requirements without brittle workarounds.</p>
+        </div>
+        <div class="reason">
+          <h3>Security and compliance are non-negotiable</h3>
+          <p>Your industry demands specific data handling, encryption, audit logging, or regulatory compliance that generic platforms cannot guarantee. Healthcare, finance, and government projects often fall here.</p>
+        </div>
+        <div class="reason">
+          <h3>You want to own your platform</h3>
+          <p>No per-seat licensing, no vendor lock-in, no surprise price increases. With custom development, you own the code, the data, and the infrastructure. You can take it anywhere.</p>
+        </div>
+        <div class="reason">
+          <h3>Long-term cost matters more than upfront price</h3>
+          <p>Custom development costs more upfront but typically delivers lower total cost of ownership over 3 years when you factor in maintenance, customisation overhead, and the opportunity cost of template limitations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- When you don't need custom -->
+  <section class="section">
+    <div class="inner" data-animate="fade-up">
+      <SectionHeading title="When You Probably Don't Need Custom" />
+      <div class="honest-list">
+        <div class="honest-item">
+          <span class="honest-icon">&#10005;</span>
+          <p><strong>Simple brochure websites</strong> — If you need a 5-page site with basic contact forms, a WordPress theme or Squarespace will serve you well for a fraction of the cost.</p>
+        </div>
+        <div class="honest-item">
+          <span class="honest-icon">&#10005;</span>
+          <p><strong>Standard online stores</strong> — If you sell standard products with standard checkout, Shopify handles it better and cheaper than a custom build.</p>
+        </div>
+        <div class="honest-item">
+          <span class="honest-icon">&#10005;</span>
+          <p><strong>Tight budgets under MYR 30,000</strong> — Custom development requires meaningful investment. If your budget is below this threshold, a well-configured template is a better use of resources.</p>
+        </div>
+        <div class="honest-item">
+          <span class="honest-icon">&#10005;</span>
+          <p><strong>No internal champion</strong> — Custom projects need a stakeholder on your side who can make decisions, provide feedback, and champion the project internally. Without one, even the best agency struggles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison table -->
+  <section class="section section-alt">
+    <div class="inner">
+      <SectionHeading title="How Custom Compares" subtitle="An honest look at the trade-offs between custom development and your alternatives." />
+      <div class="compare-wrap" data-animate="fade-up">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="highlight">Orangesoft Custom</th>
+              <th>Templates / Page Builders</th>
+              <th>Big Agency</th>
+              <th>Freelancer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisons.map((row) => (
+              <tr>
+                <td class="row-label">{row.row}</td>
+                <td class="highlight">{row.orangesoft}</td>
+                <td>{row.template}</td>
+                <td>{row.bigAgency}</td>
+                <td>{row.freelancer}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Orangesoft specifically -->
+  <section class="section">
+    <div class="inner">
+      <SectionHeading title="Why Orangesoft" subtitle="If you have decided custom is right, here is why we are a strong choice." />
+      <div class="diff-grid" data-animate="stagger">
+        {differentiators.map((d) => (
+          <div class="diff">
+            <span class="diff-num">{d.number}</span>
+            <h3 class="diff-title">{d.title}</h3>
+            <p class="diff-desc">{d.description}</p>
+            <p class="diff-proof">{d.proof}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand heading="Ready to explore whether custom is right for you?" buttonText="Schedule a Free Consultation" buttonHref="/custom/contact" />
+  <MicrositeFooter />
+  <Animations />
+</Layout>
+
+<style>
+  .section { padding: 5rem 1.5rem; }
+  .inner { max-width: 1200px; margin: 0 auto; }
+  .section-alt { background: white; }
+
+  .hero { padding: 4rem 1.5rem 3rem; }
+  .hero-title { font-size: 3rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; color: var(--color-foreground); margin-bottom: 1.25rem; opacity: 0; animation: slideUp 0.7s ease 1s forwards; }
+  .hero-lead { font-size: 1.0625rem; line-height: 1.7; color: var(--color-muted); max-width: 640px; opacity: 0; animation: slideUp 0.7s ease 1.15s forwards; }
+
+  /* Reasons grid */
+  .reasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .reason { padding: 1.75rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; }
+  .reason h3 { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.5rem; }
+  .reason p { font-size: 0.8125rem; line-height: 1.65; color: var(--color-muted); }
+
+  /* Honest list */
+  .honest-list { max-width: 720px; display: flex; flex-direction: column; gap: 1.25rem; }
+  .honest-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; }
+  .honest-icon { font-size: 1rem; color: var(--color-muted); flex-shrink: 0; padding-top: 0.125rem; }
+  .honest-item p { font-size: 0.875rem; line-height: 1.65; color: var(--color-muted); }
+  .honest-item strong { color: var(--color-foreground); }
+
+  /* Comparison table */
+  .compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--color-divider); border-radius: 0.5rem; }
+  .compare { width: 100%; min-width: 800px; border-collapse: collapse; font-size: 0.8125rem; }
+  .compare thead { background: var(--color-surface); }
+  .compare th { text-align: left; padding: 1rem 1.25rem; font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted); border-bottom: 1px solid var(--color-divider); white-space: nowrap; }
+  .compare th.highlight { color: var(--color-brand); }
+  .compare td { padding: 1rem 1.25rem; color: var(--color-muted); border-bottom: 1px solid var(--color-divider); vertical-align: top; }
+  .compare tbody tr:last-child td { border-bottom: none; }
+  .compare td.row-label { font-weight: 600; color: var(--color-foreground); white-space: nowrap; }
+  .compare td.highlight { color: var(--color-foreground); font-weight: 500; background: var(--color-brand-light); }
+
+  /* Differentiators */
+  .diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .diff { padding: 1.75rem; border: 1px solid var(--color-divider); border-radius: 0.5rem; transition: border-color 0.3s ease; }
+  .diff:hover { border-color: var(--color-brand); }
+  .diff-num { font-size: 0.6875rem; font-weight: 300; color: var(--color-brand); letter-spacing: 0.1em; display: block; margin-bottom: 0.75rem; }
+  .diff-title { font-size: 1.0625rem; font-weight: 600; color: var(--color-foreground); margin-bottom: 0.625rem; }
+  .diff-desc { font-size: 0.8125rem; line-height: 1.7; color: var(--color-muted); margin-bottom: 0.75rem; }
+  .diff-proof { font-size: 0.75rem; line-height: 1.6; color: var(--color-brand); font-weight: 500; padding-top: 0.75rem; border-top: 1px solid var(--color-divider); font-style: italic; }
+
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .hero-title, .hero-lead { animation: none !important; opacity: 1 !important; } }
+
+  @media (max-width: 768px) {
+    .section { padding: 3rem 1.5rem; }
+    .hero-title { font-size: 2rem; }
+    .reasons, .diff-grid { grid-template-columns: 1fr; }
+  }
+</style>

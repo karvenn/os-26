@@ -8,6 +8,7 @@ import CtaBand from '../components/CtaBand.astro';
 import ContactForm from '../components/ContactForm.astro';
 import MicrositeHeader from '../components/MicrositeHeader.astro';
 import MicrositeFooter from '../components/MicrositeFooter.astro';
+import StickyBar from '../components/StickyBar.astro';
 import Animations from '../components/Animations.astro';
 
 import { portfolioProjects } from '../data/portfolio';
@@ -173,7 +174,7 @@ const serviceSchema = {
   <!-- ════ CTA BAND ════ -->
   <CtaBand
     heading="Ready to discuss your project?"
-    buttonText="Let's Talk"
+    buttonText="Get Your Custom Quote"
     buttonHref="/custom/contact"
   />
 
@@ -183,6 +184,8 @@ const serviceSchema = {
       <ContactForm />
     </div>
   </section>
+
+  <StickyBar />
 
   <!-- ════ FOOTER ════ -->
   <MicrositeFooter />

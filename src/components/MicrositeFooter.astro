@@ -55,6 +55,20 @@
       </div>
     </div>
 
+    <!-- Newsletter Signup -->
+    <div class="mf-newsletter">
+      <div class="mf-nl-content">
+        <h3 class="mf-nl-title">Stay Updated</h3>
+        <p class="mf-nl-desc">Monthly insights on custom web development, technology choices, and digital strategy for corporate teams.</p>
+      </div>
+      <form class="mf-nl-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="bot-field" />
+        <input type="hidden" name="form-name" value="newsletter" />
+        <input type="email" name="email" required placeholder="you@company.com" class="mf-nl-input" />
+        <button type="submit" class="mf-nl-btn">Subscribe</button>
+      </form>
+    </div>
+
     <div class="mf-bottom">
       <a href="/custom" class="mf-logo">Orangesoft<span class="mf-dot">.</span></a>
       <p class="mf-copy">&copy; 2026 Orangesoft. All rights reserved.</p>
@@ -135,10 +149,95 @@
     color: var(--color-muted);
   }
 
+  /* Newsletter */
+  .mf-newsletter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--color-divider);
+    flex-wrap: wrap;
+  }
+
+  .mf-nl-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin-bottom: 0.25rem;
+  }
+
+  .mf-nl-desc {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    max-width: 400px;
+  }
+
+  .mf-nl-form {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .mf-nl-input {
+    padding: 0.625rem 1rem;
+    border: 1px solid var(--color-divider);
+    border-radius: 0.375rem;
+    font-size: 0.8125rem;
+    font-family: inherit;
+    color: var(--color-foreground);
+    min-width: 240px;
+    transition: border-color 0.3s ease;
+  }
+
+  .mf-nl-input:focus {
+    outline: none;
+    border-color: var(--color-brand);
+  }
+
+  .mf-nl-input::placeholder {
+    color: var(--color-muted);
+  }
+
+  .mf-nl-btn {
+    padding: 0.625rem 1.25rem;
+    background: var(--color-foreground);
+    color: white;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+  }
+
+  .mf-nl-btn:hover {
+    background: var(--color-brand);
+  }
+
   @media (max-width: 768px) {
     .mf-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
+    }
+
+    .mf-newsletter {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .mf-nl-desc { max-width: none; }
+
+    .mf-nl-form {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .mf-nl-input {
+      min-width: auto;
+      width: 100%;
     }
 
     .mf-bottom {
